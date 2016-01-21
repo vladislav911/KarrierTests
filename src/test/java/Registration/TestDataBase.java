@@ -21,8 +21,8 @@ public class TestDataBase {
     @BeforeClass
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
-        baseUrl = "http://karrierestart.no/";
-        Email = "testgg@mail.ru";
+        baseUrl = "http://dev.karrierestart.no";
+        Email = "testggt@mail.ru";
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }

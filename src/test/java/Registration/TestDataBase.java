@@ -16,6 +16,7 @@ public class TestDataBase {
     static protected String baseUrl;
     static protected String UrlPageStep2;
     static protected String UrlPageStep3;
+    static protected String UrlPageStep4;
     static protected String Email;
     protected StringBuffer verificationErrors = new StringBuffer();
     private boolean acceptNextAlert = true;
@@ -23,8 +24,8 @@ public class TestDataBase {
     @BeforeTest
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
-        baseUrl = "http://karrierestart.no";
-        Email = "testggt@mail.ru";
+        baseUrl = "http://dev.karrierestart.no";
+        Email = "testqekg@mail.ru";
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }

@@ -55,6 +55,6 @@ public class Tests5PositiveTestsStep2 extends TestDataBase {
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }
-        String UrlPageStep3 = driver.getCurrentUrl();
+        UrlPageStep3 = driver.getCurrentUrl();
     }
 }

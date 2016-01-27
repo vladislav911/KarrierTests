@@ -43,7 +43,7 @@ public class Tests1MoveToPageRegistration extends TestDataBase{
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }
-        // Verify button Facebook
+        // Verify button Facebook`
         try {
             assertTrue(isElementPresent(By.cssSelector("div.auth-wrapper > #Facebook")));
         } catch (Error e) {

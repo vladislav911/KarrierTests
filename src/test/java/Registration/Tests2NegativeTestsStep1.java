@@ -17,7 +17,7 @@ public class Tests2NegativeTestsStep1 extends TestDataBase {
         driver.get(baseUrl + "/registrering");
         // type Email
         driver.findElement(By.id("Email")).clear();
-        driver.findElement(By.id("Email")).sendKeys(Email);
+        driver.findElement(By.id("Email")).sendKeys(Email1);
         // type password
         driver.findElement(By.id("RegistratePassword")).clear();
         driver.findElement(By.id("RegistratePassword")).sendKeys("test");
@@ -104,7 +104,7 @@ public class Tests2NegativeTestsStep1 extends TestDataBase {
     public void TryToRegistrationWithSmallPassword() throws Exception {
         // Type Email
         driver.findElement(By.id("Email")).clear();
-        driver.findElement(By.id("Email")).sendKeys(Email);
+        driver.findElement(By.id("Email")).sendKeys(Email1);
         // Type incorrect password < 3 symbols
         driver.findElement(By.id("RegistratePassword")).clear();
         driver.findElement(By.id("RegistratePassword")).sendKeys("te");
@@ -133,7 +133,7 @@ public class Tests2NegativeTestsStep1 extends TestDataBase {
         driver.findElement(By.id("submit")).click();
         // verify notification (Difference passwords)
         try {
-            assertEquals(driver.findElement(By.id("ConfirmPassword-error")).getText(), "Passordet og bekreftelses-passordet matcher ikke.");
+            assertEquals(driver.findElement(By.id("ConfirmPassword-error")).getText(), "Passordet og bekreftelses-passordet matcher ikke1.");
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }

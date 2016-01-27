@@ -17,7 +17,7 @@ public class Tests3PositiveTestsStep1 extends TestDataBase{
         driver.get(baseUrl + "/registrering");
         // Type Email
         driver.findElement(By.id("Email")).clear();
-        driver.findElement(By.id("Email")).sendKeys(Email);
+        driver.findElement(By.id("Email")).sendKeys(Email1);
         // Type Password
         driver.findElement(By.id("RegistratePassword")).clear();
         driver.findElement(By.id("RegistratePassword")).sendKeys("test");

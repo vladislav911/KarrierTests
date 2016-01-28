@@ -28,7 +28,7 @@ public class TestsBPositiveTestsStep5 extends TestDataBase {
         // Get current Url1
         String Url1 = driver.getCurrentUrl();
         // Click button Registration
-        driver.findElement(By.xpath("//*[@id='registration_form']/div/div[2]/div[1]/div/div[4]/div/button")).click();
+        ClickOnButtonRegistrationStep5();
         // Get current Url2
         String Url2 = driver.getCurrentUrl();
         // Verify Url1=Url2

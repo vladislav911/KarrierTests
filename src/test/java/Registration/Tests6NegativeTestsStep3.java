@@ -24,7 +24,7 @@ public class Tests6NegativeTestsStep3 extends TestDataBase {
         // Get current Url1
         String Url1 = driver.getCurrentUrl();
         // Click button Registration
-        driver.findElement(By.xpath("//button[@onclick=\"$('#registration_form').submit();\"]")).click();
+        ClickOnButtonRegistrationStep3();
         // Get current Url2
         String Url2 = driver.getCurrentUrl();
         // Verify Url1=Url2
@@ -42,7 +42,7 @@ public class Tests6NegativeTestsStep3 extends TestDataBase {
         // Get current Url1
         String Url1 = driver.getCurrentUrl();
         // Click button Registration
-        driver.findElement(By.xpath("//button[@onclick=\"$('#registration_form').submit();\"]")).click();
+        ClickOnButtonRegistrationStep3();
         // Get current Url2
         String Url2 = driver.getCurrentUrl();
         // Verify Url1=Url2
@@ -59,7 +59,7 @@ public class Tests6NegativeTestsStep3 extends TestDataBase {
         // Get current Url1
         String Url1 = driver.getCurrentUrl();
         // Click button Registration
-        driver.findElement(By.xpath("//button[@onclick=\"$('#registration_form').submit();\"]")).click();
+        ClickOnButtonRegistrationStep3();
         // Get current Url2
         String Url2 = driver.getCurrentUrl();
         // Verify Url1=Url2
@@ -70,7 +70,7 @@ public class Tests6NegativeTestsStep3 extends TestDataBase {
         // Type Adresse
         driver.findElement(By.id("StreetAddress")).clear();
         driver.findElement(By.id("StreetAddress")).sendKeys("Artema street");
-        // Type phone
+        // Type Phone
         driver.findElement(By.id("CellPhone")).clear();
         driver.findElement(By.id("CellPhone")).sendKeys("asd");
         driver.findElement(By.id("StreetAddress")).click();
@@ -79,7 +79,7 @@ public class Tests6NegativeTestsStep3 extends TestDataBase {
     }
     @Test(priority = 5)
     public void IncorrectPhone () throws Exception {
-        // Type phone;
+        // Type Phone
         driver.findElement(By.id("CellPhone")).sendKeys("1122332233233215");
         driver.findElement(By.id("StreetAddress")).click();
         // Verify text "Ugyldig telefonnummer"
@@ -96,7 +96,7 @@ public class Tests6NegativeTestsStep3 extends TestDataBase {
     }
     @Test(priority = 7)
     public void CorrectPhone () throws Exception {
-        // Type correct phone
+        // Type correct Phone
         driver.findElement(By.id("CellPhone")).clear();
         driver.findElement(By.className("selected-flag")).click();
         driver.findElement(By.cssSelector(".iti-flag.ua")).click();

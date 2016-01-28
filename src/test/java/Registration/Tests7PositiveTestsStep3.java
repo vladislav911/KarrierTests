@@ -36,7 +36,7 @@ public class Tests7PositiveTestsStep3 extends TestDataBase {
         driver.findElement(By.id("StreetAddress")).click();
         String Url1 = driver.getCurrentUrl();
         // Click button Registration
-        driver.findElement(By.xpath("//button[@onclick=\"$('#registration_form').submit();\"]")).click();
+        ClickOnButtonRegistrationStep3();
         // Verify text Litt om dine jobbønsker
         try {
             assertEquals(driver.findElement(By.cssSelector("h1.sh-main-txt")).getText(), "Litt om dine jobbønsker");

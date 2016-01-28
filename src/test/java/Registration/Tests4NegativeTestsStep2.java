@@ -32,7 +32,7 @@ public class Tests4NegativeTestsStep2 extends TestDataBase {
         // Get current Url1
         String Url1 = driver.getCurrentUrl();
         // Click button Registration
-        driver.findElement(By.xpath("//button[@onclick=\"$('#registration_form').submit();\"]")).click();
+        ClickOnButtonRegistrationStep2();
         // Get current Url2
         String Url2 = driver.getCurrentUrl();
         // Verify Url1=Url2
@@ -49,7 +49,7 @@ public class Tests4NegativeTestsStep2 extends TestDataBase {
         // Get current Url1
         String Url1 = driver.getCurrentUrl();
         // Click button Registration
-        driver.findElement(By.xpath("//button[@onclick=\"$('#registration_form').submit();\"]")).click();
+        ClickOnButtonRegistrationStep2();
         // Get current Url2
         String Url2 = driver.getCurrentUrl();
         // Verify Url1=Url2
@@ -66,7 +66,7 @@ public class Tests4NegativeTestsStep2 extends TestDataBase {
         // Get current Url1
         String Url1 = driver.getCurrentUrl();
         // Click button Registration
-        driver.findElement(By.xpath("//button[@onclick=\"$('#registration_form').submit();\"]")).click();
+        ClickOnButtonRegistrationStep2();
         // Get current Url2
         String Url2 = driver.getCurrentUrl();
         // Verify Url1=Url2
@@ -83,7 +83,7 @@ public class Tests4NegativeTestsStep2 extends TestDataBase {
         // Get current Url1
         String Url1 = driver.getCurrentUrl();
         // Click button Registration
-        driver.findElement(By.xpath("//button[@onclick=\"$('#registration_form').submit();\"]")).click();
+        ClickOnButtonRegistrationStep2();
         // Get current Url2
         String Url2 = driver.getCurrentUrl();
         // Verify Url1=Url2
@@ -100,7 +100,7 @@ public class Tests4NegativeTestsStep2 extends TestDataBase {
         // Get current Url1
         String Url1 = driver.getCurrentUrl();
         // Click button Registration
-        driver.findElement(By.xpath("//button[@onclick=\"$('#registration_form').submit();\"]")).click();
+        ClickOnButtonRegistrationStep2();
         // Get current Url2
         String Url2 = driver.getCurrentUrl();
         // Verify Url1=Url2
@@ -117,7 +117,7 @@ public class Tests4NegativeTestsStep2 extends TestDataBase {
         // Get current Url1
         String Url1 = driver.getCurrentUrl();
         // Click button Registration
-        driver.findElement(By.xpath("//button[@onclick=\"$('#registration_form').submit();\"]")).click();
+        ClickOnButtonRegistrationStep2();
         // Get current Url2
         String Url2 = driver.getCurrentUrl();
         // Verify Url1=Url2

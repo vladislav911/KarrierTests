@@ -12,7 +12,7 @@ public class TestsGRegistrationUserWithStatusNotLookingWork extends TestDataBase
     @Test(priority = 1)
     public void RegistrationUser() throws Exception {
         // Step1
-        // go to http://karrierestart.no/registrering
+        // Go to http://karrierestart.no/registrering
         driver.get(baseUrl + "/registrering");
         // Type Email
         driver.findElement(By.id("Email")).clear();
@@ -24,7 +24,7 @@ public class TestsGRegistrationUserWithStatusNotLookingWork extends TestDataBase
         driver.findElement(By.id("ConfirmPassword")).clear();
         driver.findElement(By.id("ConfirmPassword")).sendKeys("test");
         // Click checkbox
-        driver.findElement(By.xpath(".//*[@id='registration_form']/div/div[2]/div[4]/div[2]/label/span")).click();
+        driver.findElement(By.className("checkbox-label")).click();
         // click Registration button
         driver.findElement(By.id("submit")).click();
         // Step2
@@ -43,10 +43,12 @@ public class TestsGRegistrationUserWithStatusNotLookingWork extends TestDataBase
         // Chose year
         Select selectByValueYear = new Select(driver.findElement(By.className("year")));
         selectByValueYear.selectByVisibleText("1989");
+        // Scroll page up
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
         // Сhose gender
         driver.findElement(By.id("male")).click();
         // Click button Registration
-        driver.findElement(By.xpath("//button[@onclick=\"$('#registration_form').submit();\"]")).click();
+        ClickOnButtonRegistrationStep2();
         // Step3
         // Type Adresse
         driver.findElement(By.id("StreetAddress")).clear();
@@ -71,14 +73,14 @@ public class TestsGRegistrationUserWithStatusNotLookingWork extends TestDataBase
         driver.findElement(By.id("StreetAddress")).click();
         String Url1 = driver.getCurrentUrl();
         // Click button Registration
-        driver.findElement(By.xpath("//button[@onclick=\"$('#registration_form').submit();\"]")).click();
+        ClickOnButtonRegistrationStep3();
         // Step4
         // Chose status
         driver.findElement(By.id("Status_chosen")).click();
         driver.findElement(By.xpath("//*[@id='Status_chosen']/div/div/input")).sendKeys("Jeg søker ikke etter jobb");
         driver.findElement(By.xpath("//*[@id='Status_chosen']/div/ul/li/em")).click();
         // Click button Registration
-        driver.findElement(By.xpath("//*[@id='registration_form']/div/div[2]/div[1]/div/div[5]/div/button")).click();
+        ClickOnButtonRegistrationStep4();
         Assert.assertEquals(driver.findElement(By.cssSelector("div.sign-up-wrapper > div > div > div > div > h3")).getText(), "Bekreft din e-postadresse");
     }
 }

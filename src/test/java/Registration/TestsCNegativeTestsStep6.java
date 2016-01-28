@@ -16,7 +16,7 @@ public class TestsCNegativeTestsStep6 extends TestDataBase {
         // Get current Url1
         String Url1 = driver.getCurrentUrl();
         // Click button Registration
-        driver.findElement(By.xpath("//*[@id='registration_cnt']/ul/div[5]/a")).click();
+        ClickOnButtonRegistrationStep6();
         String Url2 = driver.getCurrentUrl();
        // Verify Url1=Url2
         Assert.assertEquals(Url1, Url2);
@@ -35,7 +35,7 @@ public class TestsCNegativeTestsStep6 extends TestDataBase {
         // Get current Url1
         String Url1 = driver.getCurrentUrl();
         // Click button Registration
-        driver.findElement(By.xpath("//*[@id='registration_cnt']/ul/div[5]/a")).click();
+        ClickOnButtonRegistrationStep6();
         // Get current Url2
         String Url2 = driver.getCurrentUrl();
         // Verify Url1=Url2
@@ -54,7 +54,7 @@ public class TestsCNegativeTestsStep6 extends TestDataBase {
         // Get current Url1
         String Url1 = driver.getCurrentUrl();
         // Click button Registration
-        driver.findElement(By.xpath("//*[@id='registration_cnt']/ul/div[5]/a")).click();
+        ClickOnButtonRegistrationStep6();
         // Get current Url2
         String Url2 = driver.getCurrentUrl();
         // Verify Url1=Url2

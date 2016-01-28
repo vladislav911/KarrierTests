@@ -30,7 +30,7 @@ public class Tests5PositiveTestsStep2 extends TestDataBase {
         // Сhose gender
         driver.findElement(By.id("male")).click();
         // Click button Registration
-        driver.findElement(By.xpath("//button[@onclick=\"$('#registration_form').submit();\"]")).click();
+        ClickOnButtonRegistrationStep2();
         // Verify Text present Kontaktinformasjon
         try {
             assertEquals(driver.findElement(By.cssSelector("h1.sh-main-txt")).getText(), "Kontaktinformasjon");

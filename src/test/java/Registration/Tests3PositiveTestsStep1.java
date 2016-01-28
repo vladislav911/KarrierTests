@@ -13,7 +13,7 @@ public class Tests3PositiveTestsStep1 extends TestDataBase{
 
     @Test(priority = 1)
     public void CorrectTypePageStep1() throws Exception {
-        // go to http://karrierestart.no/registrering
+        // Go to http://karrierestart.no/registrering
         driver.get(baseUrl + "/registrering");
         // Type Email
         driver.findElement(By.id("Email")).clear();
@@ -25,8 +25,7 @@ public class Tests3PositiveTestsStep1 extends TestDataBase{
         driver.findElement(By.id("ConfirmPassword")).clear();
         driver.findElement(By.id("ConfirmPassword")).sendKeys("test");
         // Click checkbox
-        driver.findElement(By.xpath(".//*[@id='registration_form']/div/div[2]/div[4]/div[2]/label/span")).click();
-        // click Registration button
+        driver.findElement(By.className("checkbox-label")).click();
         driver.findElement(By.id("submit")).click();
         // Verify text Litt om hvem du er
         try {

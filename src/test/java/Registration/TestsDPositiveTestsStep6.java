@@ -21,7 +21,7 @@ public class TestsDPositiveTestsStep6 extends TestDataBase {
         // Get current Url1
         String Url1 = driver.getCurrentUrl();
         // Click button Registration
-        driver.findElement(By.xpath("//*[@id='registration_cnt']/ul/div[5]/a")).click();
+        ClickOnButtonRegistrationStep6();
         String Url2 = driver.getCurrentUrl();
         // Verify Url1=Url2
         Assert.assertNotEquals(Url1, Url2);

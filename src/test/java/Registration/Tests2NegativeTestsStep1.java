@@ -13,74 +13,80 @@ public class Tests2NegativeTestsStep1 extends TestDataBase {
 
     @Test(priority = 1)
     public void TryToRegistrationWithoutCheckbox() throws Exception {
-        // go to http://karrierestart.no/registrering
+        // Go to http://karrierestart.no/registrering
         driver.get(baseUrl + "/registrering");
-        // type Email
+        // Type Email
         driver.findElement(By.id("Email")).clear();
         driver.findElement(By.id("Email")).sendKeys(Email1);
-        // type password
+        // Type Password
         driver.findElement(By.id("RegistratePassword")).clear();
         driver.findElement(By.id("RegistratePassword")).sendKeys("test");
-        // type confirm password
+        // Type Confirm Password
         driver.findElement(By.id("ConfirmPassword")).clear();
         driver.findElement(By.id("ConfirmPassword")).sendKeys("test");
-        // click Registration button
+        // Click Registration button
         driver.findElement(By.id("submit")).click();
-        // verify notification (checkbox)
+        // Verify notification (checkbox)
         try {
             assertEquals(driver.findElement(By.cssSelector("#chk1-error > span")).getText(), "Du må godta betingelsene");
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }
+        String Url = driver.getCurrentUrl();
+        Assert.assertEquals(Url, baseUrl + "/registrering");
     }
 
     @Test(priority = 2)
-    public void TryToRegistrationWithoutConfirmpassword() throws Exception {
-        // click checkbox button
-        driver.findElement(By.xpath(".//*[@id='registration_form']/div/div[2]/div[4]/div[2]/label/span")).click();
-        // clear Confirmpassword field
+    public void TryToRegistrationWithoutConfirmPassword() throws Exception {
+        // Click checkbox button
+        driver.findElement(By.className("checkbox-label")).click();
+        // Clear Confirmpassword field
         driver.findElement(By.id("ConfirmPassword")).clear();
-        // click Password field
+        // Click Password field
         driver.findElement(By.id("RegistratePassword")).click();
-        // click Registration button
+        // Click Registration button
         driver.findElement(By.id("submit")).click();
-        // verify notification (Confirm password)
+        // Verify notification (Confirm password)
         try {
             assertEquals(driver.findElement(By.id("ConfirmPassword-error")).getText(), "Passordet og bekreftelses-passordet matcher ikke.");
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }
+        String Url = driver.getCurrentUrl();
+        Assert.assertEquals(Url, baseUrl + "/registrering");
     }
 
     @Test(priority = 3)
     public void TryToRegistrationWithoutPassword() throws Exception {
-        // type ConfirmPassword field
+        // Type ConfirmPassword field
         driver.findElement(By.id("ConfirmPassword")).clear();
         driver.findElement(By.id("ConfirmPassword")).sendKeys("test");
-        // clear Password field
+        // Clear Password field
         driver.findElement(By.id("RegistratePassword")).clear();
-        // click Registration button
+        // Click Registration button
         driver.findElement(By.id("submit")).click();
-        // verify notification (Confirm password)
+        // Verify notification (Confirm password)
         try {
             assertEquals(driver.findElement(By.id("ConfirmPassword-error")).getText(), "Passordet og bekreftelses-passordet matcher ikke.");
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }
+        String Url = driver.getCurrentUrl();
+        Assert.assertEquals(Url, baseUrl + "/registrering");
     }
 
     @Test(priority = 4)
     public void TryToRegistrationWithoutEmail() throws Exception {
-        // type Password field
+        // Type Password field
         driver.findElement(By.id("RegistratePassword")).clear();
         driver.findElement(By.id("RegistratePassword")).sendKeys("test");
-        // clear Email field
+        // Clear Email field
         driver.findElement(By.id("Email")).clear();
-        // click password field
+        // Click password field
         driver.findElement(By.id("RegistratePassword")).click();
-        // click Registration button
+        // Click Registration button
         driver.findElement(By.id("submit")).click();
-        // verify Current Url
+        // Verify Current Url
         String Url = driver.getCurrentUrl();
         Assert.assertEquals(Url, baseUrl + "/registrering");
     }
@@ -90,14 +96,16 @@ public class Tests2NegativeTestsStep1 extends TestDataBase {
         // Type inncorrect Email
         driver.findElement(By.id("Email")).clear();
         driver.findElement(By.id("Email")).sendKeys("test1mail.ru");
-        // click Registration button
+        // Click Registration button
         driver.findElement(By.id("submit")).click();
-        // verify notification (Invalid email)
+        // Verify notification (Invalid email)
         try {
             assertEquals(driver.findElement(By.cssSelector("span.field-validation-error")).getText(), "Please enter a valid email address.");
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }
+        String Url = driver.getCurrentUrl();
+        Assert.assertEquals(Url, baseUrl + "/registrering");
     }
 
     @Test(priority = 6)
@@ -111,14 +119,16 @@ public class Tests2NegativeTestsStep1 extends TestDataBase {
         // Type incorrect ConfirmPassword < 3 symbols
         driver.findElement(By.id("ConfirmPassword")).clear();
         driver.findElement(By.id("ConfirmPassword")).sendKeys("te");
-        // click Registration button
+        // Click Registration button
         driver.findElement(By.id("submit")).click();
-        // verify notification (Password < 3 symbols)
+        // Verify notification (Password < 3 symbols)
         try {
             assertEquals(driver.findElement(By.id("RegistratePassword-error")).getText(), "Må være på minst 3 tegn");
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }
+        String Url = driver.getCurrentUrl();
+        Assert.assertEquals(Url, baseUrl + "/registrering");
     }
 
     @Test(priority = 7)
@@ -129,13 +139,15 @@ public class Tests2NegativeTestsStep1 extends TestDataBase {
         // Type ConfirmPassword
         driver.findElement(By.id("ConfirmPassword")).clear();
         driver.findElement(By.id("ConfirmPassword")).sendKeys("test");
-        // click Registration button
+        // Click Registration button
         driver.findElement(By.id("submit")).click();
-        // verify notification (Difference passwords)
+        // Verify notification (Difference passwords)
         try {
             assertEquals(driver.findElement(By.id("ConfirmPassword-error")).getText(), "Passordet og bekreftelses-passordet matcher ikke1.");
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }
+        String Url = driver.getCurrentUrl();
+        Assert.assertEquals(Url, baseUrl + "/registrering");
     }
 }

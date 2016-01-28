@@ -16,7 +16,7 @@ public class TestsENegativeTestsStep7 extends TestDataBase {
         // Get current Url1
         String Url1 = driver.getCurrentUrl();
         // Click button Registration
-        driver.findElement(By.xpath("//*[@id='registration_cnt']/div/div[5]/a")).click();
+        ClickOnButtonRegistrationStep7();
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
         // Get current Url2
@@ -36,7 +36,7 @@ public class TestsENegativeTestsStep7 extends TestDataBase {
         // Get current Url1
         String Url1 = driver.getCurrentUrl();
         // Click button Registration
-        driver.findElement(By.xpath("//*[@id='registration_cnt']/div/div[5]/a")).click();
+        ClickOnButtonRegistrationStep7();
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
         // Get current Url2
@@ -55,7 +55,7 @@ public class TestsENegativeTestsStep7 extends TestDataBase {
         // Get current Url1
         String Url1 = driver.getCurrentUrl();
         // Click button Registration
-        driver.findElement(By.xpath("//*[@id='registration_cnt']/div/div[5]/a")).click();
+        ClickOnButtonRegistrationStep7();
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
         // Get current Url2

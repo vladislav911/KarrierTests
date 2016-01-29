@@ -8,7 +8,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
-public class TestsANegativeTestsStep5 extends TestDataBase {
+public class JNegativeTestsStep5 extends TestDataBase {
 
     @Test(priority = 1)
     public void TryToRegistrationWithoutKjernekompetanse() throws Exception {

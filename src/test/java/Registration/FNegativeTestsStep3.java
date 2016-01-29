@@ -8,7 +8,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
-public class Tests6NegativeTestsStep3 extends TestDataBase {
+public class FNegativeTestsStep3 extends TestDataBase {
 
     @Test(priority = 1)
     public void TryToRegistrationWithoutSted() throws Exception {

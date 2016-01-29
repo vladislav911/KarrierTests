@@ -8,7 +8,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
-public class Tests4NegativeTestsStep2 extends TestDataBase {
+public class DNegativeTestsStep2 extends TestDataBase {
 
     @Test(priority = 1)
     public void TryToRegistrationWithoutGender() throws Exception {

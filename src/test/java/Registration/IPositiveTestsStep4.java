@@ -8,7 +8,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
-public class Tests9PositiveTestsStep4 extends TestDataBase {
+public class IPositiveTestsStep4 extends TestDataBase {
     @Test(priority = 1)
     public void CorrectTypePageStep4() throws Exception {
         // Go to Page Step4

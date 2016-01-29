@@ -8,7 +8,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
-public class TestsCNegativeTestsStep6 extends TestDataBase {
+public class LNegativeTestsStep6 extends TestDataBase {
     @Test(priority = 1)
     public void TryToRegistrationWithoutProffesion() throws Exception {
         // Go to Page Step6

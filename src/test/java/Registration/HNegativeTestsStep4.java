@@ -8,7 +8,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
-public class Tests8NegativeTestsStep4 extends TestDataBase {
+public class HNegativeTestsStep4 extends TestDataBase {
     @Test(priority = 1)
     public void TryToRegistrationWithoutOmfang() throws Exception {
         // Go to Page Step4

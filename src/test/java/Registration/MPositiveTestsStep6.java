@@ -8,7 +8,7 @@ package Registration;
         import org.openqa.selenium.By;
         import org.openqa.selenium.support.ui.Select;
 
-public class TestsDPositiveTestsStep6 extends TestDataBase {
+public class MPositiveTestsStep6 extends TestDataBase {
     @Test(priority = 1)
     public void CorrectTypePageStep6() throws Exception {
         // Go to Page Step6

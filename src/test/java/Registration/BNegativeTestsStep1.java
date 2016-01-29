@@ -9,7 +9,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
-public class Tests2NegativeTestsStep1 extends TestDataBase {
+public class BNegativeTestsStep1 extends TestDataBase {
 
     @Test(priority = 1)
     public void TryToRegistrationWithoutCheckbox() throws Exception {

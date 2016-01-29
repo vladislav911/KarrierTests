@@ -8,7 +8,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
-public class Tests5PositiveTestsStep2 extends TestDataBase {
+public class EPositiveTestsStep2 extends TestDataBase {
     @Test(priority = 1)
     public void CorrectTypePageStep2() throws Exception {
         driver.get(UrlPageStep2);

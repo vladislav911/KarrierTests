@@ -9,7 +9,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
-public class Tests1MoveToPageRegistration extends TestDataBase{
+public class AMoveToPageRegistration extends TestDataBase{
 
     @Test(priority=1)
     public void MoveToPageStep1AndCheck() throws Exception {

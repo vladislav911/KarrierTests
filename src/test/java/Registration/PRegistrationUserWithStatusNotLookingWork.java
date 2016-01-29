@@ -8,7 +8,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
-public class TestsGRegistrationUserWithStatusNotLookingWork extends TestDataBase {
+public class PRegistrationUserWithStatusNotLookingWork extends TestDataBase {
     @Test(priority = 1)
     public void RegistrationUser() throws Exception {
         // Step1

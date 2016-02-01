@@ -27,5 +27,31 @@ public class OPositiveTestsStep7 extends TestDataBase {
         Assert.assertNotEquals(Url1, Url2);
         Assert.assertEquals(driver.findElement(By.cssSelector("div.sign-up-wrapper > div > div > div > div > h3")).getText(), "Bekreft din e-postadresse");
     }
+
+   @Test(priority = 2)
+    public void VerifyActivationAccTestUser() throws Exception {
+       // Go to Page ActivationAccount
+       driver.get(baseUrl + "/Account/GetActivationLink?email=" + Email1);
+       String stringFromPage = driver.findElement(By.cssSelector("pre")).getText();
+       StringBuilder sb = new StringBuilder(stringFromPage);
+       sb.deleteCharAt(sb.length()-1);
+       sb.deleteCharAt( 0 );
+       String linkConfirtm = sb.toString();
+       // Go to LinkConfirm
+       driver.get(linkConfirtm);
+       try {
+           assertEquals(driver.findElement(By.cssSelector("strong")).getText(), "Velkommen til din personlige startside for jobb og karriere!");
+       } catch (Error e) {
+           verificationErrors.append(e.toString());
+       }
+       try {
+           assertEquals(driver.findElement(By.cssSelector("span.li-txt.overflow-ellipsis")).getText(), "Test User");
+       } catch (Error e) {
+           verificationErrors.append(e.toString());
+       }
+       Thread.sleep(2000);
+       driver.findElement(By.cssSelector(".drop-down-ctrl")).click();
+       driver.findElement(By.linkText("Logg ut")).click();
+   }
 }
 

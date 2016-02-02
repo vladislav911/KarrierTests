@@ -36,9 +36,9 @@ public class OPositiveTestsStep7 extends TestDataBase {
        StringBuilder sb = new StringBuilder(stringFromPage);
        sb.deleteCharAt(sb.length()-1);
        sb.deleteCharAt( 0 );
-       String linkConfirtm = sb.toString();
+       String LinkConfirtm = sb.toString();
        // Go to LinkConfirm
-       driver.get(linkConfirtm);
+       driver.get(LinkConfirtm);
        try {
            assertEquals(driver.findElement(By.cssSelector("strong")).getText(), "Velkommen til din personlige startside for jobb og karriere!");
        } catch (Error e) {

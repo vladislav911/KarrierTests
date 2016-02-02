@@ -38,7 +38,7 @@ public class PRegistrationUserWithStatusNotLookingWork extends TestDataBase {
         selectByValueDay.selectByVisibleText("07");
         // Chose month
         Select selectByValueMonth = new Select(driver.findElement(By.className("month")));
-        selectByValueMonth.selectByVisibleText("jun");
+        selectByValueMonth.selectByVisibleText("mai");
         // Chose year
         Select selectByValueYear = new Select(driver.findElement(By.className("year")));
         selectByValueYear.selectByVisibleText("1989");

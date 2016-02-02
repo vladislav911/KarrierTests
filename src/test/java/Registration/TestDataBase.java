@@ -30,8 +30,8 @@ public class TestDataBase {
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
         baseUrl = "http://dev.karrierestart.no";
-        Email1 = "testpp58@mail.ru";
-        Email2 = "testpp59@mail.ru";
+        Email1 = "testpp66@mail.ru";
+        Email2 = "testpp67@mail.ru";
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }

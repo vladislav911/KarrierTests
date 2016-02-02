@@ -103,8 +103,10 @@ public class PRegistrationUserWithStatusNotLookingWork extends TestDataBase {
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }
-        Thread.sleep(2000);
         driver.findElement(By.cssSelector(".drop-down-ctrl")).click();
         driver.findElement(By.linkText("Logg ut")).click();
+        Thread.sleep(2000);
+        String Url = driver.getCurrentUrl();
+        Assert.assertEquals(Url,baseUrl + "/");
     }
 }

@@ -52,6 +52,8 @@ public class OPositiveTestsStep7 extends TestDataBase {
        Thread.sleep(2000);
        driver.findElement(By.cssSelector(".drop-down-ctrl")).click();
        driver.findElement(By.linkText("Logg ut")).click();
+       String Url = driver.getCurrentUrl();
+       Assert.assertEquals(Url,baseUrl + "/");
    }
 }
 

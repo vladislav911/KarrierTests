@@ -20,23 +20,34 @@ public class RLoggInAndDeleteUser extends TestDataBase {
         driver.findElement(By.id("LoginPassword")).clear();
         driver.findElement(By.id("LoginPassword")).sendKeys("test");
         driver.findElement(By.className("login-btn")).click();
+        // Verify name user - Test User
         try {
             assertEquals(driver.findElement(By.cssSelector("span.li-txt.overflow-ellipsis")).getText(), "Test User");
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }
-    }
-    @Test(priority = 2)
-    public void DeleteUser() throws Exception {
+        // Click menu user
         driver.findElement(By.cssSelector(".drop-down-ctrl")).click();
+        // Click link - Innstillinger
         driver.findElement(By.linkText("Innstillinger")).click();
+        // Click link - Slett profil og alle data
         driver.findElement(By.linkText("Slett profil og alle data")).click();
+        // Click link - slett min konto for alltid
         driver.findElement(By.linkText("slett min konto for alltid")).click();
-        try {
-            assertEquals(driver.getCurrentUrl(), baseUrl);
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
+        // Verify Current page = Base Url
+        String Url = driver.getCurrentUrl();
+        Assert.assertEquals(Url,baseUrl + "/");
+        // Verify delete user - Try to login Test User
+        driver.get(baseUrl);
+        driver.findElement(By.id("nav-login")).click();
+        driver.findElement(By.id("UserName")).clear();
+        driver.findElement(By.id("UserName")).sendKeys(Email1);
+        driver.findElement(By.id("LoginPassword")).clear();
+        driver.findElement(By.id("LoginPassword")).sendKeys("test");
+        driver.findElement(By.className("login-btn")).click();
+        assertEquals(driver.findElement(By.cssSelector("div.error > div > span")).getText(), "Ugyldig brukernavn eller passord");
+        String Url1 = driver.getCurrentUrl();
+        Assert.assertEquals(Url1,baseUrl + "/");
 
     }
 }

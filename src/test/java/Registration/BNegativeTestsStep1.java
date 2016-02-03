@@ -1,15 +1,12 @@
 package Registration;
 
-import org.omg.CORBA.Current;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import static org.testng.Assert.*;
-import org.openqa.selenium.*;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Select;
 
-public class BNegativeTestsStep1 extends TestDataBase {
+import org.openqa.selenium.By;
+
+public class BNegativeTestsStep1 extends TestDataBaseRegistration {
 
     @Test(priority = 1)
     public void TryToRegistrationWithoutCheckbox() throws Exception {

@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.fail;
 
-public class TestDataBase {
+public class TestDataBaseRegistration {
 
     static protected Selenium selenium;
     static protected WebDriver driver;
@@ -30,8 +30,8 @@ public class TestDataBase {
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
         baseUrl = "http://dev.karrierestart.no";
-        Email1 = "testpp66@mail.ru";
-        Email2 = "testpp67@mail.ru";
+        Email1 = "testdd1@mail.ru";
+        Email2 = "testdd2@mail.ru";
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }

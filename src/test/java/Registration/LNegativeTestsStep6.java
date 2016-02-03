@@ -1,14 +1,10 @@
 package Registration;
-import org.omg.CORBA.Current;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import static org.testng.Assert.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Select;
 
-public class LNegativeTestsStep6 extends TestDataBase {
+public class LNegativeTestsStep6 extends TestDataBaseRegistration {
     @Test(priority = 1)
     public void TryToRegistrationWithoutProffesion() throws Exception {
         // Go to Page Step6

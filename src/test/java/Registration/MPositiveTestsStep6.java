@@ -1,14 +1,10 @@
 package Registration;
-        import org.omg.CORBA.Current;
-        import org.openqa.selenium.support.ui.Select;
         import org.testng.Assert;
         import org.testng.annotations.*;
-        import static org.testng.Assert.*;
         import org.openqa.selenium.*;
         import org.openqa.selenium.By;
-        import org.openqa.selenium.support.ui.Select;
 
-public class MPositiveTestsStep6 extends TestDataBase {
+public class MPositiveTestsStep6 extends TestDataBaseRegistration {
     @Test(priority = 1)
     public void CorrectTypePageStep6() throws Exception {
         // Go to Page Step6

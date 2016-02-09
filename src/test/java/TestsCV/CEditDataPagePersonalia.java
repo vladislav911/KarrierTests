@@ -73,15 +73,13 @@ public class CEditDataPagePersonalia extends TestBaseCV {
         driver.findElement(By.id("Zip")).sendKeys("77777");
         driver.findElement(By.id("Location")).clear();
         driver.findElement(By.id("Location")).sendKeys("Kiev");
+        Thread.sleep(1000);
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
-        driver.findElement(By.xpath("//*[@id='Country_chosen']/a")).click();
-        // Scroll page up
-        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
-        driver.findElement(By.xpath("//*[@id='Country_chosen']/div/div/input")).sendKeys("Kazakhstan");
-        // Scroll page up
-        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
-        driver.findElement(By.xpath("//*[@id='Country_chosen']/div/ul/li/em")).click();
+        driver.findElement(By.id("Country_chosen")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//*[@id='Country_chosen']/div/ul/li[102]")).click();
+        Thread.sleep(1000);
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
         driver.findElement(By.id("CellPhone")).clear();
@@ -93,6 +91,10 @@ public class CEditDataPagePersonalia extends TestBaseCV {
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
         driver.findElement(By.id("submit")).click();
+        Thread.sleep(2000);
+        // Scroll page up
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+        Thread.sleep(100000);
         driver.navigate().refresh();
         assertEquals(driver.findElement(By.id("FirstName")).getAttribute("value"), "Tom");
         assertEquals(driver.findElement(By.id("MiddleName")).getAttribute("value"), "Empty");
@@ -108,6 +110,7 @@ public class CEditDataPagePersonalia extends TestBaseCV {
         assertEquals(driver.findElement(By.id("CellPhone")).getAttribute("value"), "+380 50 122 4567");
         assertEquals(driver.findElement(By.id("Phone")).getAttribute("value"), "+45 53 43 43 34");
         assertEquals(driver.findElement(By.id("Email")).getAttribute("value"), Email2);
+        Thread.sleep(1000);
     }
     @Test(priority = 2)
     public void EditDataWithCancel() throws Exception {
@@ -187,7 +190,7 @@ public class CEditDataPagePersonalia extends TestBaseCV {
         driver.findElement(By.id("Email")).sendKeys(Email3);
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
-        Thread.sleep(10000);
+        Thread.sleep(100000);
         driver.navigate().refresh();
         assertEquals(driver.findElement(By.id("FirstName")).getAttribute("value"), "Tom");
         assertEquals(driver.findElement(By.id("MiddleName")).getAttribute("value"), "Empty");

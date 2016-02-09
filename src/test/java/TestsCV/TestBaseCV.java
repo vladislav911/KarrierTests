@@ -19,6 +19,7 @@ public class TestBaseCV {
     static protected String baseUrl;
     static protected String Email1;
     static protected String Email2;
+    static protected String Email3;
     protected StringBuffer verificationErrors = new StringBuffer();
     private boolean acceptNextAlert = true;
 
@@ -26,8 +27,9 @@ public class TestBaseCV {
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
         baseUrl = "http://dev.karrierestart.no";
-        Email1 = "testdd68@mail.ru";
-        Email2 = "testdd69@mail.ru";
+        Email1 = "testdd93@mail.ru";
+        Email2 = "testdd94@mail.ru";
+        Email3 = "testdd95@mail.ru";
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }

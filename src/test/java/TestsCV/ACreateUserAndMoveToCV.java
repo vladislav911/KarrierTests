@@ -104,6 +104,8 @@ public class ACreateUserAndMoveToCV extends TestBaseCV {
         }
         // Go to CV
         driver.get(baseUrl + "/CV/PersonalInfo");
+        // Close reklama
+        driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
         try {
             assertEquals(driver.findElement(By.id("FirstName")).getAttribute("value"), "Test3");
         } catch (Error e) {

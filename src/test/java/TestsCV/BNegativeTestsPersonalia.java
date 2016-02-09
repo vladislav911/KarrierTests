@@ -29,7 +29,7 @@ public class BNegativeTestsPersonalia extends TestBaseCV {
         driver.navigate().refresh();
         Assert.assertEquals(driver.findElement(By.id("FirstName")).getAttribute("value"), "Test3");
         Assert.assertEquals(driver.findElement(By.id("LastName")).getAttribute("value"), "User3");
-        Assert.assertEquals(driver.findElement(By.id("Email")).getAttribute("value"), Email);
+        Assert.assertEquals(driver.findElement(By.id("Email")).getAttribute("value"), Email1);
     }
 
     @Test(priority = 2)
@@ -38,13 +38,15 @@ public class BNegativeTestsPersonalia extends TestBaseCV {
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
         driver.findElement(By.id("submit")).click();
+        // Scroll page up
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
         Assert.assertEquals(driver.findElement(By.id("Email-error")).getText(), "Feltet er påkrevd.");
     }
 
     @Test(priority = 3)
     public void SaveWithEmptyLastName() throws Exception {
         driver.findElement(By.id("Email")).clear();
-        driver.findElement(By.id("Email")).sendKeys(Email);
+        driver.findElement(By.id("Email")).sendKeys(Email1);
         driver.findElement(By.id("LastName")).clear();
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");

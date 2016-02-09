@@ -17,7 +17,8 @@ public class TestBaseCV {
     static protected Selenium selenium;
     static protected WebDriver driver;
     static protected String baseUrl;
-    static protected String Email;
+    static protected String Email1;
+    static protected String Email2;
     protected StringBuffer verificationErrors = new StringBuffer();
     private boolean acceptNextAlert = true;
 
@@ -25,7 +26,8 @@ public class TestBaseCV {
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
         baseUrl = "http://dev.karrierestart.no";
-        Email = "testdd56@mail.ru";
+        Email1 = "testdd68@mail.ru";
+        Email2 = "testdd69@mail.ru";
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }

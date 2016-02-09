@@ -20,7 +20,7 @@ public class ACreateUserAndMoveToCV extends TestBaseCV {
         driver.get(baseUrl + "/registrering");
         // Type Emai
         driver.findElement(By.id("Email")).clear();
-        driver.findElement(By.id("Email")).sendKeys(Email);
+        driver.findElement(By.id("Email")).sendKeys(Email1);
         // Type Password
         driver.findElement(By.id("RegistratePassword")).clear();
         driver.findElement(By.id("RegistratePassword")).sendKeys("test");
@@ -77,45 +77,14 @@ public class ACreateUserAndMoveToCV extends TestBaseCV {
         String Url1 = driver.getCurrentUrl();
         // Click button Registration
         ClickOnButtonRegistrationStep3();
-        // Step4
-        // Chose Ønsket jobbtype  - Fast ansettelse
-        driver.findElement(By.cssSelector("div.empCnt > label.checkbox-label")).click();
-        // Chose Ønsket omfang  - Heltid
-        driver.findElement(By.cssSelector("label.checkbox-label")).click();
+        driver.findElement(By.id("Status_chosen")).click();
+        driver.findElement(By.xpath("//*[@id='Status_chosen']/div/div/input")).sendKeys("Jeg søker ikke etter jobb");
+        driver.findElement(By.xpath("//*[@id='Status_chosen']/div/ul/li/em")).click();
         // Click button Registration
         ClickOnButtonRegistrationStep4();
-        // Step 5
-        // Chose Utdanningsnivå - Yrkesskole / videregående skole
-        driver.findElement(By.id("EducationLevel_chosen")).click();
-        driver.findElement(By.xpath("//*[@id='EducationLevel_chosen']/div/div/input")).sendKeys("Yrkesskole / videregående skole");
-        driver.findElement(By.xpath("//*[@id='EducationLevel_chosen']/div/ul/li/em")).click();
-        // Chose Arbeidserfaring - 1+ - 2 år  arbeidserfaring
-        driver.findElement(By.id("CareerLevel_chosen")).click();
-        driver.findElement(By.xpath("//*[@id='CareerLevel_chosen']/div/div/input")).sendKeys("1+ - 2 år  arbeidserfaring");
-        driver.findElement(By.xpath("//*[@id='CareerLevel_chosen']/div/ul/li/em")).click();
-        // Chose Kjernekompetanse
-        driver.findElement(By.id("CoreCompetence_chosen")).click();
-        driver.findElement(By.xpath("//*[@id='CoreCompetence_chosen']/ul/li/input")).sendKeys("Matematikk og naturfag");
-        driver.findElement(By.xpath("//*[@id='CoreCompetence_chosen']/div/ul/li/em")).click();
-        // Click button Registration
-        ClickOnButtonRegistrationStep5();
-        // Step 6
-        // Chose Proffesion
-        driver.findElement(By.xpath("//*[@id='bi-cat-main']/div[1]")).click();
-        Thread.sleep(1000);
-        // Scroll page up
-        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
-        ClickOnButtonRegistrationStep6();
-        // Step 7
-        // Chose City
-        driver.findElement(By.xpath("//*[@id='bi-cat-main']/div[1]")).click();
-        Thread.sleep(1000);
-        // Scroll page up
-        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
-        ClickOnButtonRegistrationStep7();
         Assert.assertEquals(driver.findElement(By.cssSelector("div.sign-up-wrapper > div > div > div > div > h3")).getText(), "Bekreft din e-postadresse");
         // Go to Page ActivationAccount
-        driver.get(baseUrl + "/Account/GetActivationLink?email=" + Email);
+        driver.get(baseUrl + "/Account/GetActivationLink?email=" + Email1);
         String stringFromPage = driver.findElement(By.cssSelector("pre")).getText();
         StringBuilder sb = new StringBuilder(stringFromPage);
         sb.deleteCharAt(sb.length() - 1);
@@ -181,7 +150,7 @@ public class ACreateUserAndMoveToCV extends TestBaseCV {
             verificationErrors.append(e.toString());
         }
         try {
-            assertEquals(driver.findElement(By.id("Email")).getAttribute("value"), Email);
+            assertEquals(driver.findElement(By.id("Email")).getAttribute("value"), Email1);
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }

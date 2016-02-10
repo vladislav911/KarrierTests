@@ -1,4 +1,4 @@
-/*package TestsCV;
+package TestsCV;
 import com.thoughtworks.selenium.Selenium;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -25,6 +25,7 @@ public class DNegativeTestsArbeid extends TestBaseCV {
         driver.findElement(By.id("LoginPassword")).clear();
         driver.findElement(By.id("LoginPassword")).sendKeys("test");
         driver.findElement(By.className("login-btn")).click();
-        Thread.sleep(10000);
+        Thread.sleep(4000);
     }
-}*/
+
+}

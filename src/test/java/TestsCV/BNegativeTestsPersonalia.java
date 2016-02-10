@@ -187,5 +187,6 @@ public class BNegativeTestsPersonalia extends TestBaseCV {
         driver.findElement(By.id("submit")).click();
         assertEquals(driver.findElement(By.id("Email-error")).getText(), "Please enter a valid email address.");
         driver.navigate().refresh();
+        Thread.sleep(2000);
     }
 }

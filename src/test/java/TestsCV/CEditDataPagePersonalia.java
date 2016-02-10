@@ -30,7 +30,7 @@ public class CEditDataPagePersonalia extends TestBaseCV {
         // Edit LastName
         driver.findElement(By.id("LastName")).clear();
         driver.findElement(By.id("LastName")).sendKeys("Gin");
-        // Edit Dateof Birth
+        // Edit Date of Birth
         driver.findElement(By.id("DateOfBirth")).clear();
         driver.findElement(By.id("DateOfBirth")).sendKeys("08.09.1992");
         driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[2]/button[2]")).click();
@@ -68,34 +68,44 @@ public class CEditDataPagePersonalia extends TestBaseCV {
         driver.findElement(By.cssSelector(".active-result.highlighted>em")).click();
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+        // Change Street
         driver.findElement(By.id("StreetAddress")).clear();
         driver.findElement(By.id("StreetAddress")).sendKeys("Kirova street");
+        // Change Zip
         driver.findElement(By.id("Zip")).clear();
         driver.findElement(By.id("Zip")).sendKeys("77777");
+        // Change Location
         driver.findElement(By.id("Location")).clear();
         driver.findElement(By.id("Location")).sendKeys("Kiev");
         Thread.sleep(1000);
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+        // Change country
         driver.findElement(By.id("Country_chosen")).click();
         Thread.sleep(1000);
         driver.findElement(By.xpath("//*[@id='Country_chosen']/div/ul/li[102]")).click();
         Thread.sleep(1000);
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+        // Change CellPhone
         driver.findElement(By.id("CellPhone")).clear();
         driver.findElement(By.id("CellPhone")).sendKeys("+380 50 122 4567");
+        // Change Phone
         driver.findElement(By.id("Phone")).clear();
         driver.findElement(By.id("Phone")).sendKeys("+4553434334");
+        // Change Email
         driver.findElement(By.id("Email")).clear();
         driver.findElement(By.id("Email")).sendKeys(Email2);
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+        // Click Submit
         driver.findElement(By.id("submit")).click();
         Thread.sleep(2000);
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+        // Refresh page
         driver.navigate().refresh();
+        // Verify data changed
         assertEquals(driver.findElement(By.id("FirstName")).getAttribute("value"), "Tom");
         assertEquals(driver.findElement(By.id("MiddleName")).getAttribute("value"), "Empty");
         assertEquals(driver.findElement(By.id("LastName")).getAttribute("value"), "Gin");
@@ -117,8 +127,6 @@ public class CEditDataPagePersonalia extends TestBaseCV {
         // Go to CV
         driver.get(baseUrl + "/CV/PersonalInfo");
         Thread.sleep(2000);
-        // Close reklama
-        //driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
         // Edit First Name
         driver.findElement(By.id("FirstName")).clear();
         driver.findElement(By.id("FirstName")).sendKeys("Den");
@@ -166,14 +174,18 @@ public class CEditDataPagePersonalia extends TestBaseCV {
         driver.findElement(By.cssSelector(".active-result.highlighted>em")).click();
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+        // Edit Street
         driver.findElement(By.id("StreetAddress")).clear();
         driver.findElement(By.id("StreetAddress")).sendKeys("Titova street");
+        // Edit Zip
         driver.findElement(By.id("Zip")).clear();
         driver.findElement(By.id("Zip")).sendKeys("454545");
+        // Edit Location
         driver.findElement(By.id("Location")).clear();
         driver.findElement(By.id("Location")).sendKeys("Lvov");
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+        // Edit Country
         driver.findElement(By.xpath("//*[@id='Country_chosen']/a")).click();
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
@@ -183,18 +195,24 @@ public class CEditDataPagePersonalia extends TestBaseCV {
         driver.findElement(By.xpath("//*[@id='Country_chosen']/div/ul/li/em")).click();
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+        // Edit CellPhone
         driver.findElement(By.id("CellPhone")).clear();
         driver.findElement(By.id("CellPhone")).sendKeys("+380 93 555 4555");
+        // Edit Phone
         driver.findElement(By.id("Phone")).clear();
         driver.findElement(By.id("Phone")).sendKeys("+4333333333");
+        // Edit Email
         driver.findElement(By.id("Email")).clear();
         driver.findElement(By.id("Email")).sendKeys(Email3);
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+        // Click Cancel
         driver.findElement(By.linkText("Avbryt")).click();
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+        // Refresh page
         driver.navigate().refresh();
+        // Verify data not changed
         assertEquals(driver.findElement(By.id("FirstName")).getAttribute("value"), "Tom");
         assertEquals(driver.findElement(By.id("MiddleName")).getAttribute("value"), "Empty");
         assertEquals(driver.findElement(By.id("LastName")).getAttribute("value"), "Gin");

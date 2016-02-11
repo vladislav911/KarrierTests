@@ -15,19 +15,6 @@ import org.testng.annotations.Test;
 
 public class DNegativeTestsArbeid extends TestBaseCV {
     @Test(priority = 1)
-    public void LoggIn() throws Exception {
-        // Open BaseUrl
-        driver.get(baseUrl);
-        // Login User Test1
-        driver.findElement(By.id("nav-login")).click();
-        driver.findElement(By.id("UserName")).clear();
-        driver.findElement(By.id("UserName")).sendKeys(Email1);
-        driver.findElement(By.id("LoginPassword")).clear();
-        driver.findElement(By.id("LoginPassword")).sendKeys("test");
-        driver.findElement(By.className("login-btn")).click();
-        Thread.sleep(4000);
-    }
-    @Test(priority = 2)
     public void SaveWithoutSted() throws Exception {
         // Go to Arbeid
         driver.get(baseUrl + "/CV/JobList");
@@ -70,7 +57,7 @@ public class DNegativeTestsArbeid extends TestBaseCV {
         driver.findElement(By.id("submit")).click();
         assertEquals(driver.findElement(By.id("SelectedLocations-error")).getText(), "Feltet er påkrevd.");
     }
-    @Test(priority = 3)
+    @Test(priority = 2)
     public void SaveWithoutYrker () throws Exception {
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
@@ -86,7 +73,7 @@ public class DNegativeTestsArbeid extends TestBaseCV {
         driver.findElement(By.id("submit")).click();
         assertEquals(driver.findElement(By.id("SelectedProfessions-error")).getText(), "Feltet er påkrevd.");
     }
-    @Test(priority = 4)
+    @Test(priority = 3)
     public void SaveWithoutFagområde () throws Exception {
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
@@ -102,7 +89,7 @@ public class DNegativeTestsArbeid extends TestBaseCV {
         driver.findElement(By.id("submit")).click();
         assertEquals(driver.findElement(By.id("SelectedSubjects-error")).getText(), "Feltet er påkrevd.");
     }
-    @Test(priority = 5)
+    @Test(priority = 4)
     public void SaveWithoutStillingstype () throws Exception {
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
@@ -118,7 +105,7 @@ public class DNegativeTestsArbeid extends TestBaseCV {
         driver.findElement(By.id("submit")).click();
         assertEquals(driver.findElement(By.id("SelectedEmploymentTypes-error")).getText(), "Feltet er påkrevd.");
     }
-    @Test(priority = 6)
+    @Test(priority = 5)
     public void SaveWithoutBransje () throws Exception {
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
@@ -134,7 +121,7 @@ public class DNegativeTestsArbeid extends TestBaseCV {
         driver.findElement(By.id("submit")).click();
         assertEquals(driver.findElement(By.id("SelectedIndustry-error")).getText(), "Feltet er påkrevd.");
     }
-    @Test(priority = 7)
+    @Test(priority = 6)
     public void SaveWithoutArbeidsgiver () throws Exception {
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
@@ -150,14 +137,14 @@ public class DNegativeTestsArbeid extends TestBaseCV {
         driver.findElement(By.id("submit")).click();
         assertEquals(driver.findElement(By.id("Employer-error")).getText(), "Feltet er påkrevd.");
     }
-    @Test(priority = 8)
+    @Test(priority = 7)
     public void SaveWithoutTittel () throws Exception {
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
         // Type Arbeidsgiver
         driver.findElement(By.id("Employer")).clear();
         driver.findElement(By.id("Employer")).sendKeys("Gassco");
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         driver.findElement(By.xpath("//ul[@id='ui-id-1']/li")).click();
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
@@ -168,7 +155,7 @@ public class DNegativeTestsArbeid extends TestBaseCV {
         driver.findElement(By.id("submit")).click();
         assertEquals(driver.findElement(By.id("Title-error")).getText(), "Feltet er påkrevd.");
     }
-    @Test(priority = 9)
+    @Test(priority = 8)
     public void SaveWithoutTil () throws Exception {
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
@@ -184,7 +171,7 @@ public class DNegativeTestsArbeid extends TestBaseCV {
         driver.findElement(By.id("submit")).click();
         assertEquals(driver.findElement(By.id("ToDate-error")).getText(), "Feltet er påkrevd.");
     }
-    @Test(priority = 10)
+    @Test(priority = 9)
     public void SaveWithoutFra () throws Exception {
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
@@ -199,5 +186,56 @@ public class DNegativeTestsArbeid extends TestBaseCV {
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
         driver.findElement(By.id("submit")).click();
         assertEquals(driver.findElement(By.id("FromDate-error")).getText(), "Feltet er påkrevd.");
+    }
+    @Test(priority = 10)
+    public void SaveWithFradateLateTilDate () throws Exception {
+        // Scroll page up
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+        // Type Til
+        driver.findElement(By.id("FromDate")).clear();
+        driver.findElement(By.id("FromDate")).sendKeys("11.11.2012");
+        // Scroll page up
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+        driver.findElement(By.id("submit")).click();
+        assertEquals(driver.findElement(By.cssSelector("span.field-validation-error")).getText(), "Startdato må være før sluttdato");
+    }
+    @Test(priority = 11)
+    public void SaveWithIncorrectFra () throws Exception {
+        // Scroll page up
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+        // Type Til
+        driver.findElement(By.id("FromDate")).clear();
+        driver.findElement(By.id("FromDate")).sendKeys("1111201223232323");
+        // Scroll page up
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+        driver.findElement(By.id("submit")).click();
+        assertEquals(driver.findElement(By.id("FromDate-error")).getText(), "The field FromDate must be a date.");
+    }
+    @Test(priority = 12)
+    public void SaveWithIncorrectTil () throws Exception {
+        // Scroll page up
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+        // Type Til
+        driver.findElement(By.id("FromDate")).clear();
+        driver.findElement(By.id("FromDate")).sendKeys("11.11.2012");
+        // Scroll page up
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+        // Type Til
+        driver.findElement(By.id("ToDate")).clear();
+        driver.findElement(By.id("ToDate")).sendKeys("1111201223232323");
+        // Scroll page up
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+        driver.findElement(By.id("submit")).click();
+        assertEquals(driver.findElement(By.id("ToDate-error")).getText(), "The field ToDate must be a date.");
+    }
+    @Test(priority = 13)
+    public void DeleteFieldTil () throws Exception {
+        // Scroll page up
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+        driver.findElement(By.cssSelector("label.checkbox-label > span")).click();
+        // Scroll page up
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+        WebElement TilField = driver.findElement(By.id("ToDate"));
+        Assert.assertEquals(false, TilField.isDisplayed());
     }
 }

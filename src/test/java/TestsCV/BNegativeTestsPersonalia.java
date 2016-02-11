@@ -16,10 +16,9 @@ import org.testng.annotations.Test;
 public class BNegativeTestsPersonalia extends TestBaseCV {
     @Test(priority = 1)
     public void SaveWithEmptyReqFields() throws Exception {
-        // Click menu user
-        driver.findElement(By.cssSelector(".drop-down-ctrl")).click();
-        driver.findElement(By.linkText("CV")).click();
-        driver.findElement(By.xpath("(//a[contains(@href, '/CV/PersonalInfo')])[2]")).click();
+        // Go to CV
+        driver.get(baseUrl + "/CV/PersonalInfo");
+        Thread.sleep(2000);
         driver.findElement(By.id("FirstName")).clear();
         driver.findElement(By.id("LastName")).clear();
         driver.findElement(By.id("Email")).clear();

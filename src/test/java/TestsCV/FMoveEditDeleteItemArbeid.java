@@ -95,6 +95,7 @@ public class FMoveEditDeleteItemArbeid extends TestBaseCV {
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
         // Chose Stillingstype - Internship
         driver.findElement(By.xpath("//*[@id='SelectedEmploymentTypes_chosen']/ul")).click();
+        Thread.sleep(1000);
         driver.findElement(By.xpath("//*[@id='SelectedEmploymentTypes_chosen']/div/ul/li[7]")).click();
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");

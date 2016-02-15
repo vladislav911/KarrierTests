@@ -14,7 +14,7 @@ import static org.testng.Assert.fail;
 
 import org.testng.annotations.Test;
 
-public class G extends TestBaseCV {
+public class IMoveEditDeleteItemUtdanning extends TestBaseCV {
     @Test(priority = 1)
     public void LoggIn() throws Exception {
         // Open BaseUrl

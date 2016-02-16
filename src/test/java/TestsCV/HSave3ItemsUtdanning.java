@@ -76,6 +76,7 @@ public class HSave3ItemsUtdanning extends TestBaseCV {
     public void Save2ItemWithoutDatoFor() throws Exception {
         // Go to Utdatinng
         driver.get(baseUrl + "/CV/Educations");
+        Thread.sleep(1000);
         // Click Legg til ny button
         driver.findElement(By.xpath("//div[@id='wizard-step']/div[2]/div/div/div/div/div/a/i")).click();
         Thread.sleep(1000);
@@ -124,6 +125,7 @@ public class HSave3ItemsUtdanning extends TestBaseCV {
         driver.findElement(By.xpath("//div[@id='GraduationType_chosen']/div/ul/li[4]")).click();
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+        Thread.sleep(1000);
         driver.findElement(By.id("submit")).click();
         Thread.sleep(1000);
     }
@@ -131,6 +133,7 @@ public class HSave3ItemsUtdanning extends TestBaseCV {
     public void Save3ItemWithoutDatoFor() throws Exception {
         // Go to Utdatinng
         driver.get(baseUrl + "/CV/Educations");
+        Thread.sleep(1000);
         // Click Legg til ny button
         driver.findElement(By.xpath("//div[@id='wizard-step']/div[2]/div/div/div/div/div/a/i")).click();
         Thread.sleep(1000);
@@ -195,6 +198,7 @@ public class HSave3ItemsUtdanning extends TestBaseCV {
         assertEquals(driver.findElement(By.cssSelector("div.t-title")).getText(), "3 registrerte utdanninger");
         // Open First Item
         driver.findElement(By.linkText(".NET UTVIKLER fagskoleutdanning (Informasjonsteknologi / informatikk), Universitetet for Miljø- og biovitenskap")).click();
+        Thread.sleep(1000);
         // Verify Data Save
         assertEquals(driver.findElement(By.id("FromDate")).getAttribute("value"), "13.11.2011");
         assertEquals(driver.findElement(By.id("ToDate")).getAttribute("value"), "23.04.2013");
@@ -215,6 +219,7 @@ public class HSave3ItemsUtdanning extends TestBaseCV {
         Thread.sleep(1000);
         // Open Second Item
         driver.findElement(By.linkText("KOST OG ERNÆRING andre grader/kurs (Medisin, odontologi, helse- og sosialfag), Ål Folkehøyskole")).click();
+        Thread.sleep(1000);
         // Verify Data Save
         WebElement TilField = driver.findElement(By.id("ToDate"));
         Assert.assertEquals(false, TilField.isDisplayed());

@@ -27,9 +27,9 @@ public class TestBaseCV {
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
         baseUrl = "http://dev.karrierestart.no";
-        Email1 = "testdd218@mail.ru";
-        Email2 = "testdd219@mail.ru";
-        Email3 = "testdd220@mail.ru";
+        Email1 = "testdd227@mail.ru";
+        Email2 = "testdd228@mail.ru";
+        Email3 = "testdd229@mail.ru";
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }

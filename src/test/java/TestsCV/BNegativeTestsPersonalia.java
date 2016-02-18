@@ -21,7 +21,7 @@ public class BNegativeTestsPersonalia extends TestBaseCV {
         Thread.sleep(2000);
         driver.findElement(By.id("FirstName")).clear();
         driver.findElement(By.id("LastName")).clear();
-        driver.findElement(By.id("Email")).clear();
+        //driver.findElement(By.id("Email")).clear();
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
         driver.findElement(By.id("submit")).click();

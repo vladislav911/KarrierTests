@@ -93,9 +93,6 @@ public class CEditDataPagePersonalia extends TestBaseCV {
         // Change Phone
         driver.findElement(By.id("Phone")).clear();
         driver.findElement(By.id("Phone")).sendKeys("+4553434334");
-        // Change Email
-        driver.findElement(By.id("Email")).clear();
-        driver.findElement(By.id("Email")).sendKeys(Email2);
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
         // Click Submit
@@ -119,7 +116,7 @@ public class CEditDataPagePersonalia extends TestBaseCV {
         assertEquals(driver.findElement(By.cssSelector("#Country_chosen > a.chosen-single > span")).getText(), "Kazakhstan");
         assertEquals(driver.findElement(By.id("CellPhone")).getAttribute("value"), "+380 50 122 4567");
         assertEquals(driver.findElement(By.id("Phone")).getAttribute("value"), "+45 53 43 43 34");
-        assertEquals(driver.findElement(By.id("Email")).getAttribute("value"), Email2);
+        assertEquals(driver.findElement(By.id("Email")).getAttribute("value"), Email1);
         Thread.sleep(2000);
     }
     @Test(priority = 2)
@@ -201,9 +198,6 @@ public class CEditDataPagePersonalia extends TestBaseCV {
         // Edit Phone
         driver.findElement(By.id("Phone")).clear();
         driver.findElement(By.id("Phone")).sendKeys("+4333333333");
-        // Edit Email
-        driver.findElement(By.id("Email")).clear();
-        driver.findElement(By.id("Email")).sendKeys(Email3);
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
         // Click Cancel
@@ -226,7 +220,7 @@ public class CEditDataPagePersonalia extends TestBaseCV {
         assertEquals(driver.findElement(By.cssSelector("#Country_chosen > a.chosen-single > span")).getText(), "Kazakhstan");
         assertEquals(driver.findElement(By.id("CellPhone")).getAttribute("value"), "+380 50 122 4567");
         assertEquals(driver.findElement(By.id("Phone")).getAttribute("value"), "+45 53 43 43 34");
-        assertEquals(driver.findElement(By.id("Email")).getAttribute("value"), Email2);
+        assertEquals(driver.findElement(By.id("Email")).getAttribute("value"), Email1);
         Thread.sleep(2000);
     }
     @Test(priority = 3)
@@ -304,8 +298,6 @@ public class CEditDataPagePersonalia extends TestBaseCV {
         driver.findElement(By.id("CellPhone")).sendKeys("+380 93 555 4555");
         driver.findElement(By.id("Phone")).clear();
         driver.findElement(By.id("Phone")).sendKeys("+4333333333");
-        driver.findElement(By.id("Email")).clear();
-        driver.findElement(By.id("Email")).sendKeys(Email3);
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
         driver.navigate().refresh();
@@ -322,6 +314,6 @@ public class CEditDataPagePersonalia extends TestBaseCV {
         assertEquals(driver.findElement(By.cssSelector("#Country_chosen > a.chosen-single > span")).getText(), "Kazakhstan");
         assertEquals(driver.findElement(By.id("CellPhone")).getAttribute("value"), "+380 50 122 4567");
         assertEquals(driver.findElement(By.id("Phone")).getAttribute("value"), "+45 53 43 43 34");
-        assertEquals(driver.findElement(By.id("Email")).getAttribute("value"), Email2);
+        assertEquals(driver.findElement(By.id("Email")).getAttribute("value"), Email1);
     }
 }

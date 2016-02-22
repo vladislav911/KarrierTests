@@ -18,7 +18,7 @@ public class CEditDataPagePersonalia extends TestBaseCV {
     public void EditDataWithSubmit() throws Exception {
         // Go to CV
         driver.get(baseUrl + "/CV/PersonalInfo");
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         // Close reklama
         //driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
         // Edit First Name
@@ -242,6 +242,7 @@ public class CEditDataPagePersonalia extends TestBaseCV {
         // Edit Dateof Birth
         driver.findElement(By.id("DateOfBirth")).clear();
         driver.findElement(By.id("DateOfBirth")).sendKeys("06.03.1964");
+        Thread.sleep(1000);
         driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[2]/button[2]")).click();
         // Edit Gender
         driver.findElement(By.cssSelector(".chosen-single")).click();

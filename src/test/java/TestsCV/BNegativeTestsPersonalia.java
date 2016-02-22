@@ -18,7 +18,7 @@ public class BNegativeTestsPersonalia extends TestBaseCV {
     public void SaveWithEmptyReqFields() throws Exception {
         // Go to CV
         driver.get(baseUrl + "/CV/PersonalInfo");
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         driver.findElement(By.id("FirstName")).clear();
         driver.findElement(By.id("LastName")).clear();
         //driver.findElement(By.id("Email")).clear();

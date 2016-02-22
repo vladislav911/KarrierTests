@@ -19,6 +19,7 @@ public class LSave3ItemsAnnen extends TestBaseCV {
     public void Save1ItemWithTil() throws Exception {
         // Go to Experiences
         driver.get(baseUrl + "/CV/Experiences");
+        Thread.sleep(1000);
         // Click Legg til ny button
         driver.findElement(By.linkText("Legg til ny")).click();
         Thread.sleep(1000);

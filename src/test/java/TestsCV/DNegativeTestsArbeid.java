@@ -18,6 +18,7 @@ public class DNegativeTestsArbeid extends TestBaseCV {
     public void SaveWithoutSted() throws Exception {
         // Go to Arbeid
         driver.get(baseUrl + "/CV/JobList");
+        Thread.sleep(1000);
         // Click Legg til ny button
         driver.findElement(By.linkText("Legg til ny")).click();
         // Type Fra
@@ -144,7 +145,7 @@ public class DNegativeTestsArbeid extends TestBaseCV {
         // Type Arbeidsgiver
         driver.findElement(By.id("Employer")).clear();
         driver.findElement(By.id("Employer")).sendKeys("Gassco");
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         driver.findElement(By.xpath("//ul[@id='ui-id-1']/li")).click();
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");

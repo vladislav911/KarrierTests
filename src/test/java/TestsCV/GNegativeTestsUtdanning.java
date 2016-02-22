@@ -19,6 +19,9 @@ public class GNegativeTestsUtdanning extends TestBaseCV {
     public void SaveWithoutAnyData() throws Exception {
         // Go to Arbeid
         driver.get(baseUrl + "/CV/Educations");
+        Thread.sleep(1000);
+        // Close reklama
+        //driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
         // Click Legg til ny button
         driver.findElement(By.linkText("Legg til ny")).click();
         driver.findElement(By.id("submit")).click();
@@ -67,6 +70,7 @@ public class GNegativeTestsUtdanning extends TestBaseCV {
     public void SaveWithoutTypeGrad() throws Exception {
         // Go to Arbeid
         driver.get(baseUrl + "/CV/Educations");
+        Thread.sleep(1000);
         // Click Legg til ny button
         driver.findElement(By.linkText("Legg til ny")).click();
         // Close reklama
@@ -89,9 +93,9 @@ public class GNegativeTestsUtdanning extends TestBaseCV {
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
         // Type Skoletype - Universitet/Hogskole
         driver.findElement(By.xpath("//div[@id='SchoolType_chosen']/a")).click();
-        driver.findElement(By.xpath("//div[@id='SchoolType_chosen']/div/ul/li")).click();
+        driver.findElement(By.xpath("//*[@id='SchoolType_chosen']/div/ul/li[1]")).click();
         // Scroll page up
-        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+       ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
         // Type Skole - Apo Melbu
         driver.findElement(By.xpath("//div[@id='SchoolId_chosen']/a")).click();
         driver.findElement(By.xpath("//div[@id='SchoolId_chosen']/div/ul/li[5]")).click();
@@ -153,6 +157,7 @@ public class GNegativeTestsUtdanning extends TestBaseCV {
         // Type Sted eller land - Oslo
         driver.findElement(By.xpath("//div[@id='SchoolCountryId_chosen']/a")).click();
         driver.findElement(By.xpath("//div[@id='SchoolCountryId_chosen']/div/ul/li[1]")).click();
+        Thread.sleep(1000);
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
         driver.findElement(By.id("submit")).click();

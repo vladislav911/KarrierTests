@@ -27,7 +27,7 @@ public class TestBaseCV {
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
         baseUrl = "http://dev.karrierestart.no";
-        Email1 = "testdd230@mail.ru";
+        Email1 = "testdd270@mail.ru";
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
@@ -97,5 +97,17 @@ public class TestBaseCV {
 
     public void ClickOnButtonRegistrationStep7() {
         driver.findElement(By.xpath("//*[@id='registration_cnt']/div/div[5]/a")).click();
+    }
+    public void LoggIn() throws Exception {
+        // Open BaseUrl
+        driver.get(baseUrl);
+        // Login User Test1
+        driver.findElement(By.id("nav-login")).click();
+        driver.findElement(By.id("UserName")).clear();
+        driver.findElement(By.id("UserName")).sendKeys(Email1);
+        driver.findElement(By.id("LoginPassword")).clear();
+        driver.findElement(By.id("LoginPassword")).sendKeys("test");
+        driver.findElement(By.className("login-btn")).click();
+        Thread.sleep(4000);
     }
 }

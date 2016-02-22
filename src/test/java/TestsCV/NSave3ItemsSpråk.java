@@ -19,6 +19,7 @@ public class NSave3ItemsSpråk extends TestBaseCV {
     public void Save1ItemWithMorsmål() throws Exception {
         // Go to Utdatinng
         driver.get(baseUrl + "/CV/Languages");
+        Thread.sleep(1000);
         // Click Legg til ny button
         driver.findElement(By.linkText("Legg til ny")).click();
         // Close reklama
@@ -49,6 +50,7 @@ public class NSave3ItemsSpråk extends TestBaseCV {
     public void Save2ItemWithoutMorsmål() throws Exception {
         // Go to Utdatinng
         driver.get(baseUrl + "/CV/Languages");
+        Thread.sleep(1000);
         // Click Legg til ny button
         driver.findElement(By.xpath("//div[@id='wizard-step']/div[2]/div/div/div/div/div[4]/a/i")).click();
         Thread.sleep(100);
@@ -74,6 +76,7 @@ public class NSave3ItemsSpråk extends TestBaseCV {
     public void Save3ItemWithoutMorsmål() throws Exception {
         // Go to Utdatinng
         driver.get(baseUrl + "/CV/Languages");
+        Thread.sleep(1000);
         // Click Legg til ny button
         driver.findElement(By.xpath("//div[@id='wizard-step']/div[2]/div/div/div/div/div[4]/a/i")).click();
         Thread.sleep(100);

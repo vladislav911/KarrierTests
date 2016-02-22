@@ -17,8 +17,12 @@ import org.testng.annotations.Test;
 public class HSave3ItemsUtdanning extends TestBaseCV {
     @Test(priority = 1)
     public void Save1ItemWithDatoFor() throws Exception {
+        //LoggIn();
         // Go to Utdatinng
         driver.get(baseUrl + "/CV/Educations");
+        // Close reklama
+        //driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
+        Thread.sleep(1000);
         // Click Legg til ny button
         driver.findElement(By.linkText("Legg til ny")).click();
         // Close reklama
@@ -51,6 +55,8 @@ public class HSave3ItemsUtdanning extends TestBaseCV {
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
         // Type Skole - Apo Melbu
         driver.findElement(By.xpath("//div[@id='SchoolId_chosen']/a")).click();
+        // Scroll page up
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
         driver.findElement(By.xpath("//div[@id='SchoolId_chosen']/div/ul/li[5]")).click();
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
@@ -69,6 +75,7 @@ public class HSave3ItemsUtdanning extends TestBaseCV {
         driver.findElement(By.xpath("//div[@id='GraduationType_chosen']/div/ul/li[3]")).click();
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+        Thread.sleep(2000);
         driver.findElement(By.id("submit")).click();
         Thread.sleep(1000);
     }
@@ -107,7 +114,13 @@ public class HSave3ItemsUtdanning extends TestBaseCV {
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
         // Type Skole - Al Folkeh
         driver.findElement(By.xpath("//div[@id='SchoolId_chosen']/a")).click();
-        driver.findElement(By.xpath("//div[@id='SchoolId_chosen']/div/ul/li[5]")).click();
+        // Scroll page up
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+        driver.findElement(By.xpath(".//*[@id='SchoolId_chosen']/div/ul/li[2]")).click();
+        // Scroll page up
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+        driver.findElement(By.id("SchoolName")).clear();
+        driver.findElement(By.id("SchoolName")).sendKeys("Test skole");
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
         // Type Fagområde - Hotel
@@ -164,6 +177,8 @@ public class HSave3ItemsUtdanning extends TestBaseCV {
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
         // Type Skole - Al Folkeh
         driver.findElement(By.xpath("//div[@id='SchoolId_chosen']/a")).click();
+        // Scroll page up
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
         driver.findElement(By.xpath(".//*[@id='SchoolId_chosen']/div/ul/li[2]")).click();
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
@@ -186,6 +201,7 @@ public class HSave3ItemsUtdanning extends TestBaseCV {
         driver.findElement(By.xpath("//div[@id='GraduationType_chosen']/div/ul/li[4]")).click();
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+        Thread.sleep(1000);
         driver.findElement(By.id("submit")).click();
         Thread.sleep(1000);
     }
@@ -218,7 +234,7 @@ public class HSave3ItemsUtdanning extends TestBaseCV {
         driver.get(baseUrl + "/CV/Educations");
         Thread.sleep(1000);
         // Open Second Item
-        driver.findElement(By.linkText("KOST OG ERNÆRING andre grader/kurs (Medisin, odontologi, helse- og sosialfag), Ål Folkehøyskole")).click();
+        driver.findElement(By.linkText("KOST OG ERNÆRING andre grader/kurs (Medisin, odontologi, helse- og sosialfag), Test skole")).click();
         Thread.sleep(1000);
         // Verify Data Save
         WebElement TilField = driver.findElement(By.id("ToDate"));
@@ -227,7 +243,8 @@ public class HSave3ItemsUtdanning extends TestBaseCV {
         assertEquals(driver.findElement(By.id("Title")).getAttribute("value"), "KOST OG ERNÆRING andre grader/kurs (Medisin, odontologi, helse- og sosialfag)");
         assertEquals(driver.findElement(By.cssSelector("a.chosen-single > span")).getText(), "Stavanger");
         assertEquals(driver.findElement(By.cssSelector("#SchoolType_chosen > a.chosen-single > span")).getText(), "Ungdomsskole");
-        assertEquals(driver.findElement(By.cssSelector("a.chosen-single.chosen-single-with-deselect > span")).getText(), "Ål Folkehøyskole");
+        driver.findElement(By.cssSelector("div.row.school-name > div.field-sec.focus-bg-white")).click();
+        assertEquals(driver.findElement(By.id("SchoolName")).getAttribute("value"), "Test skole");
         assertEquals(driver.findElement(By.cssSelector("li.search-choice > span")).getText(), "Hotell- og reiselivsfag");
         assertEquals(driver.findElement(By.id("Description")).getAttribute("value"), "Test info Beskrivelse");
         assertEquals(driver.findElement(By.cssSelector("#GraduationType_chosen > a.chosen-single > span")).getText(), "Bachelor");

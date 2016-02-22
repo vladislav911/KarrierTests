@@ -100,6 +100,7 @@ public class IMoveEditDeleteItemUtdanning extends TestBaseCV {
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
         // Type Skole - Bakketun Folkehøgskole
+        Thread.sleep(2000);
         driver.findElement(By.xpath("//div[@id='SchoolId_chosen']/a")).click();
         driver.findElement(By.xpath("//div[@id='SchoolId_chosen']/div/ul/li[8]")).click();
         // Scroll page up
@@ -265,6 +266,7 @@ public class IMoveEditDeleteItemUtdanning extends TestBaseCV {
         driver.findElement(By.xpath("//div[@id='GraduationType_chosen']/div/ul/li[5]")).click();
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+        Thread.sleep(2000);
         driver.findElement(By.id("submit")).click();
         Thread.sleep(1000);
         driver.navigate().refresh();

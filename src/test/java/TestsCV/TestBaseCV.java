@@ -27,9 +27,9 @@ public class TestBaseCV {
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
         baseUrl = "http://dev.karrierestart.no";
-        Email1 = "testdd270@mail.ru";
+        Email1 = "testdd294@mail.ru";
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
+        driver.manage().window().setSize(new Dimension(1285, 985));
     }
 
 

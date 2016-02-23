@@ -30,8 +30,8 @@ public class TestDataBaseRegistration {
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
         baseUrl = "http://dev.karrierestart.no";
-        Email1 = "testdd1@mail.ru";
-        Email2 = "testdd2@mail.ru";
+        Email1 = "testdy1@mail.ru";
+        Email2 = "testdy2@mail.ru";
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
 

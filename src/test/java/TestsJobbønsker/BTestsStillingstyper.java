@@ -133,11 +133,33 @@ public class BTestsStillingstyper extends TestBaseJobbønsker {
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='jobList']/div/div/div[2]/ul[2]/li[5]/div")).getText(), "Sommerjobb / sesongjobb (Heltid)");
         // Move Items (ckick fire)
         driver.findElement(By.xpath("//div[@id='jobList']/div/div/div[2]/ul[2]/li/div/i")).click();
-        Thread.sleep(1000);
+        refreshPage();
+        waitForElementPresent(By.xpath("//*[@id='employment_chosen']/a"));
+        // Check position after first moving
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li/div")).getText(), "Frilans (Deltid)");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[2]/div")).getText(), "Agent (Deltid)");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[3]/div")).getText(), "Annet (Heltid / deltid)");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[4]/div")).getText(), "Ekstrahjelp (Heltid)");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[5]/div")).getText(), "Franchisetaker (Heltid / deltid)");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='jobList']/div/div/div[2]/ul[2]/li/div")).getText(), "Fast ansettelse (Deltid)");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='jobList']/div/div/div[2]/ul[2]/li[2]/div")).getText(), "Internship (Heltid)");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='jobList']/div/div/div[2]/ul[2]/li[3]/div")).getText(), "Lærling (Deltid)");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='jobList']/div/div/div[2]/ul[2]/li[4]/div")).getText(), "Prosjekt / Engasjement (Heltid / deltid)");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='jobList']/div/div/div[2]/ul[2]/li[5]/div")).getText(), "Sommerjobb / sesongjobb (Heltid)");
+        // Second moving Items
         driver.findElement(By.xpath("//div[@id='jobList']/div/div/div[2]/ul[2]/li[2]/div/i")).click();
-        Thread.sleep(1000);
-        driver.findElement(By.xpath("//div[@id='jobList']/div/div/div[2]/ul[2]/li[5]/div/i")).click();
-        Thread.sleep(1000);
+        refreshPage();
+        waitForElementPresent(By.xpath("//*[@id='employment_chosen']/a"));
+        // Check position after second moving
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[2]/div")).getText(), "Agent (Deltid)");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[3]/div")).getText(), "Annet (Heltid / deltid)");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[4]/div")).getText(), "Ekstrahjelp (Heltid)");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[5]/div")).getText(), "Internship (Heltid)");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='jobList']/div/div/div[2]/ul[2]/li/div")).getText(), "Fast ansettelse (Deltid)");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='jobList']/div/div/div[2]/ul[2]/li[2]/div")).getText(), "Franchisetaker (Heltid / deltid)");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='jobList']/div/div/div[2]/ul[2]/li[3]/div")).getText(), "Lærling (Deltid)");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='jobList']/div/div/div[2]/ul[2]/li[4]/div")).getText(), "Prosjekt / Engasjement (Heltid / deltid)");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='jobList']/div/div/div[2]/ul[2]/li[5]/div")).getText(), "Sommerjobb / sesongjobb (Heltid)");
     }
 }
 

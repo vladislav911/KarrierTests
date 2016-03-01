@@ -1,7 +1,11 @@
 package TestsJobbønsker;
+import com.thoughtworks.selenium.Selenium;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import static org.testng.Assert.assertFalse;
@@ -268,8 +272,17 @@ public class BTestsStillingstyper extends TestBaseJobbønsker {
     }
     @Test(priority = 11)
     public void deleteAllItems() throws Exception {
-        driver.findElement(By.xpath("//a[contains(text(),'Slett alle')]")).click();
-        driver.findElement(By.xpath("//a[contains(text(),'Ja')]")).click();
+        loggIn();
+        goToStillingstyper();
+        waitForElementPresent(By.xpath("//*[@id='employment_chosen']/a"));
+        // Close reklam
+        driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
+        Thread.sleep(2000);
+        driver.findElement(By.linkText("Slett alle")).click();
+        Thread.sleep(2000);
+        driver.findElement(By.linkText("Ja")).click();
+        Thread.sleep(5000);
+        waitForAjax1();
         Thread.sleep(5000);
         refreshPage();
         waitForElementPresent(By.xpath("//*[@id='employment_chosen']/a"));

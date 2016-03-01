@@ -1,8 +1,10 @@
 package TestsJobbønsker;
 
+import com.gargoylesoftware.htmlunit.javascript.background.JavaScriptExecutor;
 import com.thoughtworks.selenium.Selenium;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -25,7 +27,7 @@ public class TestBaseJobbønsker {
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
         baseUrl = "http://dev.karrierestart.no";
-        Email1 = "testdd334@mail.ru";
+        Email1 = "testtt333@mail.ru";
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(1285, 985));
     }
@@ -94,6 +96,18 @@ public class TestBaseJobbønsker {
         }
 
     }
+    public void waitForAjax1() throws InterruptedException
+    {
+
+        while (true)
+        {
+            if ((Boolean) ((JavascriptExecutor)driver).executeScript("return jQuery.active == 0")){
+                break;
+            }
+            Thread.sleep(100);
+        }
+    }
+
     public void loggIn() throws Exception {
         // Open BaseUrl
         driver.get(baseUrl);

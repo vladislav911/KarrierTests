@@ -16,12 +16,12 @@ import static org.testng.Assert.fail;
 
 public class TestBaseJobbønsker {
 
-    static protected Selenium selenium;
     static protected WebDriver driver;
     static protected String baseUrl;
     static protected String Email1;
     protected StringBuffer verificationErrors = new StringBuffer();
     private boolean acceptNextAlert = true;
+    WebDriverWait wait;
 
     @BeforeTest
     public void setUp() throws Exception {
@@ -31,7 +31,6 @@ public class TestBaseJobbønsker {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(1285, 985));
     }
-
 
     @AfterTest(alwaysRun = true)
     public void tearDown() throws Exception {
@@ -50,6 +49,7 @@ public class TestBaseJobbønsker {
             return false;
         }
     }
+
     public boolean isElementPresent(By by) {
         try {
             driver.findElement(by);
@@ -58,7 +58,6 @@ public class TestBaseJobbønsker {
             return false;
         }
     }
-
 
     private String closeAlertAndGetItsText() {
         try {
@@ -83,6 +82,7 @@ public class TestBaseJobbønsker {
     public void scrollPageUp () {
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
     }
+
     public void assertElementNotPresent(By by) {
         driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
         Assert.assertEquals(0, driver.findElements(by).size());
@@ -96,22 +96,9 @@ public class TestBaseJobbønsker {
         }
 
     }
-    public void waitForAjax1() throws InterruptedException
-    {
-
-        while (true)
-        {
-            if ((Boolean) ((JavascriptExecutor)driver).executeScript("return jQuery.active == 0")){
-                break;
-            }
-            Thread.sleep(100);
-        }
-    }
 
     public void loggIn() throws Exception {
-        // Open BaseUrl
         driver.get(baseUrl);
-        // Login User Test1
         driver.findElement(By.id("nav-login")).click();
         driver.findElement(By.id("UserName")).clear();
         driver.findElement(By.id("UserName")).sendKeys(Email1);
@@ -122,7 +109,7 @@ public class TestBaseJobbønsker {
     }
 
 
-  // Methods for Registration
+  // METHODS FOR REGISTRATION
     public void clickOnButtonRegistrationStep2() {
         driver.findElement(By.xpath("//button[@onclick=\"$('#registration_form').submit();\"]")).click();
     }
@@ -134,13 +121,14 @@ public class TestBaseJobbønsker {
     }
 
 
- // Methods for Stillingstyper
-    public void goToStillingstyper () {
+ // METHODS FOR STILLINGSTYPER
+    public void goToStillingstyper () throws InterruptedException {
         driver.get(baseUrl + "/JobPreferences/JobType");
+        waitForElementPresent(By.xpath("//*[@id='employment_chosen']/a"));
     }
-    public void choseStillingstypeFrilans() {
-        driver.findElement(By.xpath("//*[@id='employment_chosen']/a")).click();
-        driver.findElement(By.xpath("//div[@id='employment_chosen']/div/ul/li[6]")).click();
+    public void refreshPageStillingstyper() throws InterruptedException {
+        refreshPage();
+        waitForElementPresent(By.xpath("//*[@id='employment_chosen']/a"));
     }
     public void choseStillingstypeAgent() {
         driver.findElement(By.xpath("//*[@id='employment_chosen']/a")).click();
@@ -162,6 +150,10 @@ public class TestBaseJobbønsker {
         driver.findElement(By.xpath("//*[@id='employment_chosen']/a")).click();
         driver.findElement(By.xpath("//div[@id='employment_chosen']/div/ul/li[5]")).click();
     }
+    public void choseStillingstypeFrilans() {
+        driver.findElement(By.xpath("//*[@id='employment_chosen']/a")).click();
+        driver.findElement(By.xpath("//div[@id='employment_chosen']/div/ul/li[6]")).click();
+    }
     public void choseStillingstypeInternship() {
         driver.findElement(By.xpath("//*[@id='employment_chosen']/a")).click();
         driver.findElement(By.xpath("//div[@id='employment_chosen']/div/ul/li[7]")).click();
@@ -178,9 +170,6 @@ public class TestBaseJobbønsker {
         driver.findElement(By.xpath("//*[@id='employment_chosen']/a")).click();
         driver.findElement(By.xpath("//div[@id='employment_chosen']/div/ul/li[10]")).click();
     }
-
-
-
     public void choseOmfangHeltid() {
         driver.findElement(By.xpath("//*[@id='worktime_chosen']/a")).click();
         driver.findElement(By.xpath("//*[@id='worktime_chosen']/div/ul/li[2]")).click();
@@ -193,5 +182,21 @@ public class TestBaseJobbønsker {
         driver.findElement(By.xpath("//*[@id='worktime_chosen']/a")).click();
         driver.findElement(By.xpath("//*[@id='worktime_chosen']/div/ul/li[3]")).click();
     }
+
+    // METHODS FOR FAGOMRADER
+    public void goToFagområder () throws InterruptedException {
+        driver.get(baseUrl + "/JobPreferences/ProfessionCategory");
+        waitForElementPresent(By.xpath("//*[@id='ProfessionCategory_chosen']/a"));
+    }
+    public void refreshPageFagområder() throws InterruptedException {
+        refreshPage();
+        waitForElementPresent(By.xpath("//*[@id='ProfessionCategory_chosen']/a"));
+    }
+    public void choseFagområdeFirstPositionItem() {
+        driver.findElement(By.xpath("//*[@id='ProfessionCategory_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='ProfessionCategory_chosen']/div/ul/li[1]")).click();
+    }
+
+    // METHODS FOR YRKER
 }
 

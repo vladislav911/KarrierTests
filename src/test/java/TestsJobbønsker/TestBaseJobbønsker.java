@@ -198,5 +198,77 @@ public class TestBaseJobbønsker {
     }
 
     // METHODS FOR YRKER
+    public void goToYrker () throws InterruptedException {
+        driver.get(baseUrl + "/JobPreferences/Professions");
+        waitForElementPresent(By.xpath("//*[@id='ProfessionCategory_chosen']/a"));
+    }
+
+    public void refreshPageYrker() throws InterruptedException {
+        refreshPage();
+        waitForElementPresent(By.xpath("//*[@id='ProfessionCategory_chosen']/a"));
+    }
+
+    public void choseKategoriEstetiske() {
+        driver.findElement(By.xpath("//*[@id='ProfessionCategory_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='ProfessionCategory_chosen']/div/ul/li[1]")).click();
+    }
+    public void choseKategoriJus() {
+        driver.findElement(By.xpath("//*[@id='ProfessionCategory_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='ProfessionCategory_chosen']/div/ul/li[7]")).click();
+    }
+    public void choseYrkeAdvokat() {
+        driver.findElement(By.xpath("//*[@id='ProfessionId_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='ProfessionId_chosen']/div/ul/li[6]")).click();
+    }
+
+    public void choseYrkeAnimator() {
+        driver.findElement(By.xpath("//*[@id='ProfessionId_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='ProfessionId_chosen']/div/ul/li[4]")).click();
+    }
+    public void choseYrkeAdvokatfullmektig() {
+        driver.findElement(By.xpath("//*[@id='ProfessionId_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='ProfessionId_chosen']/div/ul/li[2]")).click();
+    }
+    public void choseYrkeDommer() {
+        driver.findElement(By.xpath("//*[@id='ProfessionId_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='ProfessionId_chosen']/div/ul/li[4]")).click();
+    }
+
+    public void choseYrkeEtterforsker() {
+        driver.findElement(By.xpath("//*[@id='ProfessionId_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='ProfessionId_chosen']/div/ul/li[6]")).click();
+    }
+    public void choseYrkeDomstolsjurist() {
+        driver.findElement(By.xpath("//*[@id='ProfessionId_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='ProfessionId_chosen']/div/ul/li[5]")).click();
+    }
+    public void choseYrkeJurist() {
+        driver.findElement(By.xpath("//*[@id='ProfessionId_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='ProfessionId_chosen']/div/ul/li[9]")).click();
+    }
+    public void choseYrkeDommerfullmektig() {
+        driver.findElement(By.xpath("//*[@id='ProfessionId_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='ProfessionId_chosen']/div/ul/li[4]")).click();
+    }
+    public void choseYrkeAdvokatsekretær() {
+        driver.findElement(By.xpath("//*[@id='ProfessionId_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='ProfessionId_chosen']/div/ul/li[2]")).click();
+    }
+    // METHODS FOR BRANSJER
+    public void goToBransjer () throws InterruptedException {
+        driver.get(baseUrl + "/JobPreferences/Industries");
+        waitForElementPresent(By.xpath("//*[@id='IndustryId_chosen']/a"));
+    }
+
+    public void refreshPageBransjer() throws InterruptedException {
+        refreshPage();
+        waitForElementPresent(By.xpath("//*[@id='IndustryId_chosen']/a"));
+    }
+    public void choseBransjeFirstPositionItem() {
+        driver.findElement(By.xpath("//*[@id='IndustryId_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='IndustryId_chosen']/div/ul/li[1]")).click();
+    }
+
+
 }
 

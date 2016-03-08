@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import static org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.fail;
 
@@ -224,5 +225,22 @@ public class GTestsArbeidssteder extends TestBaseJobbønsker {
         assertElementNotPresent(By.xpath("//*[@id='locationList']/div/div/div[2]/ul[2]/li/div/ul/li[2]/div"));
         assertElementNotPresent(By.xpath("//*[@id='locationList']/div/div/div[2]/ul[2]/li/div/ul/li[3]/div"));
         assertElementNotPresent(By.xpath("//*[@id='locationList']/div/div/div[2]/ul[2]/li/div/ul/li[4]/div"));
+    }
+    @Test(priority = 9)
+    public void deleteAllItems() throws Exception {
+        loggIn();
+        goToArbeidssteder();
+        // Close reklam
+        driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
+        scrollPageUp();
+        driver.findElement(By.linkText("Slett alle")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.linkText("Ja")).click();
+        Thread.sleep(1000);
+        driver.navigate().refresh();
+        Thread.sleep(1000);
+        driver.findElement(By.tagName("html"));
+        assertElementNotPresent(By.xpath("//*[@id='topitems']/li[1]/div"));
+        assertElementNotPresent(By.xpath("//*[@id='topitems']/li/div"));
     }
 }

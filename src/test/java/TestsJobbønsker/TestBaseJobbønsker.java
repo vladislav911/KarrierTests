@@ -11,7 +11,9 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.util.concurrent.TimeUnit;
+import java.util.function.Predicate;
 
+import static org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated;
 import static org.testng.Assert.fail;
 
 public class TestBaseJobbønsker {
@@ -284,5 +286,6 @@ public class TestBaseJobbønsker {
         driver.findElement(By.xpath("//*[@id='sLocation_chosen']/a")).click();
         driver.findElement(By.xpath("//*[@id='sLocation_chosen']/div/ul/li[3]")).click();
     }
+
 }
 

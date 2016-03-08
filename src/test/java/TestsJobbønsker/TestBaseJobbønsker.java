@@ -269,6 +269,20 @@ public class TestBaseJobbønsker {
         driver.findElement(By.xpath("//*[@id='IndustryId_chosen']/div/ul/li[1]")).click();
     }
 
+    // METHODS FOR ARBEIDSSTEDER
 
+    public void goToArbeidssteder () throws InterruptedException {
+        driver.get(baseUrl + "/JobPreferences/Locations");
+        waitForElementPresent(By.xpath("//*[@id='sLocation_chosen']/a"));
+    }
+
+    public void refreshPageArbeidssteder() throws InterruptedException {
+        refreshPage();
+        waitForElementPresent(By.xpath("//*[@id='sLocation_chosen']/a"));
+    }
+    public void choseStedThirdPositionItem() {
+        driver.findElement(By.xpath("//*[@id='sLocation_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='sLocation_chosen']/div/ul/li[3]")).click();
+    }
 }
 

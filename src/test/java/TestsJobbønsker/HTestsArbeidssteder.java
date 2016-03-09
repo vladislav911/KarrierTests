@@ -16,14 +16,11 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class GTestsArbeidssteder extends TestBaseJobbønsker {
+public class HTestsArbeidssteder extends TestBaseJobbønsker {
 
     @Test(priority = 1)
     public void verifyItemAdd() throws Exception {
-        loggIn();
         goToArbeidssteder();
-        // Close reklam
-        driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
         choseStedThirdPositionItem();
         waitForElementPresent(By.xpath("//*[@id='topitems']/li/div"));
         refreshPageArbeidssteder();

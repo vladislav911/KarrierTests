@@ -30,7 +30,7 @@ public class TestBaseJobbønsker {
         driver = new FirefoxDriver();
         baseUrl = "http://dev.karrierestart.no";
         Email1 = "testtt333@mail.ru";
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(1285, 985));
     }
 
@@ -271,13 +271,116 @@ public class TestBaseJobbønsker {
         driver.findElement(By.xpath("//*[@id='IndustryId_chosen']/div/ul/li[1]")).click();
     }
 
+    // METHODS FOR ARBEIDSGIVERE(Firmanavn)
+
+    public void goToArbeidsgivere () throws InterruptedException {
+        driver.get(baseUrl + "/JobPreferences/Companies");
+        waitForElementPresent(By.id("CompanyName"));
+    }
+    public void refreshPageArbeidsgivere() throws InterruptedException {
+        refreshPage();
+        waitForElementPresent(By.id("CompanyName"));
+    }
+
+    // METHODS FOR ARBEIDSGIVERE(Bransje)
+
+    public void goToArbeidsgivereBransje () throws InterruptedException {
+        driver.get(baseUrl + "/JobPreferences/Companies");
+        waitForElementPresent(By.xpath("//*[@id='CompanyForm']/div/div[1]/div[2]"));
+        driver.findElement(By.xpath("//*[@id='CompanyForm']/div/div[1]/div[2]")).click();
+        waitForElementPresent(By.xpath("//*[@id='industry_select_chosen']/a"));
+    }
+    public void refreshPageArbeidsgivereBransje() throws InterruptedException {
+        refreshPage();
+        waitForElementPresent(By.xpath("//*[@id='CompanyForm']/div/div[1]/div[2]"));
+        driver.findElement(By.xpath("//*[@id='CompanyForm']/div/div[1]/div[2]")).click();
+        waitForElementPresent(By.xpath("//*[@id='industry_select_chosen']/a"));
+    }
+    public void choseBransjeAdvokat() {
+        driver.findElement(By.xpath("//*[@id='industry_select_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='industry_select_chosen']/div/ul/li[1]")).click();
+    }
+    public void choseBransjeBankvirksomhet() {
+        driver.findElement(By.xpath("//*[@id='industry_select_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='industry_select_chosen']/div/ul/li[2]")).click();
+    }
+    public void choseBransjeBygg() {
+        driver.findElement(By.xpath("//*[@id='industry_select_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='industry_select_chosen']/div/ul/li[3]")).click();
+    }
+    public void choseBransjeEiendom() {
+        driver.findElement(By.xpath("//*[@id='industry_select_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='industry_select_chosen']/div/ul/li[4]")).click();
+    }
+    public void choseBransjeEngineering() {
+        driver.findElement(By.xpath("//*[@id='industry_select_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='industry_select_chosen']/div/ul/li[5]")).click();
+    }
+    public void choseBransjeFarmasi() {
+        driver.findElement(By.xpath("//*[@id='industry_select_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='industry_select_chosen']/div/ul/li[6]")).click();
+    }
+    public void choseBransjeFinans() {
+        driver.findElement(By.xpath("//*[@id='industry_select_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='industry_select_chosen']/div/ul/li[7]")).click();
+    }
+    public void choseBransjeForsikring() {
+        driver.findElement(By.xpath("//*[@id='industry_select_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='industry_select_chosen']/div/ul/li[8]")).click();
+    }
+    public void choseBransjeForsikringOg() {
+        driver.findElement(By.xpath("//*[@id='industry_select_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='industry_select_chosen']/div/ul/li[9]")).click();
+    }
+    public void choseBransjeHelse() {
+        driver.findElement(By.xpath("//*[@id='industry_select_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='industry_select_chosen']/div/ul/li[10]")).click();
+    }
+
+    public void choseFirmaAdvokatfirmaetCLP() {
+        driver.findElement(By.xpath("//*[@id='company_select_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='company_select_chosen']/div/ul/li[2]")).click();
+    }
+    public void choseFirmaABNAmro() {
+        driver.findElement(By.xpath("//*[@id='company_select_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='company_select_chosen']/div/ul/li[2]")).click();
+    }
+    public void choseFirmaABBL() {
+        driver.findElement(By.xpath("//*[@id='company_select_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='company_select_chosen']/div/ul/li[2]")).click();
+    }
+    public void choseFirmaBS() {
+        driver.findElement(By.xpath("//*[@id='company_select_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='company_select_chosen']/div/ul/li[2]")).click();
+    }
+    public void choseFirmaGE() {
+        driver.findElement(By.xpath("//*[@id='company_select_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='company_select_chosen']/div/ul/li[2]")).click();
+    }
+    public void choseFirmaABG() {
+        driver.findElement(By.xpath("//*[@id='company_select_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='company_select_chosen']/div/ul/li[2]")).click();
+    }
+    public void choseFirmaAGIOS() {
+        driver.findElement(By.xpath("//*[@id='company_select_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='company_select_chosen']/div/ul/li[2]")).click();
+    }
+    public void choseFirmaABB() {
+        driver.findElement(By.xpath("//*[@id='company_select_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='company_select_chosen']/div/ul/li[2]")).click();
+    }
+    public void choseFirmaBeauty() {
+        driver.findElement(By.xpath("//*[@id='company_select_chosen']/a")).click();
+        driver.findElement(By.xpath("//*[@id='company_select_chosen']/div/ul/li[2]")).click();
+    }
+
+
     // METHODS FOR ARBEIDSSTEDER
 
     public void goToArbeidssteder () throws InterruptedException {
         driver.get(baseUrl + "/JobPreferences/Locations");
-        waitForElementPresent(By.xpath("//*[@id='sLocation_chosen']/a"));
+        waitForElementPresent(By.xpath("//*[@id=\"CompanyName\"]"));
     }
-
     public void refreshPageArbeidssteder() throws InterruptedException {
         refreshPage();
         waitForElementPresent(By.xpath("//*[@id='sLocation_chosen']/a"));
@@ -286,6 +389,5 @@ public class TestBaseJobbønsker {
         driver.findElement(By.xpath("//*[@id='sLocation_chosen']/a")).click();
         driver.findElement(By.xpath("//*[@id='sLocation_chosen']/div/ul/li[3]")).click();
     }
-
 }
 

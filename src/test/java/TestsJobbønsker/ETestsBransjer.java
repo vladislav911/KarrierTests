@@ -202,4 +202,8 @@ public class ETestsBransjer extends TestBaseJobbønsker {
         assertElementNotPresent(By.xpath("//*[@id='topitems']/li[5]/div"));
         assertElementNotPresent(By.xpath("//*[@id='industryList']/div/div/div[2]/ul[2]/li[5]/div"));
     }
+
+    /*@Test(priority = 8)
+    public void deleteAllItems() throws Exception {
+    }*/
 }

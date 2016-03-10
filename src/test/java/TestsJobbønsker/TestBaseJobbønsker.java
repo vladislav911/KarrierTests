@@ -1,19 +1,15 @@
 package TestsJobbønsker;
 
-import com.gargoylesoftware.htmlunit.javascript.background.JavaScriptExecutor;
 import com.thoughtworks.selenium.Selenium;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.annotations.*;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+import static org.testng.Assert.*;
 
 import java.util.concurrent.TimeUnit;
-import java.util.function.Predicate;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated;
 import static org.testng.Assert.fail;
 
 public class TestBaseJobbønsker {
@@ -23,13 +19,12 @@ public class TestBaseJobbønsker {
     static protected String Email1;
     protected StringBuffer verificationErrors = new StringBuffer();
     private boolean acceptNextAlert = true;
-    WebDriverWait wait;
 
     @BeforeTest
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
         baseUrl = "http://dev.karrierestart.no";
-        Email1 = "testtt333@mail.ru";
+        Email1 = "testtt334@mail.ru";
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(1285, 985));
     }
@@ -97,17 +92,6 @@ public class TestBaseJobbønsker {
             Thread.sleep(1000);
         }
 
-    }
-
-    public void loggIn() throws Exception {
-        driver.get(baseUrl);
-        driver.findElement(By.id("nav-login")).click();
-        driver.findElement(By.id("UserName")).clear();
-        driver.findElement(By.id("UserName")).sendKeys(Email1);
-        driver.findElement(By.id("LoginPassword")).clear();
-        driver.findElement(By.id("LoginPassword")).sendKeys("test");
-        driver.findElement(By.className("login-btn")).click();
-        Thread.sleep(3000);
     }
 
 
@@ -204,12 +188,10 @@ public class TestBaseJobbønsker {
         driver.get(baseUrl + "/JobPreferences/Professions");
         waitForElementPresent(By.xpath("//*[@id='ProfessionCategory_chosen']/a"));
     }
-
     public void refreshPageYrker() throws InterruptedException {
         refreshPage();
         waitForElementPresent(By.xpath("//*[@id='ProfessionCategory_chosen']/a"));
     }
-
     public void choseKategoriEstetiske() {
         driver.findElement(By.xpath("//*[@id='ProfessionCategory_chosen']/a")).click();
         driver.findElement(By.xpath("//*[@id='ProfessionCategory_chosen']/div/ul/li[1]")).click();
@@ -222,7 +204,6 @@ public class TestBaseJobbønsker {
         driver.findElement(By.xpath("//*[@id='ProfessionId_chosen']/a")).click();
         driver.findElement(By.xpath("//*[@id='ProfessionId_chosen']/div/ul/li[6]")).click();
     }
-
     public void choseYrkeAnimator() {
         driver.findElement(By.xpath("//*[@id='ProfessionId_chosen']/a")).click();
         driver.findElement(By.xpath("//*[@id='ProfessionId_chosen']/div/ul/li[4]")).click();
@@ -235,7 +216,6 @@ public class TestBaseJobbønsker {
         driver.findElement(By.xpath("//*[@id='ProfessionId_chosen']/a")).click();
         driver.findElement(By.xpath("//*[@id='ProfessionId_chosen']/div/ul/li[4]")).click();
     }
-
     public void choseYrkeEtterforsker() {
         driver.findElement(By.xpath("//*[@id='ProfessionId_chosen']/a")).click();
         driver.findElement(By.xpath("//*[@id='ProfessionId_chosen']/div/ul/li[6]")).click();
@@ -303,10 +283,6 @@ public class TestBaseJobbønsker {
     public void choseBransjeBankvirksomhet() {
         driver.findElement(By.xpath("//*[@id='industry_select_chosen']/a")).click();
         driver.findElement(By.xpath("//*[@id='industry_select_chosen']/div/ul/li[2]")).click();
-    }
-    public void choseBransjeBygg() {
-        driver.findElement(By.xpath("//*[@id='industry_select_chosen']/a")).click();
-        driver.findElement(By.xpath("//*[@id='industry_select_chosen']/div/ul/li[3]")).click();
     }
     public void choseBransjeEiendom() {
         driver.findElement(By.xpath("//*[@id='industry_select_chosen']/a")).click();

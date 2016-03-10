@@ -225,6 +225,7 @@ public class DTestsYrker extends TestBaseJobbønsker {
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='professionList']/div/div/div[2]/ul[2]/li[4]/div")).getText(), "Etterforsker");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='professionList']/div/div/div[2]/ul[2]/li[5]/div")).getText(), "Jurist");
     }
+
     @Test(priority = 9)
     public void deleteFewItems() throws Exception {
         scrollPageUp();
@@ -236,5 +237,9 @@ public class DTestsYrker extends TestBaseJobbønsker {
         assertElementNotPresent(By.xpath("//*[@id='topitems']/li[5]/div"));
         assertElementNotPresent(By.xpath("//*[@id='professionList']/div/div/div[2]/ul[2]/li[5]/div"));
     }
+
+    /*@Test(priority = 10)
+    public void deleteAllItems() throws Exception {
+    }*/
 
 }

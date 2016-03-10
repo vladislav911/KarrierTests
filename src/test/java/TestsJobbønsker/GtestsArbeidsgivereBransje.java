@@ -21,10 +21,7 @@ public class GtestsArbeidsgivereBransje extends TestBaseJobbønsker {
 
     @Test(priority = 1)
     public void verifyItemNotAddWithoutBransje () throws Exception {
-        loggIn();
         goToArbeidsgivereBransje();
-        // Close reklam
-        driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
         driver.findElement(By.xpath("//*[@id='company_select_chosen']/a")).click();
         Thread.sleep(1500);
         assertElementNotPresent(By.xpath("//*[@id='company_select_chosen']/div/ul/li[1]"));
@@ -63,53 +60,56 @@ public class GtestsArbeidsgivereBransje extends TestBaseJobbønsker {
     public void verifyAdd10Items() throws Exception {
         choseBransjeBankvirksomhet();
         scrollPageUp();
-        choseFirmaABNAmro();
-        waitForElementPresent(By.xpath("//*[@id='topitems']/li[3]/div"));
-
-        choseBransjeBygg();
-        scrollPageUp();
+        Thread.sleep(1000);
         choseFirmaABNAmro();
         waitForElementPresent(By.xpath("//*[@id='topitems']/li[3]/div"));
 
         choseBransjeEiendom();
         scrollPageUp();
+        Thread.sleep(1000);
         choseFirmaABBL();
         waitForElementPresent(By.xpath("//*[@id='topitems']/li[4]/div"));
 
         choseBransjeEngineering();
         scrollPageUp();
+        Thread.sleep(1000);
         choseFirmaBS();
         waitForElementPresent(By.xpath("//*[@id='topitems']/li[5]/div"));
 
         choseBransjeFarmasi();
         scrollPageUp();
+        Thread.sleep(1000);
         choseFirmaGE();
         waitForElementPresent(By.xpath("//*[@id='companyList']/div/div/div[2]/ul[2]/li/div"));
 
         choseBransjeFinans();
         scrollPageUp();
+        Thread.sleep(1000);
         choseFirmaABG();
         waitForElementPresent(By.xpath("//*[@id='companyList']/div/div/div[2]/ul[2]/li[2]/div"));
 
         choseBransjeForsikring();
         scrollPageUp();
+        Thread.sleep(1000);
         choseFirmaAGIOS();
         waitForElementPresent(By.xpath("//*[@id='companyList']/div/div/div[2]/ul[2]/li[3]/div"));
 
         choseBransjeForsikringOg();
         scrollPageUp();
+        Thread.sleep(1000);
         choseFirmaABB();
         waitForElementPresent(By.xpath("//*[@id='companyList']/div/div/div[2]/ul[2]/li[4]/div"));
 
         choseBransjeHelse();
         scrollPageUp();
+        Thread.sleep(1000);
         choseFirmaBeauty();
         waitForElementPresent(By.xpath("//*[@id='companyList']/div/div/div[2]/ul[2]/li[5]/div"));
         refreshPageArbeidsgivereBransje();
         Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li/div")).getText(), "Advokatfirmaet CLP");
         Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[2]/div")).getText(), "Advokatfirmaet Eurojuris Haugesund AS");
         Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[3]/div")).getText(), "ABN Amro");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[4]/div")).getText(), "A. L. Høyer");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[4]/div")).getText(), "ABBL");
         Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[5]/div")).getText(), "BS Teknikk");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='companyList']/div/div/div[2]/ul[2]/li/div")).getText(), "ABB");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='companyList']/div/div/div[2]/ul[2]/li[2]/div")).getText(), "ABG Sundal Collier");
@@ -127,7 +127,7 @@ public class GtestsArbeidsgivereBransje extends TestBaseJobbønsker {
         Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li/div")).getText(), "Advokatfirmaet CLP");
         Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[2]/div")).getText(), "Advokatfirmaet Eurojuris Haugesund AS");
         Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[3]/div")).getText(), "ABN Amro");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[4]/div")).getText(), "A. L. Høyer");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[4]/div")).getText(), "ABBL");
         Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[5]/div")).getText(), "AGIOS AS");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='companyList']/div/div/div[2]/ul[2]/li/div")).getText(), "ABB");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='companyList']/div/div/div[2]/ul[2]/li[2]/div")).getText(), "ABG Sundal Collier");
@@ -141,7 +141,7 @@ public class GtestsArbeidsgivereBransje extends TestBaseJobbønsker {
         Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li/div")).getText(), "Advokatfirmaet CLP");
         Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[2]/div")).getText(), "Advokatfirmaet Eurojuris Haugesund AS");
         Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[3]/div")).getText(), "ABN Amro");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[4]/div")).getText(), "A. L. Høyer");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[4]/div")).getText(), "ABBL");
         Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[5]/div")).getText(), "BS Teknikk");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='companyList']/div/div/div[2]/ul[2]/li/div")).getText(), "ABB");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='companyList']/div/div/div[2]/ul[2]/li[2]/div")).getText(), "ABG Sundal Collier");
@@ -158,7 +158,7 @@ public class GtestsArbeidsgivereBransje extends TestBaseJobbønsker {
         Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li/div")).getText(), "Advokatfirmaet Eurojuris Haugesund AS");
         Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[2]/div")).getText(), "Advokatfirmaet CLP");
         Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[3]/div")).getText(), "ABN Amro");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[4]/div")).getText(), "A. L. Høyer");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[4]/div")).getText(), "ABBL");
         Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[5]/div")).getText(), "BS Teknikk");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='companyList']/div/div/div[2]/ul[2]/li/div")).getText(), "ABB");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='companyList']/div/div/div[2]/ul[2]/li[2]/div")).getText(), "ABG Sundal Collier");
@@ -174,11 +174,85 @@ public class GtestsArbeidsgivereBransje extends TestBaseJobbønsker {
         Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[2]/div")).getText(), "Advokatfirmaet CLP");
         Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[3]/div")).getText(), "ABN Amro");
         Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[4]/div")).getText(), "BS Teknikk");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[5]/div")).getText(), "A. L. Høyer");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[5]/div")).getText(), "ABBL");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='companyList']/div/div/div[2]/ul[2]/li/div")).getText(), "ABB");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='companyList']/div/div/div[2]/ul[2]/li[2]/div")).getText(), "ABG Sundal Collier");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='companyList']/div/div/div[2]/ul[2]/li[3]/div")).getText(), "AGIOS AS");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='companyList']/div/div/div[2]/ul[2]/li[4]/div")).getText(), "Beauty Trend");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='companyList']/div/div/div[2]/ul[2]/li[5]/div")).getText(), "GE Norway");
+    }
+
+    @Test(priority = 8)
+    public void moveWithDragAndDrop() throws Exception {
+        // Scroll page to top Items
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//li[2]/div")));
+        ((JavascriptExecutor) driver).executeScript("scroll(0,450)");
+        // Move 4 Top Item to 3 position
+        Actions slider = new Actions(driver)
+                .dragAndDropBy(driver.findElement(By.xpath("//li[4]/div")), 0, -45);
+        slider
+                .build()
+                .perform();
+        Thread.sleep(1000);
+        /// Move 1 Top Item to 5 position
+        Actions slider2 = new Actions(driver)
+                .dragAndDropBy(driver.findElement(By.xpath("//li/div")),0, 170);
+        slider2
+                .build()
+                .perform();
+        Thread.sleep(1000);
+        refreshPageArbeidsgivereBransje();
+        // Check position after moving
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li/div")).getText(), "Advokatfirmaet CLP");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[2]/div")).getText(), "BS Teknikk");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[3]/div")).getText(), "ABN Amro");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[4]/div")).getText(), "ABBL");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[5]/div")).getText(), "Advokatfirmaet Eurojuris Haugesund AS");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='companyList']/div/div/div[2]/ul[2]/li/div")).getText(), "ABB");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='companyList']/div/div/div[2]/ul[2]/li[2]/div")).getText(), "ABG Sundal Collier");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='companyList']/div/div/div[2]/ul[2]/li[3]/div")).getText(), "AGIOS AS");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='companyList']/div/div/div[2]/ul[2]/li[4]/div")).getText(), "Beauty Trend");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='companyList']/div/div/div[2]/ul[2]/li[5]/div")).getText(), "GE Norway");
+        // Scroll page to top Items
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//li[2]/div")));
+        ((JavascriptExecutor) driver).executeScript("scroll(0,450)");
+        // Move 2 Item CategoryList to Top Items
+        Actions slider3 = new Actions(driver)
+                .dragAndDropBy(driver.findElement(By.xpath("//ul[2]/li[2]/div")), 0, -200);
+        slider3
+                .build()
+                .perform();
+        Thread.sleep(1000);
+        // Move 3 Item CategoryList to Top Items
+        Actions slider4 = new Actions(driver)
+                .dragAndDropBy(driver.findElement(By.xpath("//ul[2]/li[3]/div")), 0, -205);
+        slider4
+                .build()
+                .perform();
+        Thread.sleep(1000);
+        refreshPageArbeidsgivereBransje();
+        // Check position after moving
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li/div")).getText(), "AGIOS AS");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[2]/div")).getText(), "ABG Sundal Collier");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[3]/div")).getText(), "Advokatfirmaet CLP");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[4]/div")).getText(), "BS Teknikk");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[5]/div")).getText(), "ABN Amro");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='companyList']/div/div/div[2]/ul[2]/li/div")).getText(), "ABB");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='companyList']/div/div/div[2]/ul[2]/li[2]/div")).getText(), "ABBL");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='companyList']/div/div/div[2]/ul[2]/li[3]/div")).getText(), "Advokatfirmaet Eurojuris Haugesund AS");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='companyList']/div/div/div[2]/ul[2]/li[4]/div")).getText(), "Beauty Trend");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='companyList']/div/div/div[2]/ul[2]/li[5]/div")).getText(), "GE Norway");
+    }
+
+    @Test(priority = 9)
+    public void deleteFewItems() throws Exception {
+        scrollPageUp();
+        driver.findElement(By.xpath("//ul[@id='topitems']/li[5]/div/div/a/i")).click();
+        scrollPageUp();
+        driver.findElement(By.xpath("//div[@id='companyList']/div/div/div[2]/ul[2]/li[5]/div/a/i")).click();
+        Thread.sleep(1000);
+        refreshPageArbeidsgivereBransje();
+        assertElementNotPresent(By.xpath("//*[@id='topitems']/li[5]/div"));
+        assertElementNotPresent(By.xpath("//div[@id='companyList']/div/div/div[2]/ul[2]/li[5]/div"));
     }
 }

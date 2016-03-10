@@ -21,10 +21,7 @@ public class FTestsArbeidsgivereFirmanavn extends TestBaseJobbønsker {
 
     @Test(priority = 1)
     public void verifyItemAdd() throws Exception {
-        loggIn();
         goToArbeidsgivere();
-        // Close reklam
-        driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
         driver.findElement(By.id("CompanyName")).sendKeys("Ab");
         waitForElementPresent(By.xpath("//ul[@id='ui-id-1']/li"));
         driver.findElement(By.xpath("//ul[@id='ui-id-1']/li")).click();
@@ -287,4 +284,7 @@ public class FTestsArbeidsgivereFirmanavn extends TestBaseJobbønsker {
         assertElementNotPresent(By.xpath("//*[@id='companyList']/div/div/div[2]/ul[2]/li/div/a/i"));
         assertElementNotPresent(By.xpath("/*[@id='companyList']/div/div/div[2]/ul[2]/li[1]/div"));
     }
+    /*@Test(priority = 9)
+    public void deleteAllItems() throws Exception {
+    }*/
 }

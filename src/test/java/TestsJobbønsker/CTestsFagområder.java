@@ -206,5 +206,5 @@ public class CTestsFagområder extends TestBaseJobbønsker {
     /*@Test(priority = 8)
     public void deleteAllItems() throws Exception {
 
-    }*/
+     }*/
 }

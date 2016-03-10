@@ -223,7 +223,7 @@ public class HTestsArbeidssteder extends TestBaseJobbønsker {
         assertElementNotPresent(By.xpath("//*[@id='locationList']/div/div/div[2]/ul[2]/li/div/ul/li[3]/div"));
         assertElementNotPresent(By.xpath("//*[@id='locationList']/div/div/div[2]/ul[2]/li/div/ul/li[4]/div"));
     }
-    @Test(priority = 9)
+    /*@Test(priority = 9)
     public void deleteAllItems() throws Exception {
         loggIn();
         goToArbeidssteder();
@@ -239,5 +239,5 @@ public class HTestsArbeidssteder extends TestBaseJobbønsker {
         driver.findElement(By.tagName("html"));
         assertElementNotPresent(By.xpath("//*[@id='topitems']/li[1]/div"));
         assertElementNotPresent(By.xpath("//*[@id='topitems']/li/div"));
-    }
+    }*/
 }

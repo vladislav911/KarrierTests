@@ -20,8 +20,6 @@ public class BTestsStillingstyper extends TestBaseJobbønsker {
     @Test(priority = 1)
      public void verifyItemNotPresentWithoutOmfang () throws Exception {
         goToStillingstyper();
-        // Close reklam
-        driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
         choseStillingstypeFrilans();
         assertElementNotPresent(By.xpath("//*[@id='topitems']/li/div"));
         assertElementNotPresent(By.xpath("//*[@id='topitems']/li[1]/div"));

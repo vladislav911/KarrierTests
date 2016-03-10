@@ -14,7 +14,8 @@ import static org.testng.Assert.fail;
 import org.testng.annotations.Test;
 
 public class ACreateUserAndMoveToJobbønsker extends TestBaseJobbønsker {
-    @Test
+
+    @Test(priority = 1)
     public void CreateUser() throws Exception {
         // Go to http://karrierestart.no/registrering
         driver.get(baseUrl + "/registrering");

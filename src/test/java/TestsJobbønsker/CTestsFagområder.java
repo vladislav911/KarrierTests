@@ -193,6 +193,7 @@ public class CTestsFagområder extends TestBaseJobbønsker {
 
     @Test(priority = 7)
     public void deleteFewItems() throws Exception {
+        goToFagområder();
         scrollPageUp();
         driver.findElement(By.xpath("//ul[@id='topitems']/li[5]/div/div/a/i")).click();
         scrollPageUp();

@@ -33,6 +33,7 @@ public class FTestsArbeidsgivereFirmanavn extends TestBaseJobbønsker {
     @Test(priority = 2)
     public void verifyDoubleItemNotAdd() throws Exception {
         driver.findElement(By.id("CompanyName")).sendKeys("Ab");
+        waitForElementPresent(By.xpath("//ul[@id='ui-id-1']/li"));
         driver.findElement(By.xpath("//ul[@id='ui-id-1']/li")).click();
         refreshPageArbeidsgivere();
         assertElementNotPresent(By.xpath("//*[@id='topitems']/li[2]/div"));
@@ -41,65 +42,65 @@ public class FTestsArbeidsgivereFirmanavn extends TestBaseJobbønsker {
     @Test(priority = 3)
     public void verifyAdd10Items() throws Exception {
         driver.findElement(By.id("CompanyName")).sendKeys("2tal AS.");
-        Thread.sleep(1500);
+        Thread.sleep(2000);
         driver.findElement(By.id("CompanyName")).sendKeys(Keys.DOWN);
-        Thread.sleep(500);
+        Thread.sleep(1000);
         driver.findElement(By.id("CompanyName")).sendKeys(Keys.ENTER);
         waitForElementPresent(By.xpath("//*[@id='topitems']/li[2]/div"));
 
         driver.findElement(By.id("CompanyName")).sendKeys("3T Produkter");
-        Thread.sleep(1500);
+        Thread.sleep(2000);
         driver.findElement(By.id("CompanyName")).sendKeys(Keys.DOWN);
-        Thread.sleep(500);
+        Thread.sleep(1000);
         driver.findElement(By.id("CompanyName")).sendKeys(Keys.ENTER);
         waitForElementPresent(By.xpath("//*[@id='topitems']/li[3]/div"));
 
         driver.findElement(By.id("CompanyName")).sendKeys("ARK Alta");
-        Thread.sleep(1500);
+        Thread.sleep(2000);
         driver.findElement(By.id("CompanyName")).sendKeys(Keys.DOWN);
-        Thread.sleep(500);
+        Thread.sleep(1000);
         driver.findElement(By.id("CompanyName")).sendKeys(Keys.ENTER);
         waitForElementPresent(By.xpath("//*[@id='topitems']/li[4]/div"));
 
         driver.findElement(By.id("CompanyName")).sendKeys("4 SOLUTIONS");
-        Thread.sleep(1500);
+        Thread.sleep(2000);
         driver.findElement(By.id("CompanyName")).sendKeys(Keys.DOWN);
-        Thread.sleep(500);
+        Thread.sleep(1000);
         driver.findElement(By.id("CompanyName")).sendKeys(Keys.ENTER);
         waitForElementPresent(By.xpath("//*[@id='topitems']/li[5]/div"));
 
         driver.findElement(By.id("CompanyName")).sendKeys("AJ Gassdeteksjon");
-        Thread.sleep(1500);
+        Thread.sleep(2000);
         driver.findElement(By.id("CompanyName")).sendKeys(Keys.DOWN);
-        Thread.sleep(500);
+        Thread.sleep(1000);
         driver.findElement(By.id("CompanyName")).sendKeys(Keys.ENTER);
         waitForElementPresent(By.xpath("//*[@id='companyList']/div/div/div[2]/ul[2]/li/div"));
 
         driver.findElement(By.id("CompanyName")).sendKeys("123 Bad");
-        Thread.sleep(1500);
+        Thread.sleep(2000);
         driver.findElement(By.id("CompanyName")).sendKeys(Keys.DOWN);
-        Thread.sleep(500);
+        Thread.sleep(1000);
         driver.findElement(By.id("CompanyName")).sendKeys(Keys.ENTER);
         waitForElementPresent(By.xpath("//*[@id='companyList']/div/div/div[2]/ul[2]/li[2]/div"));
 
         driver.findElement(By.id("CompanyName")).sendKeys("800Renhold");
-        Thread.sleep(1500);
+        Thread.sleep(2000);
         driver.findElement(By.id("CompanyName")).sendKeys(Keys.DOWN);
-        Thread.sleep(500);
+        Thread.sleep(1000);
         driver.findElement(By.id("CompanyName")).sendKeys(Keys.ENTER);
         waitForElementPresent(By.xpath("//*[@id='companyList']/div/div/div[2]/ul[2]/li[3]/div"));
 
         driver.findElement(By.id("CompanyName")).sendKeys("Bohus Bryne");
-        Thread.sleep(1500);
+        Thread.sleep(2000);
         driver.findElement(By.id("CompanyName")).sendKeys(Keys.DOWN);
-        Thread.sleep(500);
+        Thread.sleep(1000);
         driver.findElement(By.id("CompanyName")).sendKeys(Keys.ENTER);
         waitForElementPresent(By.xpath("//*[@id='companyList']/div/div/div[2]/ul[2]/li[4]/div"));
 
         driver.findElement(By.id("CompanyName")).sendKeys("KOVO");
-        Thread.sleep(1500);
+        Thread.sleep(2000);
         driver.findElement(By.id("CompanyName")).sendKeys(Keys.DOWN);
-        Thread.sleep(500);
+        Thread.sleep(1000);
         driver.findElement(By.id("CompanyName")).sendKeys(Keys.ENTER);
         waitForElementPresent(By.xpath("//*[@id='companyList']/div/div/div[2]/ul[2]/li[5]/div"));
 

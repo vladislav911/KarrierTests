@@ -24,7 +24,7 @@ public class TestBaseJobbønsker {
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
         baseUrl = "http://dev.karrierestart.no";
-        Email1 = "testtt334@mail.ru";
+        Email1 = "testtt342@mail.ru";
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(1285, 985));
     }
@@ -89,11 +89,23 @@ public class TestBaseJobbønsker {
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
             try { if (isElementPresent(by)) break; } catch (Exception e) {}
-            Thread.sleep(1000);
+            Thread.sleep(100);
         }
 
     }
-
+    public void deleteUser () {
+    // Click menu user
+    driver.findElement(By.cssSelector(".drop-down-ctrl")).click();
+    // Click link - Innstillinger
+    driver.findElement(By.linkText("Innstillinger")).click();
+    // Click link - Slett profil og alle data
+    driver.findElement(By.linkText("Slett profil og alle data")).click();
+    // Click link - slett min konto for alltid
+    driver.findElement(By.linkText("slett min konto for alltid")).click();
+    // Verify Current page = Base Url
+    String Url = driver.getCurrentUrl();
+    Assert.assertEquals(Url,baseUrl + "/");
+    }
 
   // METHODS FOR REGISTRATION
     public void clickOnButtonRegistrationStep2() {
@@ -355,7 +367,7 @@ public class TestBaseJobbønsker {
 
     public void goToArbeidssteder () throws InterruptedException {
         driver.get(baseUrl + "/JobPreferences/Locations");
-        waitForElementPresent(By.xpath("//*[@id=\"CompanyName\"]"));
+        waitForElementPresent(By.xpath("//*[@id='sLocation_chosen']/a"));
     }
     public void refreshPageArbeidssteder() throws InterruptedException {
         refreshPage();

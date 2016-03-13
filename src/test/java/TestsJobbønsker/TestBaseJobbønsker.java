@@ -24,7 +24,7 @@ public class TestBaseJobbønsker {
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
         baseUrl = "http://dev.karrierestart.no";
-        Email1 = "testtt342@mail.ru";
+        Email1 = "testtt349@mail.ru";
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(1285, 985));
     }

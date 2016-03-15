@@ -1,15 +1,14 @@
 package SearchPortals;
 
-import com.thoughtworks.selenium.Selenium;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.*;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import static org.testng.Assert.*;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.fail;
 
 public class TestBaseSearchPortals {
@@ -90,9 +89,21 @@ public class TestBaseSearchPortals {
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
             try { if (isElementPresent(by)) break; } catch (Exception e) {}
-            Thread.sleep(100);
+            Thread.sleep(500);
         }
     }
+
+    public void waitForTitle(String by) throws InterruptedException {
+        for (int second = 0; ; second++) {
+            if (second >= 20) fail("timeout");
+            try {
+                if (by.equals(driver.getTitle())) break;
+            } catch (Exception e) {
+            }
+            Thread.sleep(1000);
+        }
+    }
+
     public void deleteUser () {
         // Click menu user
         driver.findElement(By.cssSelector(".drop-down-ctrl")).click();
@@ -107,20 +118,29 @@ public class TestBaseSearchPortals {
         Assert.assertEquals(Url,baseUrl + "/");
     }
 
-    // METHODS FOR REGISTRATION
-    public void clickOnButtonRegistrationStep2() {
-        driver.findElement(By.xpath("//button[@onclick=\"$('#registration_form').submit();\"]")).click();
+    public void loggin() throws Exception {
+        // Go to http://karrierestart.no/registrering
+        driver.get(baseUrl);
+        waitForElementPresent(By.id("responsive-menu"));
+        driver.findElement(By.id("nav-login")).click();
+        waitForElementPresent(By.xpath("//*[@id='login-cntr']/div/div[1]"));
+        driver.findElement(By.id("UserName")).clear();
+        driver.findElement(By.id("UserName")).sendKeys(Email2);
+        driver.findElement(By.id("LoginPassword")).clear();
+        driver.findElement(By.id("LoginPassword")).sendKeys("test");
+        driver.findElement(By.className("login-btn")).click();
+        waitForElementPresent(By.id("account-menu"));
+        Thread.sleep(3000);
+        assertEquals(driver.getCurrentUrl(), baseUrl + "/account");
+        // Close reklam
+        driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
     }
-    public void clickOnButtonRegistrationStep3() {
-        driver.findElement(By.xpath("//button[@onclick=\"$('#registration_form').submit();\"]")).click();
-    }
-    public void clickOnButtonRegistrationStep4() {
-        driver.findElement(By.xpath("//*[@id='registration_form']/div/div[2]/div[1]/div/div[5]/div/button")).click();
-    }
+
+
     // METHODS FOR STILLINGER
     public void goToPageStillinger() throws  InterruptedException{
         driver.get(baseUrl + "/jobb");
-        waitForElementPresent(By.id("searchtext'"));
+        waitForElementPresent(By.className("search-portal-wrp"));
     }
 }
 

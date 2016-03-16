@@ -142,5 +142,16 @@ public class TestBaseSearchPortals {
         driver.get(baseUrl + "/jobb");
         waitForElementPresent(By.className("search-portal-wrp"));
     }
+
+    // METHODS FOR ARBEIDSGIVERE
+    public void goToPageArbeidsgivere() throws  InterruptedException{
+        driver.get(baseUrl + "/arbeidsgivere");
+        waitForElementPresent(By.className("search-portal-wrp"));
+    }
+    // METHODS FOR KANDIDATER
+    public void goToPageKandidater() throws  InterruptedException{
+        driver.get(baseUrl + "/kandidater");
+        waitForElementPresent(By.className("search-portal-wrp"));
+    }
 }
 

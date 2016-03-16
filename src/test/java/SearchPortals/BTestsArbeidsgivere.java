@@ -9,11 +9,11 @@ import static org.testng.Assert.fail;
 
 import org.testng.annotations.Test;
 
-public class BTestsStillinger extends TestBaseSearchPortals {
+public class BTestsArbeidsgivere extends TestBaseSearchPortals {
 
     @Test(priority = 1)
     public void searchFreeTextIncorrect() throws Exception {
-        goToPageStillinger();
+        goToPageArbeidsgivere();
         // Close reklam
         driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
         driver.findElement(By.id("searchtext")).sendKeys("adasdasdgfhfg");
@@ -26,18 +26,18 @@ public class BTestsStillinger extends TestBaseSearchPortals {
 
     @Test(priority = 2)
     public void searchFreeTextCorrect() throws Exception {
-        goToPageStillinger();
+        goToPageArbeidsgivere();
         driver.findElement(By.id("searchtext")).sendKeys("manager");
         driver.findElement(By.className("search-top-submit")).click();
         waitForElementPresent(By.xpath("//*[@id='filter']/h3"));
         assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl/dt")).getText(), "Søketekst :");
         assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl/dd/span")).getText(), "manager");
-        assertEquals(driver.getCurrentUrl(), baseUrl + "/jobb?searchtext=manager");
+        assertEquals(driver.getCurrentUrl(), baseUrl + "/arbeidsgivere?searchtext=manager");
     }
 
     @Test(priority = 3)
     public void searchAndAddItemsAllCategory() throws Exception {
-        goToPageStillinger();
+        goToPageArbeidsgivere();
         // Search Arbeidssted
         driver.findElement(By.id("searchtext")).sendKeys("Ukra");
         waitForElementPresent(By.xpath("//*[@id='ui-id-1']"));
@@ -59,7 +59,7 @@ public class BTestsStillinger extends TestBaseSearchPortals {
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
         Thread.sleep(1500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
-        waitForTitle("Ledige stillinger - IT-arkitekt - Ukraina");
+        waitForTitle("Arbeidsgivere - IT-arkitekt - Ukraina");
         Thread.sleep(1000);
 
         // Search Fagomrade
@@ -67,10 +67,9 @@ public class BTestsStillinger extends TestBaseSearchPortals {
         waitForElementPresent(By.xpath("//*[@id='ui-id-1']"));
         Thread.sleep(1000);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
-        driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
         Thread.sleep(1500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
-        waitForTitle("Ledige stillinger - Undervisning, lærer- og lektorfag - IT-arkitekt - Ukraina");
+        waitForTitle("Arbeidsgivere - Undervisning, lærer- og lektorfag - IT-arkitekt - Ukraina");
         Thread.sleep(1000);
 
         // Search Bransje
@@ -80,17 +79,9 @@ public class BTestsStillinger extends TestBaseSearchPortals {
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
         Thread.sleep(1500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
-        waitForTitle("Ledige stillinger - Undervisning, lærer- og lektorfag - IT-arkitekt - Bygg / Anlegg / Entreprenør - Ukraina");
+        waitForTitle("Arbeidsgivere - Undervisning, lærer- og lektorfag - IT-arkitekt - Bygg / Anlegg / Entreprenør - Ukraina");
         Thread.sleep(1000);
 
-         // Search Firmanavn
-        driver.findElement(By.id("searchtext")).sendKeys("Hewlett");
-        waitForElementPresent(By.xpath("//*[@id='ui-id-1']"));
-        Thread.sleep(1000);
-        driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
-        Thread.sleep(1500);
-        driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
-        waitForTitle("Ledige stillinger - Undervisning, lærer- og lektorfag - IT-arkitekt - Bygg / Anlegg / Entreprenør - Ukraina - Hewlett-Packard Norway (HP)");
     }
 
     @Test(priority = 4)
@@ -104,9 +95,6 @@ public class BTestsStillinger extends TestBaseSearchPortals {
         assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[4]/dt")).getText(), "Arbeidssted :");
         assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[4]/dd/span")).getText(), "Ukraina");
         assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[5]/dt")).getText(), "Arbeidsgiver :");
-        driver.findElement(By.xpath("//*[@id='filter']/div/div")).click();
-        driver.findElement(By.xpath("//*[@id='filter']/div/div")).sendKeys(Keys.DOWN);
-        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[5]/dd/span")).getText(), "Hewlett-Packard Norway (HP)");
     }
 
     @Test(priority = 5)
@@ -127,7 +115,7 @@ public class BTestsStillinger extends TestBaseSearchPortals {
     @Test(priority = 6)
     public void deleteFilterList() throws Exception {
         driver.findElement(By.xpath("//*[@id='filter']/h3/span[2]/a/span")).click();
-        waitForTitle("Ledige stillinger");
+        waitForTitle("Arbeidsgivere");
 
         WebElement checkBoxUkraina = driver.findElement(By.xpath("//*[@id=\"f-location-207\"]"));
         Assert.assertEquals(null,checkBoxUkraina.getAttribute("checked"));
@@ -144,15 +132,12 @@ public class BTestsStillinger extends TestBaseSearchPortals {
 
     @Test(priority = 7)
     public void addItemsFromCategories() throws Exception {
-        goToPageStillinger();
-        // Add Omfang
-        driver.findElement(By.xpath("//label/i")).click();
-        waitForTitle("Ledige stillinger - Heltid");
-        Assert.assertTrue(isElementPresent(By.xpath("//div[@id='filter']/div")));
+        goToPageArbeidsgivere();
 
         // Add Arbeidssted
         driver.findElement(By.xpath("//*[@id='p-0']/label/i")).click();
-        waitForTitle("Ledige stillinger - Heltid - Utlandet");
+        waitForTitle("Arbeidsgivere - Utlandet");
+        Assert.assertTrue(isElementPresent(By.xpath("//div[@id='filter']/div")));
 
         // Add Yrke
         driver.findElement(By.xpath("//*[@id='fv0']/ul/li[2]/label/i")).click();
@@ -175,74 +160,4 @@ public class BTestsStillinger extends TestBaseSearchPortals {
         driver.findElement(By.id("companyLookup")).sendKeys(Keys.ENTER);
         waitForTitle("Ledige stillinger - Heltid - Jus - 3D-tegner - Engineering - Utlandet - Hewlett-Packard Norway (HP)");
     }
-
-    @Test(priority = 8)
-    public void assertAddItemsToFiltrListFromCategories() throws Exception {
-        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl/dt")).getText(), "Stillingstype :");
-        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl/dd/span")).getText(), "Heltid");
-        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[2]/dt")).getText(), "Fagområde :");
-        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[2]/dd/span")).getText(), "Jus");
-        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[3]/dt")).getText(), "Yrke :");
-        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[3]/dd/span")).getText(), "3D-tegner");
-        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[4]/dt")).getText(), "Bransje :");
-        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[4]/dd/span")).getText(), "Engineering");
-        driver.findElement(By.xpath("//*[@id='filter']/div/div")).click();
-        driver.findElement(By.xpath("//*[@id='filter']/div/div")).sendKeys(Keys.DOWN);
-        driver.findElement(By.xpath("//*[@id='filter']/div/div")).sendKeys(Keys.DOWN);
-        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[5]/dt")).getText(), "Arbeidssted :");
-        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[5]/dd/span")).getText(), "Utlandet");
-        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[6]/dt")).getText(), "Arbeidsgiver :");
-        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[6]/dd/span")).getText(), "Hewlett-Packard Norway (HP)");
-    }
-
-    @Test(priority = 9)
-    public void deleteItemsFromFiltrList() throws Exception {
-        driver.findElement(By.xpath("//*[@id='filter']/div/div")).click();
-        driver.findElement(By.xpath("//*[@id='filter']/div/div")).sendKeys(Keys.UP);
-        driver.findElement(By.xpath("//*[@id='filter']/div/div")).sendKeys(Keys.UP);
-        // Delete Stillingstype
-        scrollPageUp();
-        driver.findElement(By.xpath("//*[@id='filter']/div/div/dl[1]/dd/a")).click();
-        waitForTitle("Ledige stillinger - Jus - 3D-tegner - Engineering - Utlandet - Hewlett-Packard Norway (HP)");
-        // Delete Fagområde
-        scrollPageUp();
-        driver.findElement(By.xpath("//*[@id='filter']/div/div/dl[1]/dd/a")).click();
-        waitForTitle("Ledige stillinger - 3D-tegner - Engineering - Utlandet - Hewlett-Packard Norway (HP)");
-        // Delete Yrke
-        scrollPageUp();
-        driver.findElement(By.xpath("//*[@id='filter']/div/div/dl[1]/dd/a")).click();
-        waitForTitle("Ledige stillinger - Engineering - Utlandet - Hewlett-Packard Norway (HP)");
-        // Assert deleting boxes mark
-        WebElement checkBoxHeltid = driver.findElement(By.xpath("//*[@id=\"f-Heltid-1\"]"));
-        Assert.assertEquals(null,checkBoxHeltid.getAttribute("checked"));
-
-        WebElement checkBoxJus = driver.findElement(By.xpath("//*[@id=\"f-Jus-4\"]"));
-        Assert.assertEquals(null,checkBoxJus.getAttribute("checked"));
-
-        WebElement checkBox3D = driver.findElement(By.xpath("//*[@id=\"f-3D-tegner-592\"]"));
-        Assert.assertEquals(null,checkBox3D.getAttribute("checked"));
-    }
-
-    @Test(priority = 10)
-    public void deleteItemsFromCategories() throws Exception {
-        // Delete Bransje
-        driver.findElement(By.xpath("//*[@id='fv1']/ul/li[5]/label/i")).click();
-        waitForTitle("Ledige stillinger - Utlandet - Hewlett-Packard Norway (HP)");
-        // Delete Arbeidsted
-        driver.findElement(By.xpath("//*[@id='p-0']/label/i")).click();
-        waitForTitle("Ledige stillinger - Hewlett-Packard Norway (HP)");
-    }
-
-    @Test(priority = 11)
-    public void deleteFiltrList() throws Exception {
-        // Delete Arbeidsgiver
-        scrollPageUp();
-        driver.findElement(By.xpath("//*[@id='filter']/div/div/dl[1]/dd/a")).click();
-        waitForTitle("Ledige stillinger");
-        assertElementNotPresent(By.xpath("//div[@id='filter']/div"));
-    }
-
-
-
 }
-

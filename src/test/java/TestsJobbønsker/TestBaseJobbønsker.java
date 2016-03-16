@@ -24,7 +24,7 @@ public class TestBaseJobbønsker {
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
         baseUrl = "http://dev.karrierestart.no";
-        Email1 = "testtt349@mail.ru";
+        Email1 = "testdd333@mail.ru";
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(1285, 985));
     }
@@ -92,6 +92,23 @@ public class TestBaseJobbønsker {
             Thread.sleep(100);
         }
 
+    }
+    public void loggIn() throws Exception {
+        // Open BaseUrl
+        driver.get(baseUrl);
+        // Login User Test1
+        driver.findElement(By.id("nav-login")).click();
+        driver.findElement(By.id("UserName")).clear();
+        driver.findElement(By.id("UserName")).sendKeys(Email1);
+        driver.findElement(By.id("LoginPassword")).clear();
+        driver.findElement(By.id("LoginPassword")).sendKeys("test");
+        driver.findElement(By.className("login-btn")).click();
+        // Verify name user - Test2 User2
+        try {
+            assertEquals(driver.findElement(By.cssSelector("span.li-txt.overflow-ellipsis")).getText(), "Test2 User2");
+        } catch (Error e) {
+            verificationErrors.append(e.toString());
+        }
     }
     public void deleteUser () {
     // Click menu user

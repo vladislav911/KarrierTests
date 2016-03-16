@@ -231,13 +231,12 @@ public class HTestsArbeidssteder extends TestBaseJobbønsker {
         // Close reklam
         driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
         scrollPageUp();
-        driver.findElement(By.linkText("Slett alle")).click();
-        Thread.sleep(1000);
-        driver.findElement(By.linkText("Ja")).click();
-        Thread.sleep(1000);
+        driver.findElement(By.xpath("//*[@id='locationList']/div/div/div[1]/div[2]/a")).click();
+        Thread.sleep(10000);
+        driver.findElement(By.id("cbRemoveForm")).click();
+        Thread.sleep(10000);
         driver.navigate().refresh();
         Thread.sleep(1000);
-        driver.findElement(By.tagName("html"));
         assertElementNotPresent(By.xpath("//*[@id='topitems']/li[1]/div"));
         assertElementNotPresent(By.xpath("//*[@id='topitems']/li/div"));
     }*/

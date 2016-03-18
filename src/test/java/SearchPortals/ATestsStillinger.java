@@ -1,6 +1,7 @@
 package SearchPortals;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import com.gargoylesoftware.htmlunit.javascript.background.JavaScriptExecutor;
 import net.sourceforge.htmlunit.corejs.javascript.Function;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
@@ -31,12 +32,13 @@ public class ATestsStillinger extends TestBaseSearchPortals {
     @Test(priority = 2)
     public void searchFreeTextCorrect() throws Exception {
         goToPageStillinger();
-        driver.findElement(By.id("searchtext")).sendKeys("manager");
+        driver.findElement(By.id("searchtext")).sendKeys("Test Organisasjonen");
+        Thread.sleep(500);
         driver.findElement(By.className("search-top-submit")).click();
         waitForElementPresent(By.xpath("//*[@id='filter']/h3"));
         assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl/dt")).getText(), "Søketekst :");
-        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl/dd/span")).getText(), "manager");
-        assertEquals(driver.getCurrentUrl(), baseUrl + "/jobb?searchtext=manager");
+        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl/dd/span")).getText(), "Test Organisasjonen");
+        assertEquals(driver.getCurrentUrl(), baseUrl + "/jobb?searchtext=Test+Organisasjonen");
     }
 
     @Test(priority = 3)
@@ -48,7 +50,9 @@ public class ATestsStillinger extends TestBaseSearchPortals {
         assertEquals(driver.findElement(By.xpath("//ul[@id='ui-id-1']/li")).getText(), "Treff i Steder");
         assertEquals(driver.findElement(By.xpath("//ul[@id='ui-id-1']/li[2]")).getText(), "Aukra");
         assertEquals(driver.findElement(By.xpath("//ul[@id='ui-id-1']/li[3]")).getText(), "Ukraina");
+        Thread.sleep(1000);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
+        Thread.sleep(1000);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
         Thread.sleep(1500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
@@ -60,6 +64,7 @@ public class ATestsStillinger extends TestBaseSearchPortals {
         waitForElementPresent(By.xpath("//*[@id='ui-id-1']"));
         Thread.sleep(1000);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
+        Thread.sleep(1000);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
         Thread.sleep(1500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
@@ -71,6 +76,7 @@ public class ATestsStillinger extends TestBaseSearchPortals {
         waitForElementPresent(By.xpath("//*[@id='ui-id-1']"));
         Thread.sleep(1000);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
+        Thread.sleep(1000);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
         Thread.sleep(1500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
@@ -146,106 +152,77 @@ public class ATestsStillinger extends TestBaseSearchPortals {
         Assert.assertEquals(null,checkBoxBygg.getAttribute("checked"));
     }
 
+
     @Test(priority = 7)
-    public void addItemsFromCategories() throws Exception {
+    public void searchJobByOmfang() throws Exception {
         goToPageStillinger();
-        // Add Omfang
-        driver.findElement(By.xpath("//label/i")).click();
-        waitForTitle("Ledige stillinger - Heltid");
+        // Add Omfang - Diltid
+        driver.findElement(By.xpath("//li[2]/label/i")).click();
+        waitForTitle("Ledige stillinger - Deltid");
         Assert.assertTrue(isElementPresent(By.xpath("//div[@id='filter']/div")));
-
-        // Add Arbeidssted
-        driver.findElement(By.xpath("//*[@id='p-0']/label/i")).click();
-        waitForTitle("Ledige stillinger - Heltid - Utlandet");
-
-        // Add Yrke
-        driver.findElement(By.xpath("//*[@id='fv0']/ul/li[2]/label/i")).click();
-        waitForTitle("Ledige stillinger - Heltid - 3D-tegner - Utlandet");
-
-        // Add Fagområde
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[1]/div[3]/div[4]")));
-        driver.findElement(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div/div[3]/div[4]/div/ul/li[7]/label/i")).click();
-        waitForTitle("Ledige stillinger - Heltid - Jus - 3D-tegner - Utlandet");
-
-        // Add Bransje
-        driver.findElement(By.xpath("//*[@id='fv1']/ul/li[5]/label/i")).click();
-        waitForTitle("Ledige stillinger - Heltid - Jus - 3D-tegner - Engineering - Utlandet");
-
-        // Add Firmanavn
-        driver.findElement(By.id("companyLookup")).sendKeys("Hewlett");
-        waitForElementPresent(By.xpath("//ul[@id='ui-id-2']/li"));
-        Thread.sleep(1000);
-        driver.findElement(By.id("companyLookup")).sendKeys(Keys.DOWN);
-        driver.findElement(By.id("companyLookup")).sendKeys(Keys.ENTER);
-        waitForTitle("Ledige stillinger - Heltid - Jus - 3D-tegner - Engineering - Utlandet - Hewlett-Packard Norway (HP)");
+        assertEquals(driver.findElement(By.cssSelector("div.j-no-futured-left > div.j-content-wrp.clear > div.j-title > a")).getText(), "Åpen søknad – Test Organisasjonen");
     }
 
     @Test(priority = 8)
-    public void assertAddItemsToFiltrListFromCategories() throws Exception {
-        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl/dt")).getText(), "Stillingstype :");
-        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl/dd/span")).getText(), "Heltid");
-        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[2]/dt")).getText(), "Fagområde :");
-        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[2]/dd/span")).getText(), "Jus");
-        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[3]/dt")).getText(), "Yrke :");
-        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[3]/dd/span")).getText(), "3D-tegner");
-        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[4]/dt")).getText(), "Bransje :");
-        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[4]/dd/span")).getText(), "Engineering");
-        driver.findElement(By.xpath("//*[@id='filter']/div/div")).click();
-        driver.findElement(By.xpath("//*[@id='filter']/div/div")).sendKeys(Keys.DOWN);
-        driver.findElement(By.xpath("//*[@id='filter']/div/div")).sendKeys(Keys.DOWN);
-        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[5]/dt")).getText(), "Arbeidssted :");
-        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[5]/dd/span")).getText(), "Utlandet");
-        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[6]/dt")).getText(), "Arbeidsgiver :");
-        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[6]/dd/span")).getText(), "Hewlett-Packard Norway (HP)");
+    public void searchJobByArbeidssted() throws Exception {
+        goToPageStillinger();
+        // Add Arbeidssted - Burkina Faso
+        driver.findElement(By.xpath("//span/input")).sendKeys("Burkina");
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//li[484]/label/i")).click();
+        waitForTitle("Ledige stillinger - Burkina Faso");
+        Assert.assertTrue(isElementPresent(By.xpath("//div[@id='filter']/div")));
+        assertEquals(driver.findElement(By.cssSelector("div.j-no-futured-left > div.j-content-wrp.clear > div.j-title > a")).getText(), "Åpen søknad – Test Organisasjonen");
     }
 
     @Test(priority = 9)
-    public void deleteItemsFromFiltrList() throws Exception {
-        driver.findElement(By.xpath("//*[@id='filter']/div/div")).click();
-        driver.findElement(By.xpath("//*[@id='filter']/div/div")).sendKeys(Keys.UP);
-        driver.findElement(By.xpath("//*[@id='filter']/div/div")).sendKeys(Keys.UP);
-        // Delete Stillingstype
-        scrollPageUp();
-        driver.findElement(By.xpath("//*[@id='filter']/div/div/dl[1]/dd/a")).click();
-        waitForTitle("Ledige stillinger - Jus - 3D-tegner - Engineering - Utlandet - Hewlett-Packard Norway (HP)");
-        // Delete Fagområde
-        scrollPageUp();
-        driver.findElement(By.xpath("//*[@id='filter']/div/div/dl[1]/dd/a")).click();
-        waitForTitle("Ledige stillinger - 3D-tegner - Engineering - Utlandet - Hewlett-Packard Norway (HP)");
-        // Delete Yrke
-        scrollPageUp();
-        driver.findElement(By.xpath("//*[@id='filter']/div/div/dl[1]/dd/a")).click();
-        waitForTitle("Ledige stillinger - Engineering - Utlandet - Hewlett-Packard Norway (HP)");
-        // Assert deleting boxes mark
-        WebElement checkBoxHeltid = driver.findElement(By.xpath("//*[@id=\"f-Heltid-1\"]"));
-        Assert.assertEquals(null,checkBoxHeltid.getAttribute("checked"));
-
-        WebElement checkBoxJus = driver.findElement(By.xpath("//*[@id=\"f-Jus-4\"]"));
-        Assert.assertEquals(null,checkBoxJus.getAttribute("checked"));
-
-        WebElement checkBox3D = driver.findElement(By.xpath("//*[@id=\"f-3D-tegner-592\"]"));
-        Assert.assertEquals(null,checkBox3D.getAttribute("checked"));
+    public void searchJobByYrke() throws Exception {
+        goToPageStillinger();
+        // Add Yrke - Zoolog
+        driver.findElement(By.xpath("//div[3]/div/div/span/input")).sendKeys("Zoolog");
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//li[795]/label/i")).click();
+        waitForTitle("Ledige stillinger - Zoolog");
+        Assert.assertTrue(isElementPresent(By.xpath("//div[@id='filter']/div")));
+        assertEquals(driver.findElement(By.cssSelector("div.j-no-futured-left > div.j-content-wrp.clear > div.j-title > a")).getText(), "Åpen søknad – Test Organisasjonen");
     }
 
     @Test(priority = 10)
-    public void deleteItemsFromCategories() throws Exception {
-        // Delete Bransje
-        scrollPageUp();
-        driver.findElement(By.xpath("//*[@id='fv1']/ul/li[5]/label/i")).click();
-        waitForTitle("Ledige stillinger - Utlandet - Hewlett-Packard Norway (HP)");
-        Thread.sleep(1000);
-        // Delete Arbeidsted
-        scrollPageUp();
-        driver.findElement(By.xpath("//*[@id='p-0']/label/i")).click();
-        waitForTitle("Ledige stillinger - Hewlett-Packard Norway (HP)");
+    public void searchJobByFagområde() throws Exception {
+        goToPageStillinger();
+        // Add Fagområde - Undervisning, lærer- og lektorfag
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[1]/div[3]/div[4]")));
+        driver.findElement(By.xpath("//div[4]/div/ul/li[15]/label/i")).click();
+        waitForTitle("Ledige stillinger - Undervisning, lærer- og lektorfag");
+        Assert.assertTrue(isElementPresent(By.xpath("//div[@id='filter']/div")));
+        assertEquals(driver.findElement(By.cssSelector("div.j-no-futured-left > div.j-content-wrp.clear > div.j-title > a")).getText(), "Åpen søknad – Test Organisasjonen");
     }
 
     @Test(priority = 11)
-    public void deleteFiltrList() throws Exception {
-        // Delete Arbeidsgiver
-        scrollPageUp();
-        driver.findElement(By.xpath("//*[@id='filter']/div/div/dl[1]/dd/a")).click();
-        waitForTitle("Ledige stillinger");
-        assertElementNotPresent(By.xpath("//div[@id='filter']/div"));
+    public void searchJobByBransje() throws Exception {
+        goToPageStillinger();
+        // Add Bransje - Varehandel / Dagligvare / Butikk
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[1]/div[3]/div[4]")));
+        driver.findElement(By.xpath("//div[5]/div/div/span/input")).sendKeys("Varehandel");
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//div[5]/div/div[2]/ul/li[44]/label/i")).click();
+        waitForTitle("Ledige stillinger - Varehandel / Dagligvare / Butikk");
+        Assert.assertTrue(isElementPresent(By.xpath("//div[@id='filter']/div")));
+        assertEquals(driver.findElement(By.cssSelector("div.j-no-futured-left > div.j-content-wrp.clear > div.j-title > a")).getText(), "Åpen søknad – Test Organisasjonen");
+    }
+
+    @Test(priority = 12)
+    public void searchJobByFirmanavn() throws Exception {
+        goToPageStillinger();
+        // Add Firmanavn - Test Organisasjonen
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath(".//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[1]/div[3]/div[5]/h3")));
+        driver.findElement(By.id("companyLookup")).sendKeys("Test Organisasjonen");
+        waitForElementPresent(By.xpath("//ul[@id='ui-id-2']/li"));
+        Thread.sleep(500);
+        driver.findElement(By.id("companyLookup")).sendKeys(Keys.DOWN);
+        driver.findElement(By.id("companyLookup")).sendKeys(Keys.ENTER);
+        waitForTitle("Ledige stillinger - Test Organisasjonen");
+        Assert.assertTrue(isElementPresent(By.xpath("//div[@id='filter']/div")));
+        assertEquals(driver.findElement(By.cssSelector("div.j-no-futured-left > div.j-content-wrp.clear > div.j-title > a")).getText(), "Åpen søknad – Test Organisasjonen");
     }
 }

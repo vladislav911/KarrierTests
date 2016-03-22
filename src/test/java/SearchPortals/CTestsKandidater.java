@@ -184,7 +184,7 @@ public class CTestsKandidater extends TestsBaseSearchPortals {
         driver.findElement(By.className("search-top-submit")).click();
         Thread.sleep(2000);
         String AmountKandidater1 = driver.findElement(By.xpath("//div[2]/div/div/div/span")).getText();
-        // Add Type -  Meteorolog
+        // Add Type -  Ekstrahjelp
         driver.findElement(By.xpath("//div[4]/div/div/ul/li[3]/label/i")).click();
         waitForTitle("Kandidater - Ekstrahjelp");
         String AmountKandidater2 = driver.findElement(By.xpath("//div[2]/div/div/div/span")).getText();

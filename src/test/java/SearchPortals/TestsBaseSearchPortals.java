@@ -141,7 +141,6 @@ public class TestsBaseSearchPortals {
         driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
     }
 
-
     // METHODS FOR STILLINGER
     public void goToPageStillinger() throws  InterruptedException{
         driver.get(baseUrl + "/jobb");

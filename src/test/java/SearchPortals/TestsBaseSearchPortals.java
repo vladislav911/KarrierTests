@@ -1,6 +1,7 @@
 package SearchPortals;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.*;
 import org.testng.Assert;
@@ -11,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.fail;
 
-public class TestBaseSearchPortals {
+public class TestsBaseSearchPortals {
 
     static protected WebDriver driver;
     static protected String baseUrl;
@@ -21,7 +22,8 @@ public class TestBaseSearchPortals {
 
     @BeforeTest
     public void setUp() throws Exception {
-        driver = new FirefoxDriver();
+        System.setProperty("webdriver.chrome.driver", "D:\\selenium\\chromedriver.exe");
+        driver = new ChromeDriver();
         baseUrl = "http://dev.karrierestart.no";
         // DONT NEED CHANGE EMAIl
         Email2 = "testtt333@mail.ru";
@@ -133,6 +135,9 @@ public class TestBaseSearchPortals {
         Thread.sleep(3000);
         assertEquals(driver.getCurrentUrl(), baseUrl + "/account");
         // Close reklam
+        driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
+    }
+    public void closeReklam() throws Exception {
         driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
     }
 

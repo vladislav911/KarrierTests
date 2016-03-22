@@ -1,7 +1,5 @@
 package SearchPortals;
-import net.sourceforge.htmlunit.corejs.javascript.Function;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import static org.testng.Assert.*;
 
@@ -9,13 +7,11 @@ import static org.testng.Assert.fail;
 
 import org.testng.annotations.Test;
 
-public class BTestsArbeidsgivere extends TestBaseSearchPortals {
+public class BTestsArbeidsgivere extends TestsBaseSearchPortals {
 
     @Test(priority = 1)
     public void searchFreeTextIncorrect() throws Exception {
         goToPageArbeidsgivere();
-        // Close reklam
-        driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
         driver.findElement(By.id("searchtext")).sendKeys("adasdasdgfhfg");
         driver.findElement(By.className("search-top-submit")).click();
         waitForElementPresent(By.xpath("//*[@id='filter']/h3"));
@@ -111,21 +107,76 @@ public class BTestsArbeidsgivere extends TestBaseSearchPortals {
     }
 
     @Test(priority = 7)
+    public void searchJobByBransje() throws Exception {
+        goToPageArbeidsgivere();
+        // Add Freetext -  Test
+        driver.findElement(By.id("searchtext")).sendKeys("Test");
+        driver.findElement(By.className("search-top-submit")).click();
+        Thread.sleep(2000);
+        String AmountKandidater1 = driver.findElement(By.xpath("//div[2]/div/div/div/div/span")).getText();
+        // Add Bransje  -  Kultur
+        driver.findElement(By.xpath("//span/input")).sendKeys("Kultur");
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//li[26]/label/i")).click();
+        waitForTitle("Arbeidsgivere - Kultur / Kunst / Øvrige kreative fag");
+        String AmountKandidater2 = driver.findElement(By.xpath("//div[2]/div/div/div/div/span")).getText();
+        Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
+        assertEquals(driver.findElement(By.cssSelector("a.j-title > span")).getText(), "Test Organisasjonen");
+
+    }
+
+    @Test(priority = 8)
     public void searchJobByArbeidssted() throws Exception {
         goToPageArbeidsgivere();
-        // Add Arbeidssted - Burkina Faso
-        driver.findElement(By.xpath("//div[2]/div/div/span/input")).sendKeys("Chile");
+        // Add Freetext -  Test
+        driver.findElement(By.id("searchtext")).sendKeys("Test");
+        driver.findElement(By.className("search-top-submit")).click();
+        Thread.sleep(2000);
+        String AmountKandidater1 = driver.findElement(By.xpath("//div[2]/div/div/div/div/span")).getText();
+        // Add Arbeidssted -  Vietnam
+        driver.findElement(By.xpath("//div[2]/div/div/span/input")).sendKeys("Vietnam");
         Thread.sleep(1000);
         driver.findElement(By.xpath("//li[686]/label/i")).click();
         waitForTitle("Arbeidsgivere - Vietnam");
-        Assert.assertTrue(isElementPresent(By.xpath("//div[@id='filter']/div")));
-        Thread.sleep(5000);
-        String expText = "Test Organisasjonen";
-        String pageSource = driver.getPageSource();
-        if(pageSource.contains(expText)){
-            System.out.println("2) Expected text '"+expText+"' present in the web page.");
-        }else{
-            System.out.println("2) Expected text '"+expText+"' is not present in the web page.");
-        }
+        String AmountKandidater2 = driver.findElement(By.xpath("//div[2]/div/div/div/div/span")).getText();
+        Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
+        assertEquals(driver.findElement(By.cssSelector("a.j-title > span")).getText(), "Test Organisasjonen");
     }
+
+    @Test(priority = 9)
+    public void searchJobByFagområde() throws Exception {
+        goToPageArbeidsgivere();
+        // Add Freetext -  Test
+        driver.findElement(By.id("searchtext")).sendKeys("Test");
+        driver.findElement(By.className("search-top-submit")).click();
+        Thread.sleep(2000);
+        String AmountKandidater1 = driver.findElement(By.xpath("//div[2]/div/div/div/div/span")).getText();
+        // Add Fagområde -  Idrett
+        driver.findElement(By.xpath("//div[3]/div/ul/li[5]/label/i")).click();
+        waitForTitle("Arbeidsgivere - Idrett, kroppsøving og friluftsliv");
+        String AmountKandidater2 = driver.findElement(By.xpath("//div[2]/div/div/div/div/span")).getText();
+        Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
+        assertEquals(driver.findElement(By.cssSelector("a.j-title > span")).getText(), "Test Organisasjonen");
+    }
+
+    @Test(priority = 10)
+    public void searchJobByYrke() throws Exception {
+        goToPageArbeidsgivere();
+        // Add Freetext -  Test
+        driver.findElement(By.id("searchtext")).sendKeys("Test");
+        driver.findElement(By.className("search-top-submit")).click();
+        Thread.sleep(2000);
+        String AmountKandidater1 = driver.findElement(By.xpath("//div[2]/div/div/div/div/span")).getText();
+        // Add Yrke -  Meteorolog
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[3]/div[3]/div")));
+        driver.findElement(By.xpath("//div[4]/div/div/span/input")).sendKeys("Meteorolog");
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//div[4]/div/div[2]/ul/li[479]/label/i")).click();
+        waitForTitle("Arbeidsgivere - Meteorolog");
+        String AmountKandidater2 = driver.findElement(By.xpath("//div[2]/div/div/div/div/span")).getText();
+        Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
+        assertEquals(driver.findElement(By.cssSelector("a.j-title > span")).getText(), "Test Organisasjonen");
+    }
+
+
 }

@@ -1,10 +1,5 @@
 package SearchPortals;
-import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import com.gargoylesoftware.htmlunit.javascript.background.JavaScriptExecutor;
-import net.sourceforge.htmlunit.corejs.javascript.Function;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import static org.testng.Assert.*;
 
@@ -12,15 +7,12 @@ import static org.testng.Assert.fail;
 
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-
-public class ATestsStillinger extends TestBaseSearchPortals {
+public class ATestsStillinger extends TestsBaseSearchPortals {
 
     @Test(priority = 1)
     public void searchFreeTextIncorrect() throws Exception {
         goToPageStillinger();
-        // Close reklam
-        driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
+        closeReklam();
         driver.findElement(By.id("searchtext")).sendKeys("adasdasdgfhfg");
         driver.findElement(By.className("search-top-submit")).click();
         waitForElementPresent(By.xpath("//*[@id='filter']/h3"));
@@ -115,7 +107,6 @@ public class ATestsStillinger extends TestBaseSearchPortals {
         assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[4]/dd/span")).getText(), "Ukraina");
         assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[5]/dt")).getText(), "Arbeidsgiver :");
         driver.findElement(By.xpath("//*[@id='filter']/div/div")).click();
-        driver.findElement(By.xpath("//*[@id='filter']/div/div")).sendKeys(Keys.DOWN);
         assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[5]/dd/span")).getText(), "Hewlett-Packard Norway (HP)");
     }
 

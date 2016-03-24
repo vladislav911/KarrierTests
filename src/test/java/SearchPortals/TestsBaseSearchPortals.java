@@ -157,5 +157,20 @@ public class TestsBaseSearchPortals {
         driver.get(baseUrl + "/kandidater");
         waitForElementPresent(By.className("search-portal-wrp"));
     }
+    // METHODS FOR TRAINEEPROGRAMMER
+    public void goToPageTraineeprogrammer() throws  InterruptedException{
+        driver.get(baseUrl + "/traineeordninger");
+        waitForElementPresent(By.className("search-portal-wrp"));
+    }
+    // METHODS FOR INTERNSHIPS
+    public void goToPageInternships() throws  InterruptedException{
+        driver.get(baseUrl + "/internships");
+        waitForElementPresent(By.className("search-portal-wrp"));
+    }
+    // METHODS FOR FRILANSERE
+    public void goToPageFrilansere() throws  InterruptedException{
+        driver.get(baseUrl + "/frilansere");
+        waitForElementPresent(By.className("search-portal-wrp"));
+    }
 }
 

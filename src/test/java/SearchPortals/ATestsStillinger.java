@@ -151,7 +151,8 @@ public class ATestsStillinger extends TestsBaseSearchPortals {
         driver.findElement(By.xpath("//li[2]/label/i")).click();
         waitForTitle("Ledige stillinger - Deltid");
         Assert.assertTrue(isElementPresent(By.xpath("//div[@id='filter']/div")));
-        assertEquals(driver.findElement(By.cssSelector("div.j-no-futured-left > div.j-content-wrp.clear > div.j-title > a")).getText(), "Åpen søknad – Test Organisasjonen");
+        assertEquals(driver.findElement(By.cssSelector("div.j-no-futured-left > div.j-content-wrp.clear > div.j-title > a")).getText(), "Test tittle");
+        assertEquals(driver.findElement(By.xpath("//div[3]/div[2]/div/div/div/div/div/a")).getText(), "Åpen søknad – Test Organisasjonen");
     }
 
     @Test(priority = 8)
@@ -214,6 +215,7 @@ public class ATestsStillinger extends TestsBaseSearchPortals {
         driver.findElement(By.id("companyLookup")).sendKeys(Keys.ENTER);
         waitForTitle("Ledige stillinger - Test Organisasjonen");
         Assert.assertTrue(isElementPresent(By.xpath("//div[@id='filter']/div")));
-        assertEquals(driver.findElement(By.cssSelector("div.j-no-futured-left > div.j-content-wrp.clear > div.j-title > a")).getText(), "Åpen søknad – Test Organisasjonen");
+        assertEquals(driver.findElement(By.cssSelector("div.j-no-futured-left > div.j-content-wrp.clear > div.j-title > a")).getText(), "Test tittle");
+        assertEquals(driver.findElement(By.xpath("//div[3]/div[2]/div/div/div/div/div/a")).getText(), "Åpen søknad – Test Organisasjonen");
     }
 }

@@ -2,6 +2,7 @@ package Registration;
 
 import com.thoughtworks.selenium.Selenium;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.*;
 
@@ -28,10 +29,11 @@ public class TestDataBaseRegistration {
 
     @BeforeTest
     public void setUp() throws Exception {
-        driver = new FirefoxDriver();
+        System.setProperty("webdriver.chrome.driver", "D:\\selenium\\chromedriver.exe");
+        driver = new ChromeDriver();
         baseUrl = "http://dev.karrierestart.no";
-        Email1 = "testdy4@mail.ru";
-        Email2 = "testdy5@mail.ru";
+        Email1 = "testdy7@mail.ru";
+        Email2 = "testdy8@mail.ru";
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
 

@@ -7,12 +7,13 @@ import static org.testng.Assert.fail;
 
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 public class FTestsFrilansere extends TestsBaseSearchPortals {
 
     @Test(priority = 1)
     public void searchFreeTextIncorrect() throws Exception {
         goToPageFrilansere();
-        closeReklam();
         driver.findElement(By.id("searchtext")).sendKeys("adasdasdgfhfg");
         driver.findElement(By.className("search-top-submit")).click();
         waitForElementPresent(By.xpath("//*[@id='filter']/h3"));
@@ -31,6 +32,7 @@ public class FTestsFrilansere extends TestsBaseSearchPortals {
         assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl/dd/span")).getText(), "manager");
         assertEquals(driver.getCurrentUrl(), baseUrl + "/frilansere?searchtext=manager");
     }
+
     @Test(priority = 3)
     public void searchAndAddItemsAllCategory() throws Exception {
         goToPageFrilansere();
@@ -93,29 +95,59 @@ public class FTestsFrilansere extends TestsBaseSearchPortals {
     @Test(priority = 7)
     public void searchJobByFerdigheterText() throws Exception {
         goToPageFrilansere();
-        // Add Freetext -  Test
+        String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
+        // Add Ferdighetertext -  Water Polo
         driver.findElement(By.id("skillLookup")).sendKeys("Water polo");
         driver.findElement(By.id("skillLookup")).sendKeys(Keys.ENTER);
         waitForTitle("Frilansere - Water polo");
-        Thread.sleep(1000);
-        assertEquals(driver.findElement(By.xpath("//div[@id='f-search-results']/div/div/div/a/span")).getText(), "Vlad Kovtun");
+        String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
+        Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Vlad Kovtun"));
+        Thread.sleep(500);
     }
 
     @Test(priority = 8)
-    public void searchJobByFagområde() throws Exception {
+    public void searchJobByYrke() throws Exception {
         goToPageFrilansere();
-        // Add Freetext -  Test
-        driver.findElement(By.id("searchtext")).sendKeys("Test");
-        driver.findElement(By.className("search-top-submit")).click();
-        Thread.sleep(2000);
-        String AmountKandidater1 = driver.findElement(By.xpath("//div[2]/div/div/div/div/span")).getText();
-        // Add Fagområde -  Historie
-        driver.findElement(By.xpath("//li[3]/label/i")).click();
-        waitForTitle("Internships - Historie, religion, idéfag");
-        String AmountKandidater2 = driver.findElement(By.xpath("//div[2]/div/div/div/div/span")).getText();
+        String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
+        // Add Yrke -  Zoolog
+        driver.findElement(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div/div[3]/div[2]/div/div/span/input")).sendKeys("Zoolog");
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//div[@id='fv2']/ul/li[795]/label/i")).click();
+        waitForTitle("Frilansere - Zoolog");
+        String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
-        assertEquals(driver.findElement(By.xpath("//div[@id='f-search-results']/div/div/div/div/div/div/a")).getText(), "Test tittle");
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Vlad Kovtun"));
+        Thread.sleep(500);
     }
 
+    @Test(priority = 9)
+    public void searchJobBySted() throws Exception {
+        goToPageFrilansere();
+        String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
+        // Add Sted -  Liberia
+        driver.findElement(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div/div[3]/div[3]/div/div/span/input")).sendKeys("Liberia");
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div/div[3]/div[3]/div/div[2]/ul/li[569]/label/i")).click();
+        waitForTitle("Frilansere - Liberia");
+        String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
+        Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Vlad Kovtun"));
+        Thread.sleep(500);
+    }
 
+    @Test(priority = 10)
+    public void searchJobBySkole() throws Exception {
+        goToPageFrilansere();
+        String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
+        // Add Skole - Norsk Høgskole for Helhetsterapi
+        driver.findElement(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div/div[3]/div[4]/div/div/span/input")).sendKeys("Norsk Høgskole for Helhetsterapi");
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//div[@id='fv3']/ul/li[29]/label/i")).click();
+        waitForTitle("Frilansere - Norsk H&#248;gskole for Helhetsterapi");
+        String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
+        Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Vlad Kovtun"));
+        Thread.sleep(500);
+    }
 }

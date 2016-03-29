@@ -118,51 +118,43 @@ public class ETestsInternships extends TestsBaseSearchPortals {
     @Test(priority = 7)
     public void searchJobByArbeidssted() throws Exception {
         goToPageInternships();
-        // Add Freetext -  Test
-        driver.findElement(By.id("searchtext")).sendKeys("Test");
-        driver.findElement(By.className("search-top-submit")).click();
-        Thread.sleep(2000);
-        String AmountKandidater1 = driver.findElement(By.xpath("//div[2]/div/div/div/div/span")).getText();
+        String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         // Add Arbeidssted -  Vietnam
         driver.findElement(By.xpath("//div[2]/div/div/span/input")).sendKeys("Vietnam");
         Thread.sleep(1000);
         driver.findElement(By.xpath("//li[686]/label/i")).click();
         waitForTitle("Internships - Vietnam");
-        String AmountKandidater2 = driver.findElement(By.xpath("//div[2]/div/div/div/div/span")).getText();
+        String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
-        assertEquals(driver.findElement(By.xpath("//div[@id='f-search-results']/div/div/div/div/div/div/a")).getText(), "Test tittle");
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Test tittle"));
+        Thread.sleep(500);
     }
 
     @Test(priority = 8)
     public void searchJobByFagområde() throws Exception {
         goToPageInternships();
-        // Add Freetext -  Test
-        driver.findElement(By.id("searchtext")).sendKeys("Test");
-        driver.findElement(By.className("search-top-submit")).click();
-        Thread.sleep(2000);
-        String AmountKandidater1 = driver.findElement(By.xpath("//div[2]/div/div/div/div/span")).getText();
+        String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         // Add Fagområde -  Historie
         driver.findElement(By.xpath("//li[3]/label/i")).click();
         waitForTitle("Internships - Historie, religion, idéfag");
-        String AmountKandidater2 = driver.findElement(By.xpath("//div[2]/div/div/div/div/span")).getText();
+        String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
-        assertEquals(driver.findElement(By.xpath("//div[@id='f-search-results']/div/div/div/div/div/div/a")).getText(), "Test tittle");
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Test tittle"));
+        Thread.sleep(500);
     }
 
     @Test(priority = 9)
     public void searchJobByBransje() throws Exception {
         goToPageInternships();
-        // Add Freetext -  Test
-        driver.findElement(By.id("searchtext")).sendKeys("Test");
-        driver.findElement(By.className("search-top-submit")).click();
-        Thread.sleep(2000);
-        String AmountKandidater1 = driver.findElement(By.xpath("//div[2]/div/div/div/div/span")).getText();
-        // Add Bransje  -   Kommunikasjon
-        driver.findElement(By.xpath("//div[@id='fv0']/ul/li[22]/label/i")).click();
-        waitForTitle("Internships - Kommunikasjon / PR");
-        String AmountKandidater2 = driver.findElement(By.xpath("//div[2]/div/div/div/div/span")).getText();
+        String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
+        // Add Bransje  -   Eiendom
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[1]/div[3]/div[3]/h3")));
+        driver.findElement(By.xpath("//div[3]/div[3]/div/div/ul/li[4]/label/i")).click();
+        waitForTitle("Internships - Eiendom / Eiendomsmegling");
+        String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
-        assertEquals(driver.findElement(By.xpath("//div[@id='f-search-results']/div/div/div/div/div/div/a")).getText(), "Test tittle");
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Test tittle"));
+        Thread.sleep(500);
     }
 
     @Test(priority = 10)
@@ -175,7 +167,7 @@ public class ETestsInternships extends TestsBaseSearchPortals {
         driver.findElement(By.id("companyLookup")).sendKeys(Keys.DOWN);
         driver.findElement(By.id("companyLookup")).sendKeys(Keys.ENTER);
         waitForTitle("Internships - Test Organisasjonen");
-        Assert.assertTrue(isElementPresent(By.xpath("//div[@id='filter']/div")));
-        assertEquals(driver.findElement(By.xpath("//div[@id='f-search-results']/div/div/div/div/div/div/a")).getText(), "Test tittle");
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Test tittle"));
+        Thread.sleep(500);
     }
 }

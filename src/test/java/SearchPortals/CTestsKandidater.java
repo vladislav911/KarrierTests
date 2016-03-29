@@ -12,6 +12,7 @@ public class CTestsKandidater extends TestsBaseSearchPortals {
     @Test(priority = 1)
     public void searchFreeTextIncorrect() throws Exception {
         goToPageKandidater();
+        closeReklam();
         driver.findElement(By.id("searchtext")).sendKeys("adasdasdgfhfg");
         driver.findElement(By.className("search-top-submit")).click();
         waitForElementPresent(By.xpath("//*[@id='filter']/h3"));
@@ -130,15 +131,16 @@ public class CTestsKandidater extends TestsBaseSearchPortals {
         goToPageKandidater();
         driver.findElement(By.id("searchtext")).sendKeys("Vlad");
         driver.findElement(By.className("search-top-submit")).click();
-        Thread.sleep(2000);
-        String AmountKandidater1 = driver.findElement(By.xpath("//div[2]/div/div/div/span")).getText();
+        Thread.sleep(1000);
+        String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         // Add Omfang - Deltid
-        driver.findElement(By.xpath("//li[2]/label/i")).click();
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='filter']/div")));
+        driver.findElement(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div/div[3]/div/div/div/ul/li[2]/label/i")).click();
         waitForTitle("Kandidater - Deltid");
-        String AmountKandidater2 = driver.findElement(By.xpath("//div[2]/div/div/div/span")).getText();
+        String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
-        assertEquals(driver.findElement(By.xpath("//div[3]/div/div/div/a/span")).getText(), "Kandidat 105301");
-        Thread.sleep(2000);
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Kandidat 105301"));
+        Thread.sleep(1000);
     }
 
     @Test(priority = 8)
@@ -147,16 +149,16 @@ public class CTestsKandidater extends TestsBaseSearchPortals {
         driver.findElement(By.id("searchtext")).sendKeys("Vlad");
         driver.findElement(By.className("search-top-submit")).click();
         Thread.sleep(2000);
-        String AmountKandidater1 = driver.findElement(By.xpath("//div[2]/div/div/div/span")).getText();
+        String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         // Add Arbeidssted -  Vietnam
         driver.findElement(By.xpath("//div[2]/div/div/span/input")).sendKeys("Vietnam");
         Thread.sleep(1000);
         driver.findElement(By.xpath("//li[686]/label/i")).click();
         waitForTitle("Kandidater - Vietnam");
-        String AmountKandidater2 = driver.findElement(By.xpath("//div[2]/div/div/div/span")).getText();
+        String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
-        assertEquals(driver.findElement(By.xpath("//div[3]/div/div/div/a/span")).getText(), "Kandidat 105301");
-        Thread.sleep(2000);
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Kandidat 105301"));
+        Thread.sleep(1000);
     }
 
     @Test(priority = 9)
@@ -165,16 +167,16 @@ public class CTestsKandidater extends TestsBaseSearchPortals {
         driver.findElement(By.id("searchtext")).sendKeys("Vlad");
         driver.findElement(By.className("search-top-submit")).click();
         Thread.sleep(2000);
-        String AmountKandidater1 = driver.findElement(By.xpath("//div[2]/div/div/div/span")).getText();
+        String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         // Add Yrke -  Meteorolog
         driver.findElement(By.xpath("//div[3]/div/div/span/input")).sendKeys("Meteorolog");
         Thread.sleep(1000);
         driver.findElement(By.xpath("//div[3]/div/div[2]/ul/li[479]/label/i")).click();
         waitForTitle("Kandidater - Meteorolog");
-        String AmountKandidater2 = driver.findElement(By.xpath("//div[2]/div/div/div/span")).getText();
+        String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
-        assertEquals(driver.findElement(By.xpath("//div[3]/div/div/div/a/span")).getText(), "Kandidat 105301");
-        Thread.sleep(2000);
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Kandidat 105301"));
+        Thread.sleep(1000);
     }
 
     @Test(priority = 10)
@@ -183,14 +185,15 @@ public class CTestsKandidater extends TestsBaseSearchPortals {
         driver.findElement(By.id("searchtext")).sendKeys("Vlad");
         driver.findElement(By.className("search-top-submit")).click();
         Thread.sleep(2000);
-        String AmountKandidater1 = driver.findElement(By.xpath("//div[2]/div/div/div/span")).getText();
+        String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         // Add Type -  Ekstrahjelp
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[1]/div[3]/div/div[3]/h3")));
         driver.findElement(By.xpath("//div[4]/div/div/ul/li[3]/label/i")).click();
         waitForTitle("Kandidater - Ekstrahjelp");
-        String AmountKandidater2 = driver.findElement(By.xpath("//div[2]/div/div/div/span")).getText();
+        String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
-        assertEquals(driver.findElement(By.xpath("//div[3]/div/div/div/a/span")).getText(), "Kandidat 105301");
-        Thread.sleep(2000);
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Kandidat 105301"));
+        Thread.sleep(1000);
     }
 
     @Test(priority = 11)
@@ -199,14 +202,15 @@ public class CTestsKandidater extends TestsBaseSearchPortals {
         driver.findElement(By.id("searchtext")).sendKeys("Vlad");
         driver.findElement(By.className("search-top-submit")).click();
         Thread.sleep(2000);
-        String AmountKandidater1 = driver.findElement(By.xpath("//div[2]/div/div/div/span")).getText();
+        String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         // Add Fagområde -  Jus
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[1]/div[3]/div/div[4]/h3")));
         driver.findElement(By.xpath("//div[5]/div/ul/li[7]/label/i")).click();
         waitForTitle("Kandidater - Jus");
-        String AmountKandidater2 = driver.findElement(By.xpath("//div[2]/div/div/div/span")).getText();
+        String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
-        assertEquals(driver.findElement(By.xpath("//div[3]/div/div/div/a/span")).getText(), "Kandidat 105301");
-        Thread.sleep(2000);
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Kandidat 105301"));
+        Thread.sleep(1000);
     }
 
     @Test(priority = 12)
@@ -215,14 +219,15 @@ public class CTestsKandidater extends TestsBaseSearchPortals {
         driver.findElement(By.id("searchtext")).sendKeys("Vlad");
         driver.findElement(By.className("search-top-submit")).click();
         Thread.sleep(2000);
-        String AmountKandidater1 = driver.findElement(By.xpath("//div[2]/div/div/div/span")).getText();
+        String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         // Add Bransje  -  Farmasi
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[1]/div[3]/div/div[5]/h3")));
         driver.findElement(By.xpath("//div[6]/div/div/ul/li[6]/label/i")).click();
         waitForTitle("Kandidater - Farmasi / Legemiddel");
-        String AmountKandidater2 = driver.findElement(By.xpath("//div[2]/div/div/div/span")).getText();
+        String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
-        assertEquals(driver.findElement(By.xpath("//div[3]/div/div/div/a/span")).getText(), "Kandidat 105301");
-        Thread.sleep(2000);
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Kandidat 105301"));
+        Thread.sleep(1000);
     }
 
 }

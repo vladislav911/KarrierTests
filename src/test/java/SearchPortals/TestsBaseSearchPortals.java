@@ -3,6 +3,7 @@ package SearchPortals;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.opera.OperaDriver;
 import org.testng.annotations.*;
 import org.testng.Assert;
 
@@ -22,8 +23,8 @@ public class TestsBaseSearchPortals {
 
     @BeforeTest
     public void setUp() throws Exception {
-        System.setProperty("webdriver.chrome.driver", "D:\\selenium\\chromedriver.exe");
-        driver = new ChromeDriver();
+        System.setProperty("webdriver.opera.driver", "D:\\selenium\\operadriver.exe");
+        driver = new OperaDriver();
         baseUrl = "http://dev.karrierestart.no";
         // DONT NEED CHANGE EMAIl
         Email2 = "testtt333@mail.ru";

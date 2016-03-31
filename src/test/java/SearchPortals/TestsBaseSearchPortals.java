@@ -92,7 +92,7 @@ public class TestsBaseSearchPortals {
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
             try { if (isElementPresent(by)) break; } catch (Exception e) {}
-            Thread.sleep(500);
+            Thread.sleep(1000);
         }
     }
 
@@ -103,7 +103,7 @@ public class TestsBaseSearchPortals {
                 if (by.equals(driver.getTitle())) break;
             } catch (Exception e) {
             }
-            Thread.sleep(1000);
+            Thread.sleep(1500);
         }
     }
 

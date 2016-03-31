@@ -12,7 +12,6 @@ public class DTestsTraineeprogrammer extends TestsBaseSearchPortals {
     @Test(priority = 1)
     public void searchFreeTextIncorrect() throws Exception {
         goToPageTraineeprogrammer();
-        closeReklam();
         driver.findElement(By.id("searchtext")).sendKeys("adasdasdgfhfg");
         driver.findElement(By.className("search-top-submit")).click();
         waitForElementPresent(By.xpath("//*[@id='filter']/h3"));
@@ -48,6 +47,7 @@ public class DTestsTraineeprogrammer extends TestsBaseSearchPortals {
         Thread.sleep(1500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
         waitForElementPresent(By.xpath("//*[@id='filter']/h3"));
+        waitForTitle("Traineeprogrammer - Ukraina");
         Thread.sleep(1000);
 
         // Search Fagomrade

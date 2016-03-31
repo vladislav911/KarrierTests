@@ -36,19 +36,16 @@ public class ATestsStillinger extends TestsBaseSearchPortals {
     @Test(priority = 3)
     public void searchAndAddItemsAllCategory() throws Exception {
         goToPageStillinger();
+        Thread.sleep(1500);
         // Search Arbeidssted
-        driver.findElement(By.id("searchtext")).sendKeys("Ukra");
-        waitForElementPresent(By.xpath("//*[@id='ui-id-1']"));
-        assertEquals(driver.findElement(By.xpath("//ul[@id='ui-id-1']/li")).getText(), "Treff i Steder");
-        assertEquals(driver.findElement(By.xpath("//ul[@id='ui-id-1']/li[2]")).getText(), "Aukra");
-        assertEquals(driver.findElement(By.xpath("//ul[@id='ui-id-1']/li[3]")).getText(), "Ukraina");
-        Thread.sleep(1000);
-        driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
-        Thread.sleep(1000);
+        driver.findElement(By.id("searchtext")).sendKeys("Ukraina");
+        waitForElementPresent(By.xpath("//body/ul/li[2]"));
+        Thread.sleep(1500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
         Thread.sleep(1500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
         waitForElementPresent(By.xpath("//*[@id='filter']/h3"));
+        waitForTitle("Ledige stillinger - Ukraina");
         Thread.sleep(1000);
 
         // Search Yrke
@@ -66,7 +63,7 @@ public class ATestsStillinger extends TestsBaseSearchPortals {
         // Search Fagomrade
         driver.findElement(By.id("searchtext")).sendKeys("Undervisning");
         waitForElementPresent(By.xpath("//*[@id='ui-id-1']"));
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
         Thread.sleep(1000);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
@@ -78,7 +75,7 @@ public class ATestsStillinger extends TestsBaseSearchPortals {
         // Search Bransje
         driver.findElement(By.id("searchtext")).sendKeys("Bygg / Anlegg");
         waitForElementPresent(By.xpath("//*[@id='ui-id-1']"));
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
         Thread.sleep(1500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
@@ -88,7 +85,7 @@ public class ATestsStillinger extends TestsBaseSearchPortals {
          // Search Firmanavn
         driver.findElement(By.id("searchtext")).sendKeys("Hewlett");
         waitForElementPresent(By.xpath("//*[@id='ui-id-1']"));
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
         Thread.sleep(1500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
@@ -148,35 +145,36 @@ public class ATestsStillinger extends TestsBaseSearchPortals {
     public void searchJobByOmfang() throws Exception {
         goToPageStillinger();
         // Add Omfang - Diltid
-        driver.findElement(By.xpath("//li[2]/label/i")).click();
+        driver.findElement(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div/div[3]/div/div/ul/li[2]/label/i")).click();
         waitForTitle("Ledige stillinger - Deltid");
         Assert.assertTrue(isElementPresent(By.xpath("//div[@id='filter']/div")));
-        assertEquals(driver.findElement(By.cssSelector("div.j-no-futured-left > div.j-content-wrp.clear > div.j-title > a")).getText(), "Test tittle");
-        assertEquals(driver.findElement(By.xpath("//div[3]/div[2]/div/div/div/div/div/a")).getText(), "Åpen søknad – Test Organisasjonen");
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Test tittle"));
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Åpen søknad – Test Organisasjonen"));
     }
 
     @Test(priority = 8)
     public void searchJobByArbeidssted() throws Exception {
         goToPageStillinger();
         // Add Arbeidssted - Burkina Faso
-        driver.findElement(By.xpath("//span/input")).sendKeys("Burkina");
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='searchtext']")));
+        driver.findElement(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div/div[3]/div[2]/div/div/span/input")).sendKeys("Burkina");
         Thread.sleep(1000);
         driver.findElement(By.xpath("//li[484]/label/i")).click();
         waitForTitle("Ledige stillinger - Burkina Faso");
         Assert.assertTrue(isElementPresent(By.xpath("//div[@id='filter']/div")));
-        assertEquals(driver.findElement(By.cssSelector("div.j-no-futured-left > div.j-content-wrp.clear > div.j-title > a")).getText(), "Åpen søknad – Test Organisasjonen");
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Åpen søknad – Test Organisasjonen"));
     }
 
     @Test(priority = 9)
     public void searchJobByYrke() throws Exception {
         goToPageStillinger();
         // Add Yrke - Zoolog
-        driver.findElement(By.xpath("//div[3]/div/div/span/input")).sendKeys("Zoolog");
+        driver.findElement(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div/div[3]/div[3]/div/div/span/input")).sendKeys("Zoolog");
         Thread.sleep(1000);
         driver.findElement(By.xpath("//li[795]/label/i")).click();
         waitForTitle("Ledige stillinger - Zoolog");
         Assert.assertTrue(isElementPresent(By.xpath("//div[@id='filter']/div")));
-        assertEquals(driver.findElement(By.cssSelector("div.j-no-futured-left > div.j-content-wrp.clear > div.j-title > a")).getText(), "Åpen søknad – Test Organisasjonen");
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Åpen søknad – Test Organisasjonen"));
     }
 
     @Test(priority = 10)
@@ -184,10 +182,10 @@ public class ATestsStillinger extends TestsBaseSearchPortals {
         goToPageStillinger();
         // Add Fagområde - Undervisning, lærer- og lektorfag
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[1]/div[3]/div[4]")));
-        driver.findElement(By.xpath("//div[4]/div/ul/li[15]/label/i")).click();
+        driver.findElement(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div/div[3]/div[4]/div/ul/li[15]/label/i")).click();
         waitForTitle("Ledige stillinger - Undervisning, lærer- og lektorfag");
         Assert.assertTrue(isElementPresent(By.xpath("//div[@id='filter']/div")));
-        assertEquals(driver.findElement(By.cssSelector("div.j-no-futured-left > div.j-content-wrp.clear > div.j-title > a")).getText(), "Åpen søknad – Test Organisasjonen");
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Åpen søknad – Test Organisasjonen"));
     }
 
     @Test(priority = 11)
@@ -195,12 +193,12 @@ public class ATestsStillinger extends TestsBaseSearchPortals {
         goToPageStillinger();
         // Add Bransje - Varehandel / Dagligvare / Butikk
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[1]/div[3]/div[4]")));
-        driver.findElement(By.xpath("//div[5]/div/div/span/input")).sendKeys("Varehandel");
+        driver.findElement(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div/div[3]/div[5]/div/div/span/input")).sendKeys("Varehandel");
         Thread.sleep(1000);
         driver.findElement(By.xpath("//div[5]/div/div[2]/ul/li[44]/label/i")).click();
         waitForTitle("Ledige stillinger - Varehandel / Dagligvare / Butikk");
         Assert.assertTrue(isElementPresent(By.xpath("//div[@id='filter']/div")));
-        assertEquals(driver.findElement(By.cssSelector("div.j-no-futured-left > div.j-content-wrp.clear > div.j-title > a")).getText(), "Åpen søknad – Test Organisasjonen");
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Åpen søknad – Test Organisasjonen"));
     }
 
     @Test(priority = 12)
@@ -215,7 +213,7 @@ public class ATestsStillinger extends TestsBaseSearchPortals {
         driver.findElement(By.id("companyLookup")).sendKeys(Keys.ENTER);
         waitForTitle("Ledige stillinger - Test Organisasjonen");
         Assert.assertTrue(isElementPresent(By.xpath("//div[@id='filter']/div")));
-        assertEquals(driver.findElement(By.cssSelector("div.j-no-futured-left > div.j-content-wrp.clear > div.j-title > a")).getText(), "Test tittle");
-        assertEquals(driver.findElement(By.xpath("//div[3]/div[2]/div/div/div/div/div/a")).getText(), "Åpen søknad – Test Organisasjonen");
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Test tittle"));
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Åpen søknad – Test Organisasjonen"));
     }
 }

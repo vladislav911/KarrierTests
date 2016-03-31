@@ -24,6 +24,7 @@ public class BTestsArbeidsgivere extends TestsBaseSearchPortals {
     public void searchFreeTextCorrect() throws Exception {
         goToPageArbeidsgivere();
         driver.findElement(By.id("searchtext")).sendKeys("Test Organisasjonen");
+        Thread.sleep(500);
         driver.findElement(By.className("search-top-submit")).click();
         waitForElementPresent(By.xpath("//*[@id='filter']/h3"));
         assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl/dt")).getText(), "Søketekst :");
@@ -34,19 +35,16 @@ public class BTestsArbeidsgivere extends TestsBaseSearchPortals {
     @Test(priority = 3)
     public void searchAndAddItemsAllCategory() throws Exception {
         goToPageArbeidsgivere();
+        Thread.sleep(1500);
         // Search Arbeidssted
-        driver.findElement(By.id("searchtext")).sendKeys("Ukra");
-        waitForElementPresent(By.xpath("//*[@id='ui-id-1']"));
-        assertEquals(driver.findElement(By.xpath("//ul[@id='ui-id-1']/li")).getText(), "Treff i Steder");
-        assertEquals(driver.findElement(By.xpath("//ul[@id='ui-id-1']/li[2]")).getText(), "Aukra");
-        assertEquals(driver.findElement(By.xpath("//ul[@id='ui-id-1']/li[3]")).getText(), "Ukraina");
-        Thread.sleep(1000);
-        driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
-        Thread.sleep(1000);
+        driver.findElement(By.id("searchtext")).sendKeys("Ukraina");
+        waitForElementPresent(By.xpath("//body/ul/li[2]"));
+        Thread.sleep(1500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
         Thread.sleep(1500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
         waitForElementPresent(By.xpath("//*[@id='filter']/h3"));
+        waitForTitle("Arbeidsgivere - Ukraina");
         Thread.sleep(1000);
 
         // Search Fagomrade
@@ -113,15 +111,15 @@ public class BTestsArbeidsgivere extends TestsBaseSearchPortals {
         driver.findElement(By.id("searchtext")).sendKeys("Test");
         driver.findElement(By.className("search-top-submit")).click();
         Thread.sleep(2000);
-        String AmountKandidater1 = driver.findElement(By.xpath("//div[2]/div/div/div/div/span")).getText();
+        String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         // Add Bransje  -  Kultur
         driver.findElement(By.xpath("//span/input")).sendKeys("Kultur");
         Thread.sleep(1000);
         driver.findElement(By.xpath("//li[26]/label/i")).click();
         waitForTitle("Arbeidsgivere - Kultur / Kunst / Øvrige kreative fag");
-        String AmountKandidater2 = driver.findElement(By.xpath("//div[2]/div/div/div/div/span")).getText();
+        String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
-        assertEquals(driver.findElement(By.cssSelector("a.j-title > span")).getText(), "Test Organisasjonen");
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Test Organisasjonen"));
     }
 
     @Test(priority = 8)
@@ -131,15 +129,15 @@ public class BTestsArbeidsgivere extends TestsBaseSearchPortals {
         driver.findElement(By.id("searchtext")).sendKeys("Test");
         driver.findElement(By.className("search-top-submit")).click();
         Thread.sleep(2000);
-        String AmountKandidater1 = driver.findElement(By.xpath("//div[2]/div/div/div/div/span")).getText();
+        String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         // Add Arbeidssted -  Vietnam
         driver.findElement(By.xpath("//div[2]/div/div/span/input")).sendKeys("Vietnam");
         Thread.sleep(1000);
         driver.findElement(By.xpath("//li[686]/label/i")).click();
         waitForTitle("Arbeidsgivere - Vietnam");
-        String AmountKandidater2 = driver.findElement(By.xpath("//div[2]/div/div/div/div/span")).getText();
+        String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
-        assertEquals(driver.findElement(By.cssSelector("a.j-title > span")).getText(), "Test Organisasjonen");
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Test Organisasjonen"));
     }
 
     @Test(priority = 9)
@@ -149,13 +147,13 @@ public class BTestsArbeidsgivere extends TestsBaseSearchPortals {
         driver.findElement(By.id("searchtext")).sendKeys("Test");
         driver.findElement(By.className("search-top-submit")).click();
         Thread.sleep(2000);
-        String AmountKandidater1 = driver.findElement(By.xpath("//div[2]/div/div/div/div/span")).getText();
+        String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         // Add Fagområde -  Idrett
         driver.findElement(By.xpath("//div[3]/div/ul/li[5]/label/i")).click();
         waitForTitle("Arbeidsgivere - Idrett, kroppsøving og friluftsliv");
-        String AmountKandidater2 = driver.findElement(By.xpath("//div[2]/div/div/div/div/span")).getText();
+        String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
-        assertEquals(driver.findElement(By.cssSelector("a.j-title > span")).getText(), "Test Organisasjonen");
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Test Organisasjonen"));
     }
 
     @Test(priority = 10)
@@ -165,16 +163,16 @@ public class BTestsArbeidsgivere extends TestsBaseSearchPortals {
         driver.findElement(By.id("searchtext")).sendKeys("Test");
         driver.findElement(By.className("search-top-submit")).click();
         Thread.sleep(2000);
-        String AmountKandidater1 = driver.findElement(By.xpath("//div[2]/div/div/div/div/span")).getText();
+        String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         // Add Yrke -  Meteorolog
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[3]/div[3]/div")));
         driver.findElement(By.xpath("//div[4]/div/div/span/input")).sendKeys("Meteorolog");
         Thread.sleep(1000);
         driver.findElement(By.xpath("//div[4]/div/div[2]/ul/li[479]/label/i")).click();
         waitForTitle("Arbeidsgivere - Meteorolog");
-        String AmountKandidater2 = driver.findElement(By.xpath("//div[2]/div/div/div/div/span")).getText();
+        String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
-        assertEquals(driver.findElement(By.cssSelector("a.j-title > span")).getText(), "Test Organisasjonen");
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Test Organisasjonen"));
     }
 
 

@@ -12,7 +12,6 @@ public class CTestsKandidater extends TestsBaseSearchPortals {
     @Test(priority = 1)
     public void searchFreeTextIncorrect() throws Exception {
         goToPageKandidater();
-        closeReklam();
         driver.findElement(By.id("searchtext")).sendKeys("adasdasdgfhfg");
         driver.findElement(By.className("search-top-submit")).click();
         waitForElementPresent(By.xpath("//*[@id='filter']/h3"));
@@ -67,7 +66,7 @@ public class CTestsKandidater extends TestsBaseSearchPortals {
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
         Thread.sleep(1500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
-        waitForTitle("Kandidater - Undervisning, l&#230;rer- og lektorfag - IT-arkitekt - Ukraina - 1");
+        waitForTitle("Kandidater - Undervisning, lærer- og lektorfag - IT-arkitekt - Ukraina - 1");
         Thread.sleep(1000);
 
         // Search Bransje
@@ -77,7 +76,7 @@ public class CTestsKandidater extends TestsBaseSearchPortals {
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
         Thread.sleep(1500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
-        waitForTitle("Kandidater - Undervisning, l&#230;rer- og lektorfag - IT-arkitekt - Bygg / Anlegg / Entrepren&#248;r - Ukraina - 1");
+        waitForTitle("Kandidater - Undervisning, lærer- og lektorfag - IT-arkitekt - Bygg / Anlegg / Entreprenør - Ukraina - 1");
         Thread.sleep(1000);
     }
 

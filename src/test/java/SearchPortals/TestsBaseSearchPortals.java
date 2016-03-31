@@ -27,7 +27,8 @@ public class TestsBaseSearchPortals {
         driver = new OperaDriver();
         baseUrl = "http://dev.karrierestart.no";
         // DONT NEED CHANGE EMAIl
-        Email2 = "testtt333@mail.ru";
+        // Email company - testmail@mail.ru
+        // Email kandidat = testtt333@mail.ru
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(1285, 985));
     }
@@ -171,6 +172,11 @@ public class TestsBaseSearchPortals {
     // METHODS FOR FRILANSERE
     public void goToPageFrilansere() throws  InterruptedException{
         driver.get(baseUrl + "/frilansere");
+        waitForElementPresent(By.className("search-portal-wrp"));
+    }
+    // METHODS FOR REKRUTTER
+    public void goToPageRekrutter() throws  InterruptedException{
+        driver.get(baseUrl + "/rekrutterere");
         waitForElementPresent(By.className("search-portal-wrp"));
     }
 }

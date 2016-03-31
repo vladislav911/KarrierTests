@@ -1,0 +1,80 @@
+package SearchPortals;
+import org.openqa.selenium.*;
+import org.testng.Assert;
+import static org.testng.Assert.*;
+
+import static org.testng.Assert.fail;
+
+import org.testng.annotations.Test;
+
+import java.util.List;
+
+public class GTestsRekrutter extends TestsBaseSearchPortals {
+
+    @Test(priority = 1)
+    public void AddItemsAllCategory() throws Exception {
+        goToPageRekrutter();
+        closeReklam();
+        // Add Bransje
+        driver.findElement(By.xpath("//div[@id='fv0']/ul/li[3]/label/i")).click();
+        waitForTitle("Rekrutterere - Bygg / Anlegg / Entrepren&#248;r");
+        // Add Fagområde
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[3]/div/div[1]/h3")));
+        driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[3]/div/div[2]/div/ul/li[15]/label/i")).click();
+        waitForTitle("Rekrutterere - Undervisning, l&#230;rer- og lektorfag - Bygg / Anlegg / Entrepren&#248;r");
+        // Add Yrke
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[3]/div/div[2]/div")));
+        driver.findElement(By.xpath("//div[3]/div/div[2]/ul/li/label/i")).click();
+        waitForTitle("Rekrutterere - Undervisning, l&#230;rer- og lektorfag - BIM-tekniker - Bygg / Anlegg / Entrepren&#248;r");
+        // Add Sted
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[3]/div/div[3]/h3")));
+        driver.findElement(By.xpath("//div[4]/div/div[2]/ul/li[454]/label/i")).click();
+        waitForTitle("Rekrutterere - Undervisning, l&#230;rer- og lektorfag - BIM-tekniker - Bygg / Anlegg / Entrepren&#248;r - Utlandet");
+    }
+
+    @Test(priority = 2)
+    public void assertAddItemsToFiltrList() throws Exception {
+        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl/dt")).getText(), "Fagområde :");
+        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl/dd/span")).getText(), "Undervisning, lærer- og lektorfag");
+        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[2]/dt")).getText(), "Yrke :");
+        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[2]/dd/span")).getText(), "BIM-tekniker");
+        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[3]/dt")).getText(), "Bransje :");
+        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[3]/dd/span")).getText(), "Bygg / Anlegg / Entreprenør");
+        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[4]/dt")).getText(), "Arbeidssted :");
+        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[4]/dd/span")).getText(), "Utlandet");
+    }
+
+    @Test(priority = 3)
+    public void assertCheckBoxesMark() throws Exception {
+        WebElement checkBoxUkraina = driver.findElement(By.xpath("//*[@id=\"f-location-0\"]"));
+        Assert.assertEquals("true",checkBoxUkraina.getAttribute("checked"));
+
+        WebElement checkBoxUndervisning = driver.findElement(By.xpath("//*[@id=\"f-Undervisning, lærer- og lektorfag-14\"]"));
+        Assert.assertEquals("true",checkBoxUndervisning.getAttribute("checked"));
+
+        WebElement checkBoxBygg = driver.findElement(By.xpath("//*[@id=\"f-Bygg / Anlegg / Entreprenør-31\"]"));
+        Assert.assertEquals("true",checkBoxBygg.getAttribute("checked"));
+
+        WebElement checkBoxIT = driver.findElement(By.xpath(".//*[@id='f- BIM-tekniker-935']"));
+        Assert.assertEquals("true",checkBoxIT.getAttribute("checked"));
+    }
+
+    @Test(priority = 4)
+    public void deleteFilterList() throws Exception {
+        scrollPageUp();
+        driver.findElement(By.xpath("//*[@id='filter']/h3/span[2]/a/span")).click();
+        waitForTitle("Rekrutterere");
+
+        WebElement checkBoxUkraina = driver.findElement(By.xpath("//*[@id=\"f-location-0\"]"));
+        Assert.assertEquals(null,checkBoxUkraina.getAttribute("checked"));
+
+        WebElement checkBoxUndervisning = driver.findElement(By.xpath("//*[@id=\"f-Undervisning, lærer- og lektorfag-14\"]"));
+        Assert.assertEquals(null,checkBoxUndervisning.getAttribute("checked"));
+
+        WebElement checkBoxBygg = driver.findElement(By.xpath("//*[@id=\"f-Bygg / Anlegg / Entreprenør-31\"]"));
+        Assert.assertEquals(null,checkBoxBygg.getAttribute("checked"));
+
+        WebElement checkBoxIT = driver.findElement(By.xpath(".//*[@id='f- BIM-tekniker-935']"));
+        Assert.assertEquals(null,checkBoxIT.getAttribute("checked"));
+    }
+}

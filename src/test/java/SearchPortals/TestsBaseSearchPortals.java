@@ -17,9 +17,9 @@ public class TestsBaseSearchPortals {
 
     static protected WebDriver driver;
     static protected String baseUrl;
-    static protected String Email2;
     protected StringBuffer verificationErrors = new StringBuffer();
     private boolean acceptNextAlert = true;
+
 
     @BeforeTest
     public void setUp() throws Exception {
@@ -99,7 +99,7 @@ public class TestsBaseSearchPortals {
 
     public void waitForTitle(String by) throws InterruptedException {
         for (int second = 0; ; second++) {
-            if (second >= 20) fail("timeout");
+            if (second >= 30) fail("timeout");
             try {
                 if (by.equals(driver.getTitle())) break;
             } catch (Exception e) {
@@ -108,37 +108,7 @@ public class TestsBaseSearchPortals {
         }
     }
 
-    public void deleteUser () {
-        // Click menu user
-        driver.findElement(By.cssSelector(".drop-down-ctrl")).click();
-        // Click link - Innstillinger
-        driver.findElement(By.linkText("Innstillinger")).click();
-        // Click link - Slett profil og alle data
-        driver.findElement(By.linkText("Slett profil og alle data")).click();
-        // Click link - slett min konto for alltid
-        driver.findElement(By.linkText("slett min konto for alltid")).click();
-        // Verify Current page = Base Url
-        String Url = driver.getCurrentUrl();
-        Assert.assertEquals(Url,baseUrl + "/");
-    }
 
-    public void loggin() throws Exception {
-        // Go to http://karrierestart.no/registrering
-        driver.get(baseUrl);
-        waitForElementPresent(By.id("responsive-menu"));
-        driver.findElement(By.id("nav-login")).click();
-        waitForElementPresent(By.xpath("//*[@id='login-cntr']/div/div[1]"));
-        driver.findElement(By.id("UserName")).clear();
-        driver.findElement(By.id("UserName")).sendKeys(Email2);
-        driver.findElement(By.id("LoginPassword")).clear();
-        driver.findElement(By.id("LoginPassword")).sendKeys("test");
-        driver.findElement(By.className("login-btn")).click();
-        waitForElementPresent(By.id("account-menu"));
-        Thread.sleep(3000);
-        assertEquals(driver.getCurrentUrl(), baseUrl + "/account");
-        // Close reklam
-        driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
-    }
     public void closeReklam() throws Exception {
         driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
     }

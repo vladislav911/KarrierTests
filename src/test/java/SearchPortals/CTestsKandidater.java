@@ -131,6 +131,7 @@ public class CTestsKandidater extends TestsBaseSearchPortals {
         driver.findElement(By.id("searchtext")).sendKeys("Vlad");
         driver.findElement(By.className("search-top-submit")).click();
         Thread.sleep(1000);
+        waitForElementPresent(By.xpath("//*[@id='filter']/h3"));
         String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         // Add Omfang - Deltid
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='filter']/div")));

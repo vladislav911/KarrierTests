@@ -14,7 +14,6 @@ public class GTestsRekrutter extends TestsBaseSearchPortals {
     @Test(priority = 1)
     public void AddItemsAllCategory() throws Exception {
         goToPageRekrutter();
-        closeReklam();
         // Add Bransje
         driver.findElement(By.xpath("//div[@id='fv0']/ul/li[3]/label/i")).click();
         waitForTitle("Rekrutterere - Bygg / Anlegg / Entrepren&#248;r");
@@ -76,5 +75,63 @@ public class GTestsRekrutter extends TestsBaseSearchPortals {
 
         WebElement checkBoxIT = driver.findElement(By.xpath(".//*[@id='f- BIM-tekniker-935']"));
         Assert.assertEquals(null,checkBoxIT.getAttribute("checked"));
+    }
+
+    @Test(priority = 5)
+    public void searchByBransje() throws Exception {
+        goToPageRekrutter();
+        String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
+        // Add Bransje
+        driver.findElement(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div[3]/div/div/div/div/span/input")).sendKeys("Kultur");
+        driver.findElement(By.xpath("//li[26]/label/i")).click();
+        waitForTitle("Rekrutterere - Kultur / Kunst / &#216;vrige kreative fag");
+        String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
+        Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Test Kontaktperson"));
+        Thread.sleep(500);
+    }
+
+    @Test(priority = 6)
+    public void searchByFagområde() throws Exception {
+        goToPageRekrutter();
+        String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
+        // Add Fagområde
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[3]/div/div[1]/h3")));
+        driver.findElement(By.xpath("//div[2]/div/ul/li[5]/label/i")).click();
+        waitForTitle("Rekrutterere - Idrett, kropps&#248;ving og friluftsliv");
+        String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
+        Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Test Kontaktperson"));
+        Thread.sleep(500);
+    }
+
+    @Test(priority = 7)
+    public void searchByYrke() throws Exception {
+        goToPageRekrutter();
+        String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
+        // Add Yrke
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[3]/div/div[2]/div")));
+        driver.findElement(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div[3]/div/div[3]/div/div/span/input")).sendKeys("Meteorolog");
+        driver.findElement(By.xpath("//div[@id='fv1']/ul/li[479]/label/i")).click();
+        waitForTitle("Rekrutterere - Meteorolog");
+        String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
+        Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Test Kontaktperson"));
+        Thread.sleep(500);
+    }
+
+    @Test(priority = 8)
+    public void searchBySted() throws Exception {
+        goToPageRekrutter();
+        String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
+        // Add Sted
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[3]/div/div[3]/h3")));
+        driver.findElement(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div[3]/div/div[4]/div/div/span/input")).sendKeys("Vietnam");
+        driver.findElement(By.xpath("//div[4]/div/div[2]/ul/li[686]/label/i")).click();
+        waitForTitle("Rekrutterere - Vietnam");
+        String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
+        Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Test Kontaktperson"));
+        Thread.sleep(500);
     }
 }

@@ -46,7 +46,7 @@ public class ETestsInternships extends TestsBaseSearchPortals {
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
         Thread.sleep(1500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
-        waitForElementPresent(By.xpath("//*[@id='filter']/h3"));
+        waitForTitle("Internships - Ukraina");
         Thread.sleep(1000);
 
         // Search Fagomrade

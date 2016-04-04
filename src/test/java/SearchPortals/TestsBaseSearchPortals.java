@@ -23,8 +23,8 @@ public class TestsBaseSearchPortals {
 
     @BeforeTest
     public void setUp() throws Exception {
-        System.setProperty("webdriver.opera.driver", "D:\\selenium\\operadriver.exe");
-        driver = new OperaDriver();
+        //System.setProperty("webdriver.opera.driver", "D:\\selenium\\operadriver.exe");
+        driver = new FirefoxDriver();
         baseUrl = "http://dev.karrierestart.no";
         // DONT NEED CHANGE EMAIl
         // Email company - testmail@mail.ru

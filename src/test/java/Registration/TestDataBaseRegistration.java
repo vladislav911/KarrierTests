@@ -29,13 +29,13 @@ public class TestDataBaseRegistration {
 
     @BeforeTest
     public void setUp() throws Exception {
-        System.setProperty("webdriver.chrome.driver", "D:\\selenium\\chromedriver.exe");
-        driver = new ChromeDriver();
+        //System.setProperty("webdriver.chrome.driver", "D:\\selenium\\chromedriver.exe");
+        driver = new FirefoxDriver();
         baseUrl = "http://dev.karrierestart.no";
-        Email1 = "testdy7@mail.ru";
-        Email2 = "testdy8@mail.ru";
+        Email1 = "testdy11@mail.ru";
+        Email2 = "testdy12@mail.ru";
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
+        driver.manage().window().setSize(new Dimension(1285, 985));
 
     }
 

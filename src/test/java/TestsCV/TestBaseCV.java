@@ -2,7 +2,9 @@ package TestsCV;
 
 import com.thoughtworks.selenium.Selenium;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.opera.OperaDriver;
 import org.testng.annotations.*;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -23,9 +25,10 @@ public class TestBaseCV {
 
     @BeforeTest
     public void setUp() throws Exception {
+        //System.setProperty("webdriver.chrome.driver", "D:\\selenium\\chromedriver.exe");
         driver = new FirefoxDriver();
         baseUrl = "http://dev.karrierestart.no";
-        Email1 = "testdk223@mail.ru";
+        Email1 = "testdk245@mail.ru";
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(1285, 985));
     }

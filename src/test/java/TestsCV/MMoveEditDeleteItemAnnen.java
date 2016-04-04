@@ -58,7 +58,7 @@ public class MMoveEditDeleteItemAnnen extends TestBaseCV {
         driver.findElement(By.xpath("//a[contains(text(),'Item №3 Tittel')]"));
         // Delete Item BIBELOVERSETTELSE
         driver.findElement(By.xpath("//div[2]/div[3]/ul/li[3]/a")).click();
-        driver.findElement(By.linkText("Ja")).click();
+        driver.findElement(By.xpath("//*[@id='cbRemove_cnt']/div[1]/div[3]/div/button[1]")).click();
         Thread.sleep(1000);
         driver.navigate().refresh();
         Thread.sleep(1000);

@@ -91,7 +91,7 @@ public class TestsBaseSearchPortals {
 
     public void waitForElementPresent(By by) throws InterruptedException {
         for (int second = 0;; second++) {
-            if (second >= 60) fail("timeout");
+            if (second >= 30) fail("timeout");
             try { if (isElementPresent(by)) break; } catch (Exception e) {}
             Thread.sleep(1000);
         }
@@ -118,7 +118,6 @@ public class TestsBaseSearchPortals {
         driver.get(baseUrl + "/jobb");
         waitForElementPresent(By.className("search-portal-wrp"));
     }
-
     // METHODS FOR ARBEIDSGIVERE
     public void goToPageArbeidsgivere() throws  InterruptedException{
         driver.get(baseUrl + "/arbeidsgivere");
@@ -147,6 +146,11 @@ public class TestsBaseSearchPortals {
     // METHODS FOR REKRUTTER
     public void goToPageRekrutter() throws  InterruptedException{
         driver.get(baseUrl + "/rekrutterere");
+        waitForElementPresent(By.className("search-portal-wrp"));
+    }
+    // METHODS FOR FRANCHISER
+    public void goToPageFranchiser() throws  InterruptedException{
+        driver.get(baseUrl + "/franchiser");
         waitForElementPresent(By.className("search-portal-wrp"));
     }
 }

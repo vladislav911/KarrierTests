@@ -227,13 +227,13 @@ public class HTestsArbeidssteder extends TestBaseJobbønsker {
     /*@Test(priority = 9)
     public void deleteAllItems() throws Exception {
         loggIn();
-        goToArbeidssteder();
+        goToBransjer();
         // Close reklam
         driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
         scrollPageUp();
-        driver.findElement(By.xpath("//*[@id='locationList']/div/div/div[1]/div[2]/a")).click();
-        Thread.sleep(10000);
-        driver.findElement(By.id("cbRemoveForm")).click();
+        driver.findElement(By.linkText("Slett alle")).click();
+        Thread.sleep(5000);
+        driver.findElement(By.xpath("//div[3]/div/button")).click();
         Thread.sleep(10000);
         driver.navigate().refresh();
         Thread.sleep(1000);

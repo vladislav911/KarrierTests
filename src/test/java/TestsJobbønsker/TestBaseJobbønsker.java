@@ -3,6 +3,7 @@ package TestsJobbønsker;
 import com.thoughtworks.selenium.Selenium;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.opera.OperaDriver;
 import org.testng.annotations.*;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -22,9 +23,10 @@ public class TestBaseJobbønsker {
 
     @BeforeTest
     public void setUp() throws Exception {
+        //System.setProperty("webdriver.opera.driver", "D:\\selenium\\operadriver.exe");
         driver = new FirefoxDriver();
         baseUrl = "http://dev.karrierestart.no";
-        Email1 = "testdd333@mail.ru";
+        Email1 = "testddkk11@mail.ru";
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(1285, 985));
     }

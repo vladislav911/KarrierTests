@@ -144,8 +144,10 @@ public class ATestsStillinger extends TestsBaseSearchPortals {
     @Test(priority = 7)
     public void searchJobByOmfang() throws Exception {
         goToPageStillinger();
+        Thread.sleep(1000);
         // Add Omfang - Diltid
         driver.findElement(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div/div[3]/div/div/ul/li[2]/label/i")).click();
+        Thread.sleep(1000);
         waitForTitle("Ledige stillinger - Deltid");
         Assert.assertTrue(isElementPresent(By.xpath("//div[@id='filter']/div")));
         Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Test tittle"));

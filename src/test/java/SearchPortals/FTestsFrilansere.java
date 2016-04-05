@@ -128,6 +128,7 @@ public class FTestsFrilansere extends TestsBaseSearchPortals {
         // Add Sted -  Liberia
         driver.findElement(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div/div[3]/div[3]/div/div/span/input")).sendKeys("Liberia");
         Thread.sleep(1000);
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[1]/div[3]/div[2]/h3")));
         driver.findElement(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div/div[3]/div[3]/div/div[2]/ul/li[569]/label/i")).click();
         waitForTitle("Frilansere - Liberia");
         String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
@@ -143,6 +144,7 @@ public class FTestsFrilansere extends TestsBaseSearchPortals {
         // Add Skole - Norsk Høgskole for Helhetsterapi
         driver.findElement(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div/div[3]/div[4]/div/div/span/input")).sendKeys("Norsk Høgskole for Helhetsterapi");
         Thread.sleep(1000);
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[1]/div[3]/div[3]/h3")));
         driver.findElement(By.xpath("//div[@id='fv3']/ul/li[29]/label/i")).click();
         waitForTitle("Frilansere - Norsk H&#248;gskole for Helhetsterapi");
         String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();

@@ -153,6 +153,7 @@ public class CTestsKandidater extends TestsBaseSearchPortals {
         // Add Arbeidssted -  Vietnam
         driver.findElement(By.xpath("//div[2]/div/div/span/input")).sendKeys("Vietnam");
         Thread.sleep(1000);
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='searchtext']")));
         driver.findElement(By.xpath("//li[686]/label/i")).click();
         waitForTitle("Kandidater - Vietnam");
         String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
@@ -171,6 +172,7 @@ public class CTestsKandidater extends TestsBaseSearchPortals {
         // Add Yrke -  Meteorolog
         driver.findElement(By.xpath("//div[3]/div/div/span/input")).sendKeys("Meteorolog");
         Thread.sleep(1000);
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[1]/div[3]/div/div[1]/h3")));
         driver.findElement(By.xpath("//div[3]/div/div[2]/ul/li[479]/label/i")).click();
         waitForTitle("Kandidater - Meteorolog");
         String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();

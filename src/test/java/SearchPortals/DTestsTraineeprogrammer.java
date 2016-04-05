@@ -137,7 +137,8 @@ public class DTestsTraineeprogrammer extends TestsBaseSearchPortals {
         goToPageTraineeprogrammer();
         String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         // Add Fagområde -  Pedagogiske Fag
-        driver.findElement(By.xpath("//li[11]/label/i")).click();
+        scrollPageUp();
+        driver.findElement(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div/div[3]/div/div/ul/li[11]/label/i")).click();
         waitForTitle("Traineeprogrammer - Pedagogiske fag");
         String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
@@ -150,8 +151,8 @@ public class DTestsTraineeprogrammer extends TestsBaseSearchPortals {
         String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         // Add Bransje  -  Kultur
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[1]/div[3]/div[2]/h3")));
-        driver.findElement(By.xpath("//div[@id='fv0']/ul/li[26]/label/i")).click();
-        waitForTitle("Traineeprogrammer - Kultur / Kunst / Øvrige kreative fag");
+        driver.findElement(By.xpath("//div[@id='fv0']/ul/li[4]/label/i")).click();
+        waitForTitle("Traineeprogrammer - Eiendom / Eiendomsmegling");
         String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
         Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Test tittle"));

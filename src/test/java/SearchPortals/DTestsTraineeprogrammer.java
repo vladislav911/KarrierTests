@@ -73,9 +73,9 @@ public class DTestsTraineeprogrammer extends TestsBaseSearchPortals {
         // Search Firmanavn
         driver.findElement(By.id("searchtext")).sendKeys("Hewlett");
         waitForElementPresent(By.xpath("//*[@id='ui-id-1']"));
-        Thread.sleep(1000);
-        driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
         Thread.sleep(1500);
+        driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
+        Thread.sleep(1000);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
         waitForTitle("Traineeprogrammer - Undervisning, lærer- og lektorfag - Bygg / Anlegg / Entreprenør - Ukraina - Hewlett-Packard Norway (HP)");
         Thread.sleep(1000);

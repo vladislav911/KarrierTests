@@ -183,6 +183,4 @@ public class BTestsArbeidsgivere extends TestsBaseSearchPortals {
         Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
         Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Test Organisasjonen"));
     }
-
-
 }

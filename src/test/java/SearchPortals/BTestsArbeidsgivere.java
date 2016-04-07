@@ -35,34 +35,31 @@ public class BTestsArbeidsgivere extends TestsBaseSearchPortals {
     @Test(priority = 3)
     public void searchAndAddItemsAllCategory() throws Exception {
         goToPageArbeidsgivere();
-        Thread.sleep(1500);
+        Thread.sleep(1000);
         // Search Arbeidssted
         driver.findElement(By.id("searchtext")).sendKeys("Ukraina");
-        waitForElementPresent(By.xpath("//body/ul/li[2]"));
-        Thread.sleep(1500);
+        waitForElementPresent(By.xpath("//ul[@id='ui-id-1']/li"));
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
-        Thread.sleep(1500);
+        Thread.sleep(500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
         waitForElementPresent(By.xpath("//*[@id='filter']/h3"));
         waitForTitle("Arbeidsgivere - Ukraina");
-        Thread.sleep(1000);
+        refreshPage();
 
         // Search Fagomrade
         driver.findElement(By.id("searchtext")).sendKeys("Undervisning");
-        waitForElementPresent(By.xpath("//*[@id='ui-id-1']"));
-        Thread.sleep(1000);
+        waitForElementPresent(By.xpath("//ul[@id='ui-id-1']/li"));
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
-        Thread.sleep(1500);
+        Thread.sleep(500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
         waitForTitle("Arbeidsgivere - Undervisning, lærer- og lektorfag - Ukraina");
-        Thread.sleep(1000);
+        refreshPage();
 
         // Search Bransje
         driver.findElement(By.id("searchtext")).sendKeys("Bygg / Anlegg");
-        waitForElementPresent(By.xpath("//*[@id='ui-id-1']"));
-        Thread.sleep(1000);
+        waitForElementPresent(By.xpath("//ul[@id='ui-id-1']/li"));
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
-        Thread.sleep(1500);
+        Thread.sleep(500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
         waitForTitle("Arbeidsgivere - Undervisning, lærer- og lektorfag - Bygg / Anlegg / Entreprenør - Ukraina");
     }
@@ -114,9 +111,9 @@ public class BTestsArbeidsgivere extends TestsBaseSearchPortals {
         WebElement element = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span"));
         String AmountKandidater1 = element.getText();
         // Add Bransje  -  Kultur
-        driver.findElement(By.xpath("//span/input")).sendKeys("Kultur");
-        Thread.sleep(1000);
-        driver.findElement(By.xpath("//li[26]/label/i")).click();
+        driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[3]/div[1]/div/div[1]/span/input")).sendKeys("Kultur");
+        waitForElementPresent(By.xpath("//li[38]/label/i"));
+        driver.findElement(By.xpath("//li[38]/label/i")).click();
         waitForTitle("Arbeidsgivere - Kultur / Kunst / Øvrige kreative fag");
         WebElement element2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span"));
         String AmountKandidater2 = element2.getText();
@@ -135,7 +132,7 @@ public class BTestsArbeidsgivere extends TestsBaseSearchPortals {
         String AmountKandidater1 = element.getText();
         // Add Arbeidssted -  Vietnam
         driver.findElement(By.xpath("//div[2]/div/div/span/input")).sendKeys("Vietnam");
-        Thread.sleep(2000);
+        waitForElementPresent(By.xpath("//li[686]/label/i"));
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[3]/div[1]/h3")));
         driver.findElement(By.xpath("//li[686]/label/i")).click();
         waitForTitle("Arbeidsgivere - Vietnam");
@@ -175,7 +172,7 @@ public class BTestsArbeidsgivere extends TestsBaseSearchPortals {
         // Add Yrke -  Meteorolog
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[3]/div[3]/div")));
         driver.findElement(By.xpath("//div[4]/div/div/span/input")).sendKeys("Meteorolog");
-        Thread.sleep(1000);
+        waitForElementPresent(By.xpath("//div[4]/div/div[2]/ul/li[479]/label/i"));
         driver.findElement(By.xpath("//div[4]/div/div[2]/ul/li[479]/label/i")).click();
         waitForTitle("Arbeidsgivere - Meteorolog");
         WebElement element2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span"));

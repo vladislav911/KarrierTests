@@ -42,25 +42,24 @@ public class FTestsFrilansere extends TestsBaseSearchPortals {
         assertEquals(driver.findElement(By.xpath("//ul[@id='ui-id-1']/li")).getText(), "Treff i Steder");
         assertEquals(driver.findElement(By.xpath("//ul[@id='ui-id-1']/li[2]")).getText(), "Aukra");
         assertEquals(driver.findElement(By.xpath("//ul[@id='ui-id-1']/li[3]")).getText(), "Ukraina");
-        Thread.sleep(1000);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
-        Thread.sleep(1000);
+        Thread.sleep(500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
-        Thread.sleep(1500);
+        Thread.sleep(500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
         waitForElementPresent(By.xpath("//*[@id='filter']/h3"));
-        Thread.sleep(1000);
+        refreshPage();
 
         // Search Yrke
         driver.findElement(By.id("searchtext")).sendKeys("IT-");
         waitForElementPresent(By.xpath("//*[@id='ui-id-1']"));
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
+        Thread.sleep(500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
-        Thread.sleep(1500);
+        Thread.sleep(500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
         waitForTitle("Frilansere - IT-arkitekt - Ukraina");
-        Thread.sleep(1000);
     }
 
     @Test(priority = 4)
@@ -112,7 +111,7 @@ public class FTestsFrilansere extends TestsBaseSearchPortals {
         String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         // Add Yrke -  Zoolog
         driver.findElement(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div/div[3]/div[2]/div/div/span/input")).sendKeys("Zoolog");
-        Thread.sleep(1000);
+        waitForElementPresent(By.xpath("//div[@id='fv2']/ul/li[795]/label/i"));
         driver.findElement(By.xpath("//div[@id='fv2']/ul/li[795]/label/i")).click();
         waitForTitle("Frilansere - Zoolog");
         String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
@@ -127,7 +126,7 @@ public class FTestsFrilansere extends TestsBaseSearchPortals {
         String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         // Add Sted -  Liberia
         driver.findElement(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div/div[3]/div[3]/div/div/span/input")).sendKeys("Liberia");
-        Thread.sleep(1000);
+        waitForElementPresent(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div/div[3]/div[3]/div/div[2]/ul/li[569]/label/i"));
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[1]/div[3]/div[2]/h3")));
         driver.findElement(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div/div[3]/div[3]/div/div[2]/ul/li[569]/label/i")).click();
         waitForTitle("Frilansere - Liberia");
@@ -143,7 +142,7 @@ public class FTestsFrilansere extends TestsBaseSearchPortals {
         String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         // Add Skole - Norsk Høgskole for Helhetsterapi
         driver.findElement(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div/div[3]/div[4]/div/div/span/input")).sendKeys("Norsk Høgskole for Helhetsterapi");
-        Thread.sleep(1000);
+        waitForElementPresent(By.xpath("//div[@id='fv3']/ul/li[29]/label/i"));
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[1]/div[3]/div[3]/h3")));
         driver.findElement(By.xpath("//div[@id='fv3']/ul/li[29]/label/i")).click();
         waitForTitle("Frilansere - Norsk H&#248;gskole for Helhetsterapi");

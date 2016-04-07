@@ -34,51 +34,47 @@ public class DTestsTraineeprogrammer extends TestsBaseSearchPortals {
     @Test(priority = 3)
     public void searchAndAddItemsAllCategory() throws Exception {
         goToPageTraineeprogrammer();
+        Thread.sleep(1000);
         // Search Arbeidssted
         driver.findElement(By.id("searchtext")).sendKeys("Ukra");
         waitForElementPresent(By.xpath("//*[@id='ui-id-1']"));
         assertEquals(driver.findElement(By.xpath("//ul[@id='ui-id-1']/li")).getText(), "Treff i Steder");
         assertEquals(driver.findElement(By.xpath("//ul[@id='ui-id-1']/li[2]")).getText(), "Aukra");
         assertEquals(driver.findElement(By.xpath("//ul[@id='ui-id-1']/li[3]")).getText(), "Ukraina");
-        Thread.sleep(1000);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
-        Thread.sleep(1000);
+        Thread.sleep(500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
-        Thread.sleep(1500);
+        Thread.sleep(500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
         waitForElementPresent(By.xpath("//*[@id='filter']/h3"));
         waitForTitle("Traineeprogrammer - Ukraina");
-        Thread.sleep(1000);
+        refreshPage();
 
         // Search Fagomrade
         driver.findElement(By.id("searchtext")).sendKeys("Undervisning");
-        waitForElementPresent(By.xpath("//*[@id='ui-id-1']"));
-        Thread.sleep(1000);
+        waitForElementPresent(By.xpath("//ul[@id='ui-id-1']/li"));
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
-        Thread.sleep(1500);
+        Thread.sleep(500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
         waitForTitle("Traineeprogrammer - Undervisning, lærer- og lektorfag - Ukraina");
-        Thread.sleep(1000);
+        refreshPage();
 
         // Search Bransje
         driver.findElement(By.id("searchtext")).sendKeys("Bygg / Anlegg");
-        waitForElementPresent(By.xpath("//*[@id='ui-id-1']"));
-        Thread.sleep(1000);
+        waitForElementPresent(By.xpath("//ul[@id='ui-id-1']/li"));
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
-        Thread.sleep(1500);
+        Thread.sleep(500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
         waitForTitle("Traineeprogrammer - Undervisning, lærer- og lektorfag - Bygg / Anlegg / Entreprenør - Ukraina");
-        Thread.sleep(1000);
+        refreshPage();
 
         // Search Firmanavn
         driver.findElement(By.id("searchtext")).sendKeys("Hewlett");
-        waitForElementPresent(By.xpath("//*[@id='ui-id-1']"));
-        Thread.sleep(1500);
+        waitForElementPresent(By.xpath("//ul[@id='ui-id-1']/li"));
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
-        Thread.sleep(1000);
+        Thread.sleep(500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
         waitForTitle("Traineeprogrammer - Undervisning, lærer- og lektorfag - Bygg / Anlegg / Entreprenør - Ukraina - Hewlett-Packard Norway (HP)");
-        Thread.sleep(1000);
     }
 
     @Test(priority = 4)
@@ -124,7 +120,7 @@ public class DTestsTraineeprogrammer extends TestsBaseSearchPortals {
         String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         // Add Arbeidssted -  Vietnam
         driver.findElement(By.xpath("//div[2]/div/div/span/input")).sendKeys("Vietnam");
-        Thread.sleep(1000);
+        waitForElementPresent(By.xpath("//li[686]/label/i"));
         driver.findElement(By.xpath("//li[686]/label/i")).click();
         waitForTitle("Traineeprogrammer - Vietnam");
         String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
@@ -149,10 +145,10 @@ public class DTestsTraineeprogrammer extends TestsBaseSearchPortals {
     public void searchJobByBransje() throws Exception {
         goToPageTraineeprogrammer();
         String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
-        // Add Bransje  -  Kultur
+        // Add Bransje  -  Forskning
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[1]/div[3]/div[2]/h3")));
         driver.findElement(By.xpath("//div[@id='fv0']/ul/li[4]/label/i")).click();
-        waitForTitle("Traineeprogrammer - Eiendom / Eiendomsmegling");
+        waitForTitle("Traineeprogrammer - Forskning og utvikling");
         String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
         Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Test tittle"));

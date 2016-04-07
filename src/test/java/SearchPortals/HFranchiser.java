@@ -42,34 +42,32 @@ public class HFranchiser extends TestsBaseSearchPortals {
         assertEquals(driver.findElement(By.xpath("//ul[@id='ui-id-1']/li")).getText(), "Treff i Steder");
         assertEquals(driver.findElement(By.xpath("//ul[@id='ui-id-1']/li[2]")).getText(), "Aukra");
         assertEquals(driver.findElement(By.xpath("//ul[@id='ui-id-1']/li[3]")).getText(), "Ukraina");
-        Thread.sleep(1000);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
-        Thread.sleep(1000);
+        Thread.sleep(500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
-        Thread.sleep(1500);
+        Thread.sleep(500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
         waitForElementPresent(By.xpath("//*[@id='filter']/h3"));
-        Thread.sleep(1000);
+        refreshPage();
 
         // Search Bransje
         driver.findElement(By.id("searchtext")).sendKeys("Bygg / Anlegg");
         waitForElementPresent(By.xpath("//*[@id='ui-id-1']"));
         Thread.sleep(2000);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
-        Thread.sleep(1500);
+        Thread.sleep(500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
         waitForTitle("Franchise - Bygg / Anlegg / Entreprenør - Ukraina");
-        Thread.sleep(1000);
+        refreshPage();
 
         // Search Firmanavn
         driver.findElement(By.id("searchtext")).sendKeys("Hewlett");
         waitForElementPresent(By.xpath("//*[@id='ui-id-1']"));
         Thread.sleep(2000);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.DOWN);
-        Thread.sleep(1500);
+        Thread.sleep(500);
         driver.findElement(By.id("searchtext")).sendKeys(Keys.ENTER);
         waitForTitle("Franchise - Bygg / Anlegg / Entreprenør - Ukraina - Hewlett-Packard Norway (HP)");
-        Thread.sleep(1000);
     }
 
     @Test(priority = 4)
@@ -107,9 +105,10 @@ public class HFranchiser extends TestsBaseSearchPortals {
     public void searchJobByBransje() throws Exception {
         goToPageFranchiser();
         String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
-        // Add Bransje
+        // Add Bransje - IKT / Telekom
+        scrollPageUp();
         driver.findElement(By.xpath("//div[@id='fv0']/ul/li[5]/label/i")).click();
-        waitForTitle("Franchise - Engineering");
+        waitForTitle("Franchise - IKT / Telekom");
         String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
         Assert.assertTrue(driver.findElement(By.xpath("//*[@id='search-result-cnt']")).getText().contains("Test tittle"));
@@ -122,6 +121,7 @@ public class HFranchiser extends TestsBaseSearchPortals {
         String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         // Add Sted
         driver.findElement(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div/div[3]/div[2]/div/div/span/input")).sendKeys("Italia");
+        waitForElementPresent(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div/div[3]/div[2]/div/div[2]/ul/li[546]/label/i"));
         driver.findElement(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div/div[3]/div[2]/div/div[2]/ul/li[546]/label/i")).click();
         waitForTitle("Franchise - Italia");
         String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();

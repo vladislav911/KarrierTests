@@ -16,19 +16,19 @@ public class GTestsRekrutter extends TestsBaseSearchPortals {
         goToPageRekrutter();
         // Add Bransje
         driver.findElement(By.xpath("//div[@id='fv0']/ul/li[3]/label/i")).click();
-        waitForTitle("Rekrutterere - Bygg / Anlegg / Entrepren&#248;r");
+        waitForTitle("Rekrutterere - Eiendom / Eiendomsmegling");
         // Add Fagområde
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[3]/div/div[1]/h3")));
         driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[3]/div/div[2]/div/ul/li[15]/label/i")).click();
-        waitForTitle("Rekrutterere - Undervisning, l&#230;rer- og lektorfag - Bygg / Anlegg / Entrepren&#248;r");
+        waitForTitle("Rekrutterere - Undervisning, l&#230;rer- og lektorfag - Eiendom / Eiendomsmegling");
         // Add Yrke
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[3]/div/div[2]/div")));
-        driver.findElement(By.xpath("//div[3]/div/div[2]/ul/li/label/i")).click();
-        waitForTitle("Rekrutterere - Undervisning, l&#230;rer- og lektorfag - BIM-tekniker - Bygg / Anlegg / Entrepren&#248;r");
+        driver.findElement(By.xpath(".//*[@id='fv1']/ul/li[1]/label/i")).click();
+        waitForTitle("Rekrutterere - Undervisning, l&#230;rer- og lektorfag - BIM-tekniker - Eiendom / Eiendomsmegling");
         // Add Sted
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[3]/div/div[3]/h3")));
         driver.findElement(By.xpath("//div[4]/div/div[2]/ul/li[454]/label/i")).click();
-        waitForTitle("Rekrutterere - Undervisning, l&#230;rer- og lektorfag - BIM-tekniker - Bygg / Anlegg / Entrepren&#248;r - Utlandet");
+        waitForTitle("Rekrutterere - Undervisning, l&#230;rer- og lektorfag - BIM-tekniker - Eiendom / Eiendomsmegling - Utlandet");
     }
 
     @Test(priority = 2)
@@ -38,7 +38,7 @@ public class GTestsRekrutter extends TestsBaseSearchPortals {
         assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[2]/dt")).getText(), "Yrke :");
         assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[2]/dd/span")).getText(), "BIM-tekniker");
         assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[3]/dt")).getText(), "Bransje :");
-        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[3]/dd/span")).getText(), "Bygg / Anlegg / Entreprenør");
+        assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[3]/dd/span")).getText(), "Eiendom / Eiendomsmegling");
         assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[4]/dt")).getText(), "Arbeidssted :");
         assertEquals(driver.findElement(By.xpath("//div[@id='filter']/div/div/dl[4]/dd/span")).getText(), "Utlandet");
     }
@@ -51,7 +51,7 @@ public class GTestsRekrutter extends TestsBaseSearchPortals {
         WebElement checkBoxUndervisning = driver.findElement(By.xpath("//*[@id=\"f-Undervisning, lærer- og lektorfag-14\"]"));
         Assert.assertEquals("true",checkBoxUndervisning.getAttribute("checked"));
 
-        WebElement checkBoxBygg = driver.findElement(By.xpath("//*[@id=\"f-Bygg / Anlegg / Entreprenør-31\"]"));
+        WebElement checkBoxBygg = driver.findElement(By.xpath("//*[@id=\"f-Eiendom / Eiendomsmegling-3\"]"));
         Assert.assertEquals("true",checkBoxBygg.getAttribute("checked"));
 
         WebElement checkBoxIT = driver.findElement(By.xpath(".//*[@id='f- BIM-tekniker-935']"));
@@ -70,7 +70,7 @@ public class GTestsRekrutter extends TestsBaseSearchPortals {
         WebElement checkBoxUndervisning = driver.findElement(By.xpath("//*[@id=\"f-Undervisning, lærer- og lektorfag-14\"]"));
         Assert.assertEquals(null,checkBoxUndervisning.getAttribute("checked"));
 
-        WebElement checkBoxBygg = driver.findElement(By.xpath("//*[@id=\"f-Bygg / Anlegg / Entreprenør-31\"]"));
+        WebElement checkBoxBygg = driver.findElement(By.xpath("//*[@id=\"f-Eiendom / Eiendomsmegling-3\"]"));
         Assert.assertEquals(null,checkBoxBygg.getAttribute("checked"));
 
         WebElement checkBoxIT = driver.findElement(By.xpath(".//*[@id='f- BIM-tekniker-935']"));
@@ -83,7 +83,8 @@ public class GTestsRekrutter extends TestsBaseSearchPortals {
         String AmountKandidater1 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         // Add Bransje
         driver.findElement(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div[3]/div/div/div/div/span/input")).sendKeys("Kultur");
-        driver.findElement(By.xpath("//li[26]/label/i")).click();
+        waitForElementPresent(By.xpath("//li[38]/label/i"));
+        driver.findElement(By.xpath("//li[38]/label/i")).click();
         waitForTitle("Rekrutterere - Kultur / Kunst / &#216;vrige kreative fag");
         String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
         Assert.assertNotEquals(AmountKandidater1, AmountKandidater2);
@@ -112,6 +113,7 @@ public class GTestsRekrutter extends TestsBaseSearchPortals {
         // Add Yrke
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[3]/div/div[2]/div")));
         driver.findElement(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div[3]/div/div[3]/div/div/span/input")).sendKeys("Meteorolog");
+        waitForElementPresent(By.xpath("//div[@id='fv1']/ul/li[479]/label/i"));
         driver.findElement(By.xpath("//div[@id='fv1']/ul/li[479]/label/i")).click();
         waitForTitle("Rekrutterere - Meteorolog");
         String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();
@@ -127,6 +129,7 @@ public class GTestsRekrutter extends TestsBaseSearchPortals {
         // Add Sted
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='main-story']/div[1]/div/div[2]/div[1]/div[3]/div/div[3]/h3")));
         driver.findElement(By.xpath("//div[@id='main-story']/div/div/div[2]/div/div[3]/div/div[4]/div/div/span/input")).sendKeys("Vietnam");
+        waitForElementPresent(By.xpath("//div[4]/div/div[2]/ul/li[686]/label/i"));
         driver.findElement(By.xpath("//div[4]/div/div[2]/ul/li[686]/label/i")).click();
         waitForTitle("Rekrutterere - Vietnam");
         String AmountKandidater2 = driver.findElement(By.xpath("//*[@id='search-result-cnt']/div[1]/div/div[1]/span/span")).getText();

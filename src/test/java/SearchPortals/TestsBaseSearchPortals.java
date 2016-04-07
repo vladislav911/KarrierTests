@@ -1,13 +1,10 @@
 package SearchPortals;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.opera.OperaDriver;
 import org.testng.annotations.*;
 import org.testng.Assert;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertEquals;
@@ -76,8 +73,10 @@ public class TestsBaseSearchPortals {
     }
 
     // General methods
-    public void refreshPage (){
+    public void refreshPage () throws  InterruptedException{
         driver.navigate().refresh();
+        waitForElementPresent(By.id("searchtext"));
+        Thread.sleep(1000);
     }
 
     public void scrollPageUp () {
@@ -93,9 +92,10 @@ public class TestsBaseSearchPortals {
         for (int second = 0;; second++) {
             if (second >= 30) fail("timeout");
             try { if (isElementPresent(by)) break; } catch (Exception e) {}
-            Thread.sleep(1000);
+            Thread.sleep(1500);
         }
     }
+
 
     public void waitForTitle(String by) throws InterruptedException {
         for (int second = 0; ; second++) {

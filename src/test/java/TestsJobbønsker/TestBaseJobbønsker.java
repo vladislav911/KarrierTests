@@ -26,7 +26,7 @@ public class TestBaseJobbønsker {
         //System.setProperty("webdriver.opera.driver", "D:\\selenium\\operadriver.exe");
         driver = new FirefoxDriver();
         baseUrl = "http://dev.karrierestart.no";
-        Email1 = "testddkk11@mail.ru";
+        Email1 = "testddkk15@mail.ru";
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(1285, 985));
     }
@@ -94,6 +94,9 @@ public class TestBaseJobbønsker {
             Thread.sleep(100);
         }
 
+    }
+    public void closeReklam() throws Exception {
+        driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
     }
     public void loggIn() throws Exception {
         // Open BaseUrl

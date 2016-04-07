@@ -20,6 +20,8 @@ public class HTestsArbeidssteder extends TestBaseJobbønsker {
 
     @Test(priority = 1)
     public void verifyItemAdd() throws Exception {
+        loggIn();
+        closeReklam();
         goToArbeidssteder();
         choseStedThirdPositionItem();
         waitForElementPresent(By.xpath("//*[@id='topitems']/li/div"));

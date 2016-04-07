@@ -11,6 +11,7 @@ public class AMoveToPageRegistration extends TestDataBaseRegistration {
     public void MoveToPageStep1AndCheck() throws Exception {
         // Go to page karrierestart
         driver.get(baseUrl);
+        closeReklam();
         // Click button Ny bruker
         driver.findElement(By.linkText("Ny bruker")).click();
         // Click button Jobbsøker / kandidat

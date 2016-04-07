@@ -1,4 +1,5 @@
 package Registration;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import org.openqa.selenium.By;
@@ -102,7 +103,9 @@ public class HNegativeTestsStep4 extends TestDataBaseRegistration {
     @Test(priority = 7)
     public void TryToRegistrationWithoutJobbtypeStatusErUnder() throws Exception {
         // Chose Ønsket omfang  - Heltid
-        driver.findElement(By.cssSelector("label.checkbox-label")).click();
+        scrollPageUp();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//*[@id='registration_form']/div/div[2]/div[1]/div/div[3]/div[2]/label[1]")).click();
         // Clean Ønsket jobbtype  - Fast ansettelse
         driver.findElement(By.cssSelector("div.empCnt > label.checkbox-label")).click();
         // Get current Url1

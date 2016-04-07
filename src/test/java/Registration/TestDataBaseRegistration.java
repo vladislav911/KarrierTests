@@ -32,8 +32,8 @@ public class TestDataBaseRegistration {
         //System.setProperty("webdriver.chrome.driver", "D:\\selenium\\chromedriver.exe");
         driver = new FirefoxDriver();
         baseUrl = "http://dev.karrierestart.no";
-        Email1 = "testdy11@mail.ru";
-        Email2 = "testdy12@mail.ru";
+        Email1 = "testdy25@mail.ru";
+        Email2 = "testdy26@mail.ru";
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(1285, 985));
 
@@ -79,6 +79,12 @@ public class TestDataBaseRegistration {
         } finally {
             acceptNextAlert = true;
         }
+    }
+    public void scrollPageUp () {
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+    }
+    public void closeReklam() throws Exception {
+        driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
     }
     public void ClickOnButtonRegistrationStep2() {
         driver.findElement(By.xpath("//button[@onclick=\"$('#registration_form').submit();\"]")).click();

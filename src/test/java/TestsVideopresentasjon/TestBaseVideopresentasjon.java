@@ -1,0 +1,142 @@
+package TestsVideopresentasjon;
+
+import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.*;
+import org.testng.Assert;
+
+import java.util.concurrent.TimeUnit;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.fail;
+
+public class TestBaseVideopresentasjon {
+
+    static protected WebDriver driver;
+    static protected String baseUrl;
+    static protected String Email;
+    protected StringBuffer verificationErrors = new StringBuffer();
+    private boolean acceptNextAlert = true;
+
+
+    @BeforeTest
+    public void setUp() throws Exception {
+        //System.setProperty("webdriver.opera.driver", "D:\\selenium\\operadriver.exe");
+        driver = new FirefoxDriver();
+        baseUrl = "http://dev.karrierestart.no";
+        // DONT NEED CHANGE EMAIl
+        // Email company - testmail@mail.ru
+        Email = "testdy28@mail.ru";
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().window().setSize(new Dimension(1285, 985));
+    }
+
+    @AfterTest(alwaysRun = true)
+    public void tearDown() throws Exception {
+        driver.quit();
+        String verificationErrorString = verificationErrors.toString();
+        if (!"".equals(verificationErrorString)) {
+            fail(verificationErrorString);
+        }
+    }
+
+    private boolean isAlertPresent() {
+        try {
+            driver.switchTo().alert();
+            return true;
+        } catch (NoAlertPresentException e) {
+            return false;
+        }
+    }
+
+    public boolean isElementPresent(By by) {
+        try {
+            driver.findElement(by);
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    private String closeAlertAndGetItsText() {
+        try {
+            Alert alert = driver.switchTo().alert();
+            String alertText = alert.getText();
+            if (acceptNextAlert) {
+                alert.accept();
+            } else {
+                alert.dismiss();
+            }
+            return alertText;
+        } finally {
+            acceptNextAlert = true;
+        }
+    }
+
+    // General methods
+    public void refreshPage () throws  InterruptedException{
+        driver.navigate().refresh();
+        Thread.sleep(1000);
+    }
+
+    public void scrollPageUp () {
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+    }
+
+    public void assertElementNotPresent(By by) {
+        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+        Assert.assertEquals(0, driver.findElements(by).size());
+    }
+
+    public void waitForElementPresent(By by) throws InterruptedException {
+        for (int second = 0;; second++) {
+            if (second >= 30) fail("timeout");
+            try { if (isElementPresent(by)) break; } catch (Exception e) {}
+            Thread.sleep(1500);
+        }
+    }
+
+    public void waitForTitle(String by) throws InterruptedException {
+        for (int second = 0; ; second++) {
+            if (second >= 30) fail("timeout");
+            try {
+                if (by.equals(driver.getTitle())) break;
+            } catch (Exception e) {
+            }
+            Thread.sleep(1500);
+        }
+    }
+
+    public void loggIn() throws Exception {
+        // Open BaseUrl
+        driver.get(baseUrl);
+        // Login User Test1
+        driver.findElement(By.id("nav-login")).click();
+        driver.findElement(By.id("UserName")).clear();
+        driver.findElement(By.id("UserName")).sendKeys(Email);
+        driver.findElement(By.id("LoginPassword")).clear();
+        driver.findElement(By.id("LoginPassword")).sendKeys("test");
+        driver.findElement(By.className("login-btn")).click();
+        // Verify name user - Test2 User2
+        assertEquals(driver.findElement(By.cssSelector("span.li-txt.overflow-ellipsis")).getText(), "Min side");
+    }
+
+    public void closeReklam() throws Exception {
+        driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
+    }
+
+    public void goToPageProfil() throws Exception {
+        driver.get(baseUrl + "/karriereprofil?id=105371");
+        waitForElementPresent(By.xpath("//*[@id='main-story']/a"));
+    }
+
+    public void goToPageVideopresentasjon() throws Exception {
+        goToPageProfil();
+        driver.findElement(By.linkText("Videopresentasjon")).click();
+        waitForElementPresent(By.xpath("//*[@id='video-tips-block']"));
+    }
+
+
+}
+
+

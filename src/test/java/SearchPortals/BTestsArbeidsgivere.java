@@ -12,7 +12,6 @@ public class BTestsArbeidsgivere extends TestsBaseSearchPortals {
     @Test(priority = 1)
     public void searchFreeTextIncorrect() throws Exception {
         goToPageArbeidsgivere();
-        closeReklam();
         driver.findElement(By.id("searchtext")).sendKeys("adasdasdgfhfg");
         driver.findElement(By.className("search-top-submit")).click();
         waitForElementPresent(By.xpath("//*[@id='filter']/h3"));

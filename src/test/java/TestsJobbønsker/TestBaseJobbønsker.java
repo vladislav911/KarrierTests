@@ -26,7 +26,7 @@ public class TestBaseJobbønsker {
         //System.setProperty("webdriver.opera.driver", "D:\\selenium\\operadriver.exe");
         driver = new FirefoxDriver();
         baseUrl = "http://dev.karrierestart.no";
-        Email1 = "testddkk15@mail.ru";
+        Email1 = "testdk250@mail.ru";
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(1285, 985));
     }
@@ -95,6 +95,16 @@ public class TestBaseJobbønsker {
         }
 
     }
+    public void waitForTitle(String by) throws InterruptedException {
+        for (int second = 0; ; second++) {
+            if (second >= 30) fail("timeout");
+            try {
+                if (by.equals(driver.getTitle())) break;
+            } catch (Exception e) {
+            }
+            Thread.sleep(1500);
+        }
+    }
     public void closeReklam() throws Exception {
         driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
     }
@@ -110,7 +120,7 @@ public class TestBaseJobbønsker {
         driver.findElement(By.className("login-btn")).click();
         // Verify name user - Test2 User2
         try {
-            assertEquals(driver.findElement(By.cssSelector("span.li-txt.overflow-ellipsis")).getText(), "Test2 User2");
+            assertEquals(driver.findElement(By.cssSelector("span.li-txt.overflow-ellipsis")).getText(), "Min side");
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }

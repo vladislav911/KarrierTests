@@ -23,7 +23,7 @@ public class ETestsBransjer extends TestBaseJobbønsker {
         choseBransjeFirstPositionItem();
         waitForElementPresent(By.xpath("//*[@id='topitems']/li/div"));
         refreshPageBransjer();
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li/div")).getText(), "Advokattjenester / Prosedyre");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li/div")).getText(), "Bankvirksomhet");
     }
 
     @Test(priority = 2)
@@ -31,7 +31,7 @@ public class ETestsBransjer extends TestBaseJobbønsker {
         choseBransjeFirstPositionItem();
         waitForElementPresent(By.xpath("//*[@id='topitems']/li[2]/div"));
         refreshPageBransjer();
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[2]/div")).getText(), "Bankvirksomhet");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[2]/div")).getText(), "Internett tjenester / E-handel");
     }
 
     @Test(priority = 3)
@@ -53,16 +53,16 @@ public class ETestsBransjer extends TestBaseJobbønsker {
         choseBransjeFirstPositionItem();
         waitForElementPresent(By.xpath("//*[@id='industryList']/div/div/div[2]/ul[2]/li[5]/div"));
         refreshPageBransjer();
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li/div")).getText(), "Advokattjenester / Prosedyre");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[2]/div")).getText(), "Bankvirksomhet");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[3]/div")).getText(), "Bygg / Anlegg / Entreprenør");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[4]/div")).getText(), "Eiendom / Eiendomsmegling");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[5]/div")).getText(), "Engineering");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li/div")).getText(), "Farmasi / Legemiddel");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[2]/div")).getText(), "Finans -verdipapirer / megling");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[3]/div")).getText(), "Forsikring / Assuranse");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[4]/div")).getText(), "Forskning og utvikling");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[5]/div")).getText(), "Helse / Velvære / Trening");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li/div")).getText(), "Bankvirksomhet");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[2]/div")).getText(), "Internett tjenester / E-handel");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[3]/div")).getText(), "Eiendom / Eiendomsmegling");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[4]/div")).getText(), "Forskning og utvikling");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[5]/div")).getText(), "IKT / Telekom");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li/div")).getText(), "Investment banking");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[2]/div")).getText(), "Investment management");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[3]/div")).getText(), "IT: Hardware / Software");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[4]/div")).getText(), "Kommunikasjon / PR");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[5]/div")).getText(), "Øvrig");
     }
 
     @Test(priority = 4)
@@ -71,30 +71,30 @@ public class ETestsBransjer extends TestBaseJobbønsker {
         driver.findElement(By.xpath("//*[@id='industryList']/div/div/div[2]/ul[2]/li[3]/div/i")).click();
         refreshPageBransjer();
         // Check position after first moving
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li/div")).getText(), "Advokattjenester / Prosedyre");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[2]/div")).getText(), "Bankvirksomhet");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[3]/div")).getText(), "Bygg / Anlegg / Entreprenør");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[4]/div")).getText(), "Eiendom / Eiendomsmegling");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[5]/div")).getText(), "Forsikring / Assuranse");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li/div")).getText(), "Engineering");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[2]/div")).getText(), "Farmasi / Legemiddel");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[3]/div")).getText(), "Finans -verdipapirer / megling");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[4]/div")).getText(), "Forskning og utvikling");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[5]/div")).getText(), "Helse / Velvære / Trening");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li/div")).getText(), "Bankvirksomhet");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[2]/div")).getText(), "Internett tjenester / E-handel");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[3]/div")).getText(), "Eiendom / Eiendomsmegling");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[4]/div")).getText(), "Forskning og utvikling");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[5]/div")).getText(), "IT: Hardware / Software");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li/div")).getText(), "IKT / Telekom");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[2]/div")).getText(), "Investment banking");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[3]/div")).getText(), "Investment management");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[4]/div")).getText(), "Kommunikasjon / PR");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[5]/div")).getText(), "Øvrig");
         // Second moving Items
         driver.findElement(By.xpath("//*[@id='industryList']/div/div/div[2]/ul[2]/li[4]/div/i")).click();
         refreshPageBransjer();
         // Check position after second moving
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li/div")).getText(), "Advokattjenester / Prosedyre");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[2]/div")).getText(), "Bankvirksomhet");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[3]/div")).getText(), "Bygg / Anlegg / Entreprenør");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[4]/div")).getText(), "Eiendom / Eiendomsmegling");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[5]/div")).getText(), "Forskning og utvikling");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li/div")).getText(), "Engineering");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[2]/div")).getText(), "Farmasi / Legemiddel");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[3]/div")).getText(), "Finans -verdipapirer / megling");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[4]/div")).getText(), "Forsikring / Assuranse");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[5]/div")).getText(), "Helse / Velvære / Trening");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li/div")).getText(), "Bankvirksomhet");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[2]/div")).getText(), "Internett tjenester / E-handel");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[3]/div")).getText(), "Eiendom / Eiendomsmegling");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[4]/div")).getText(), "Forskning og utvikling");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[5]/div")).getText(), "Kommunikasjon / PR");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li/div")).getText(), "IKT / Telekom");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[2]/div")).getText(), "Investment banking");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[3]/div")).getText(), "Investment management");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[4]/div")).getText(), "IT: Hardware / Software");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[5]/div")).getText(), "Øvrig");
     }
 
     @Test(priority = 5)
@@ -103,30 +103,30 @@ public class ETestsBransjer extends TestBaseJobbønsker {
         driver.findElement(By.xpath("//*[@id='topitems']/li[2]/div/div/i")).click();
         refreshPageBransjer();
         // Check position after first moving
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li/div")).getText(), "Bankvirksomhet");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[2]/div")).getText(), "Advokattjenester / Prosedyre");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[3]/div")).getText(), "Bygg / Anlegg / Entreprenør");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[4]/div")).getText(), "Eiendom / Eiendomsmegling");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[5]/div")).getText(), "Forskning og utvikling");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li/div")).getText(), "Engineering");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[2]/div")).getText(), "Farmasi / Legemiddel");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[3]/div")).getText(), "Finans -verdipapirer / megling");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[4]/div")).getText(), "Forsikring / Assuranse");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[5]/div")).getText(), "Helse / Velvære / Trening");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li/div")).getText(), "Internett tjenester / E-handel");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[2]/div")).getText(), "Bankvirksomhet");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[3]/div")).getText(), "Eiendom / Eiendomsmegling");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[4]/div")).getText(), "Forskning og utvikling");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[5]/div")).getText(), "Kommunikasjon / PR");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li/div")).getText(), "IKT / Telekom");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[2]/div")).getText(), "Investment banking");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[3]/div")).getText(), "Investment management");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[4]/div")).getText(), "IT: Hardware / Software");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[5]/div")).getText(), "Øvrig");
         // Second moving
         driver.findElement(By.xpath("//ul[@id='topitems']/li[5]/div/div/i")).click();
         refreshPageBransjer();
         // Check position after second moving
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li/div")).getText(), "Bankvirksomhet");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[2]/div")).getText(), "Advokattjenester / Prosedyre");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[3]/div")).getText(), "Bygg / Anlegg / Entreprenør");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[4]/div")).getText(), "Forskning og utvikling");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[5]/div")).getText(), "Eiendom / Eiendomsmegling");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li/div")).getText(), "Engineering");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[2]/div")).getText(), "Farmasi / Legemiddel");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[3]/div")).getText(), "Finans -verdipapirer / megling");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[4]/div")).getText(), "Forsikring / Assuranse");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[5]/div")).getText(), "Helse / Velvære / Trening");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li/div")).getText(), "Internett tjenester / E-handel");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[2]/div")).getText(), "Bankvirksomhet");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[3]/div")).getText(), "Eiendom / Eiendomsmegling");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[4]/div")).getText(), "Kommunikasjon / PR");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[5]/div")).getText(), "Forskning og utvikling");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li/div")).getText(), "IKT / Telekom");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[2]/div")).getText(), "Investment banking");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[3]/div")).getText(), "Investment management");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[4]/div")).getText(), "IT: Hardware / Software");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[5]/div")).getText(), "Øvrig");
     }
 
     @Test(priority = 6)
@@ -150,16 +150,16 @@ public class ETestsBransjer extends TestBaseJobbønsker {
         Thread.sleep(1000);
         refreshPageBransjer();
         // Check position after moving
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li/div")).getText(), "Advokattjenester / Prosedyre");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[2]/div")).getText(), "Forskning og utvikling");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[3]/div")).getText(), "Bygg / Anlegg / Entreprenør");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[4]/div")).getText(), "Eiendom / Eiendomsmegling");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[5]/div")).getText(), "Bankvirksomhet");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li/div")).getText(), "Engineering");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[2]/div")).getText(), "Farmasi / Legemiddel");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[3]/div")).getText(), "Finans -verdipapirer / megling");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[4]/div")).getText(), "Forsikring / Assuranse");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[5]/div")).getText(), "Helse / Velvære / Trening");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li/div")).getText(), "Bankvirksomhet");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[2]/div")).getText(), "Kommunikasjon / PR");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[3]/div")).getText(), "Eiendom / Eiendomsmegling");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[4]/div")).getText(), "Forskning og utvikling");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[5]/div")).getText(), "Internett tjenester / E-handel");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li/div")).getText(), "IKT / Telekom");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[2]/div")).getText(), "Investment banking");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[3]/div")).getText(), "Investment management");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[4]/div")).getText(), "IT: Hardware / Software");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[5]/div")).getText(), "Øvrig");
         // Scroll page to top Items
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//li[2]/div")));
         ((JavascriptExecutor) driver).executeScript("scroll(0,450)");
@@ -179,16 +179,16 @@ public class ETestsBransjer extends TestBaseJobbønsker {
         Thread.sleep(1000);
         refreshPageBransjer();
         // Check position after moving
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li/div")).getText(), "Finans -verdipapirer / megling");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[2]/div")).getText(), "Farmasi / Legemiddel");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[3]/div")).getText(), "Advokattjenester / Prosedyre");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[4]/div")).getText(), "Forskning og utvikling");
-        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[5]/div")).getText(), "Bygg / Anlegg / Entreprenør");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li/div")).getText(), "Bankvirksomhet");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[2]/div")).getText(), "Eiendom / Eiendomsmegling");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[3]/div")).getText(), "Engineering");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[4]/div")).getText(), "Forsikring / Assuranse");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[5]/div")).getText(), "Helse / Velvære / Trening");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li/div")).getText(), "Investment management");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[2]/div")).getText(), "Investment banking");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[3]/div")).getText(), "Bankvirksomhet");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[4]/div")).getText(), "Kommunikasjon / PR");
+        Assert.assertEquals(driver.findElement(By.xpath("//ul[@id='topitems']/li[5]/div")).getText(), "Eiendom / Eiendomsmegling");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li/div")).getText(), "Forskning og utvikling");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[2]/div")).getText(), "IKT / Telekom");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[3]/div")).getText(), "Internett tjenester / E-handel");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[4]/div")).getText(), "IT: Hardware / Software");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='industryList']/div/div/div[2]/ul[2]/li[5]/div")).getText(), "Øvrig");
     }
 
     @Test(priority = 7)

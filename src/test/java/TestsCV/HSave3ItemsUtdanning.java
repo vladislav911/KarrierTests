@@ -17,16 +17,11 @@ import org.testng.annotations.Test;
 public class HSave3ItemsUtdanning extends TestBaseCV {
     @Test(priority = 1)
     public void Save1ItemWithDatoFor() throws Exception {
-        //LoggIn();
         // Go to Utdatinng
         driver.get(baseUrl + "/CV/Educations");
-        // Close reklama
-        //driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         // Click Legg til ny button
         driver.findElement(By.linkText("Legg til ny")).click();
-        // Close reklama
-        //driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
         // Type Fra
         driver.findElement(By.id("FromDate")).clear();
         driver.findElement(By.id("FromDate")).sendKeys("13.11.2011");
@@ -77,7 +72,7 @@ public class HSave3ItemsUtdanning extends TestBaseCV {
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
         Thread.sleep(2000);
         driver.findElement(By.id("submit")).click();
-        Thread.sleep(1000);
+        waitForElementPresent(By.xpath("//div[2]/div[2]/div/div/div/div[2]/div"));
     }
     @Test(priority = 2)
     public void Save2ItemWithoutDatoFor() throws Exception {
@@ -138,9 +133,9 @@ public class HSave3ItemsUtdanning extends TestBaseCV {
         driver.findElement(By.xpath("//div[@id='GraduationType_chosen']/div/ul/li[4]")).click();
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         driver.findElement(By.id("submit")).click();
-        Thread.sleep(1000);
+        waitForElementPresent(By.xpath("//div[2]/div/div/div/div[2]/div[2]"));
     }
     @Test(priority = 3)
     public void Save3ItemWithoutDatoFor() throws Exception {
@@ -201,9 +196,9 @@ public class HSave3ItemsUtdanning extends TestBaseCV {
         driver.findElement(By.xpath("//div[@id='GraduationType_chosen']/div/ul/li[4]")).click();
         // Scroll page up
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         driver.findElement(By.id("submit")).click();
-        Thread.sleep(1000);
+        waitForElementPresent(By.xpath("//div[2]/div/div/div/div[2]/div[3]"));
     }
     @Test(priority = 4)
     public void AssertSave1Item() throws Exception {

@@ -97,7 +97,7 @@ public class PRegistrationUserWithStatusNotLookingWork extends TestDataBaseRegis
             verificationErrors.append(e.toString());
         }
         try {
-            assertEquals(driver.findElement(By.cssSelector("span.li-txt.overflow-ellipsis")).getText(), "Test2 User2");
+            assertEquals(driver.findElement(By.cssSelector("span.li-txt.overflow-ellipsis")).getText(), "Min side");
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }

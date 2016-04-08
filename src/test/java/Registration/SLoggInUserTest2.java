@@ -19,7 +19,7 @@ public class SLoggInUserTest2 extends TestDataBaseRegistration {
         driver.findElement(By.className("login-btn")).click();
         // Verify name user - Test2 User2
         try {
-            assertEquals(driver.findElement(By.cssSelector("span.li-txt.overflow-ellipsis")).getText(), "Test2 User2");
+            assertEquals(driver.findElement(By.cssSelector("span.li-txt.overflow-ellipsis")).getText(), "Min side");
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }

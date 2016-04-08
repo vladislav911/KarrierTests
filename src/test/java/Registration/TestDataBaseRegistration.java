@@ -32,8 +32,8 @@ public class TestDataBaseRegistration {
         //System.setProperty("webdriver.chrome.driver", "D:\\selenium\\chromedriver.exe");
         driver = new FirefoxDriver();
         baseUrl = "http://dev.karrierestart.no";
-        Email1 = "testdy25@mail.ru";
-        Email2 = "testdy26@mail.ru";
+        Email1 = "testdy27@mail.ru";
+        Email2 = "testdy28@mail.ru";
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(1285, 985));
 

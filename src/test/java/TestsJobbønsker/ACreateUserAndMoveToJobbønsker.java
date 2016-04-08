@@ -47,8 +47,7 @@ public class ACreateUserAndMoveToJobbønsker extends TestBaseJobbønsker {
         // Chose year
         Select selectByValueYear = new Select(driver.findElement(By.className("year")));
         selectByValueYear.selectByVisibleText("1989");
-        // Scroll page up
-        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+        scrollPageUp();
         // Сhose gender
         driver.findElement(By.id("male")).click();
         // Click button Registration
@@ -94,30 +93,14 @@ public class ACreateUserAndMoveToJobbønsker extends TestBaseJobbønsker {
         // Go to LinkConfirm
         driver.get(linkConfirtm);
         // Check correct Registration
-        try {
-            assertEquals(driver.findElement(By.cssSelector("strong")).getText(), "Velkommen til din personlige startside for jobb og karriere!");
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        try {
-            assertEquals(driver.findElement(By.cssSelector("span.li-txt.overflow-ellipsis")).getText(), "Test3 User3");
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
+        assertEquals(driver.findElement(By.cssSelector("strong")).getText(), "Velkommen til din personlige startside for jobb og karriere!");
+        assertEquals(driver.findElement(By.cssSelector("span.li-txt.overflow-ellipsis")).getText(), "Min side");
         // Go to Stillingstyper
         driver.get(baseUrl + "/JobPreferences/JobType");
-        for (int second = 0;; second++) {
-            if (second >= 60) fail("timeout");
-            try { if ("Stillingstyper".equals(driver.getTitle())) break; } catch (Exception e) {}
-        }
-        // Close reklam
-        driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
+        waitForTitle("Stillingstyper");
+        closeReklam();
         // Check coorect title of page
-        try {
-            assertEquals(driver.getTitle(), "Stillingstyper");
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
+        assertEquals(driver.getTitle(), "Stillingstyper");
     }
 }
 

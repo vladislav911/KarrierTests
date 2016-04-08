@@ -42,7 +42,7 @@ public class OPositiveTestsStep7 extends TestDataBaseRegistration {
            verificationErrors.append(e.toString());
        }
        try {
-           assertEquals(driver.findElement(By.cssSelector("span.li-txt.overflow-ellipsis")).getText(), "Test User");
+           assertEquals(driver.findElement(By.cssSelector("span.li-txt.overflow-ellipsis")).getText(), "Min side");
        } catch (Error e) {
            verificationErrors.append(e.toString());
        }

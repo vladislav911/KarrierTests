@@ -20,8 +20,6 @@ public class HTestsArbeidssteder extends TestBaseJobbønsker {
 
     @Test(priority = 1)
     public void verifyItemAdd() throws Exception {
-        loggIn();
-        closeReklam();
         goToArbeidssteder();
         choseStedThirdPositionItem();
         waitForElementPresent(By.xpath("//*[@id='topitems']/li/div"));
@@ -224,7 +222,6 @@ public class HTestsArbeidssteder extends TestBaseJobbønsker {
         assertElementNotPresent(By.xpath("//*[@id='locationList']/div/div/div[2]/ul[2]/li/div/ul/li[2]/div"));
         assertElementNotPresent(By.xpath("//*[@id='locationList']/div/div/div[2]/ul[2]/li/div/ul/li[3]/div"));
         assertElementNotPresent(By.xpath("//*[@id='locationList']/div/div/div[2]/ul[2]/li/div/ul/li[4]/div"));
-        deleteUser();
     }
     /*@Test(priority = 9)
     public void deleteAllItems() throws Exception {

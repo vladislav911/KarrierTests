@@ -18,7 +18,8 @@ public class ACreateUserAndMoveToCV extends TestBaseCV {
     public void CreateUser() throws Exception {
         // Go to http://karrierestart.no/registrering
         driver.get(baseUrl + "/registrering");
-        // Type Emai
+        waitForElementPresent(By.id("Email"));
+        // Type Email
         driver.findElement(By.id("Email")).clear();
         driver.findElement(By.id("Email")).sendKeys(Email1);
         // Type Password
@@ -46,12 +47,11 @@ public class ACreateUserAndMoveToCV extends TestBaseCV {
         // Chose year
         Select selectByValueYear = new Select(driver.findElement(By.className("year")));
         selectByValueYear.selectByVisibleText("1989");
-        // Scroll page up
-        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
+        scrollPageUp();
         // Сhose gender
         driver.findElement(By.id("male")).click();
         // Click button Registration
-        ClickOnButtonRegistrationStep2();
+        clickOnButtonRegistrationStep2();
         // Step3
         // Type Adresse
         driver.findElement(By.id("StreetAddress")).clear();
@@ -76,12 +76,12 @@ public class ACreateUserAndMoveToCV extends TestBaseCV {
         driver.findElement(By.id("StreetAddress")).click();
         String Url1 = driver.getCurrentUrl();
         // Click button Registration
-        ClickOnButtonRegistrationStep3();
+        clickOnButtonRegistrationStep3();
         driver.findElement(By.id("Status_chosen")).click();
         driver.findElement(By.xpath("//*[@id='Status_chosen']/div/div/input")).sendKeys("Jeg søker ikke etter jobb");
         driver.findElement(By.xpath("//*[@id='Status_chosen']/div/ul/li/em")).click();
         // Click button Registration
-        ClickOnButtonRegistrationStep4();
+        clickOnButtonRegistrationStep4();
         Assert.assertEquals(driver.findElement(By.cssSelector("div.sign-up-wrapper > div > div > div > div > h3")).getText(), "Bekreft din e-postadresse");
         // Go to Page ActivationAccount
         driver.get(baseUrl + "/Account/GetActivationLink?email=" + Email1);
@@ -92,69 +92,24 @@ public class ACreateUserAndMoveToCV extends TestBaseCV {
         String linkConfirtm = sb.toString();
         // Go to LinkConfirm
         driver.get(linkConfirtm);
-        try {
-            assertEquals(driver.findElement(By.cssSelector("strong")).getText(), "Velkommen til din personlige startside for jobb og karriere!");
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        try {
-            assertEquals(driver.findElement(By.cssSelector("span.li-txt.overflow-ellipsis")).getText(), "Test3 User3");
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
+        // Check correct Registration
+        assertEquals(driver.findElement(By.cssSelector("strong")).getText(), "Velkommen til din personlige startside for jobb og karriere!");
+        assertEquals(driver.findElement(By.cssSelector("span.li-txt.overflow-ellipsis")).getText(), "Min side");
         // Go to CV
         driver.get(baseUrl + "/CV/PersonalInfo");
-        // Close reklama
-        driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
-        try {
-            assertEquals(driver.findElement(By.id("FirstName")).getAttribute("value"), "Test3");
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        try {
-            assertEquals(driver.findElement(By.id("LastName")).getAttribute("value"), "User3");
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        try {
-            assertEquals(driver.findElement(By.id("DateOfBirth")).getAttribute("value"), "07.05.1989");
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        try {
-            assertEquals(driver.findElement(By.cssSelector("a.chosen-single > span")).getText(), "Mann");
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        try {
-            assertEquals(driver.findElement(By.id("StreetAddress")).getAttribute("value"), "Gagarina street");
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        try {
-            assertEquals(driver.findElement(By.id("Zip")).getAttribute("value"), "42121");
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        try {
-            assertEquals(driver.findElement(By.id("Location")).getAttribute("value"), "Kiev");
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        try {
-            assertEquals(driver.findElement(By.cssSelector("#Country_chosen > a.chosen-single > span")).getText(), "Ukraina");
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        try {
-            assertEquals(driver.findElement(By.id("CellPhone")).getAttribute("value"), "+380 93 887 2305");
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        try {
-            assertEquals(driver.findElement(By.id("Email")).getAttribute("value"), Email1);
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
+        closeReklam();
+        waitForTitle("Personalia");
+        // Check coorect title of page
+        assertEquals(driver.getTitle(), "Personalia");
+        assertEquals(driver.findElement(By.id("FirstName")).getAttribute("value"), "Test3");
+        assertEquals(driver.findElement(By.id("LastName")).getAttribute("value"), "User3");
+        assertEquals(driver.findElement(By.id("DateOfBirth")).getAttribute("value"), "07.05.1989");
+        assertEquals(driver.findElement(By.cssSelector("a.chosen-single > span")).getText(), "Mann");
+        assertEquals(driver.findElement(By.id("StreetAddress")).getAttribute("value"), "Gagarina street");
+        assertEquals(driver.findElement(By.id("Zip")).getAttribute("value"), "42121");
+        assertEquals(driver.findElement(By.id("Location")).getAttribute("value"), "Kiev");
+        assertEquals(driver.findElement(By.cssSelector("#Country_chosen > a.chosen-single > span")).getText(), "Ukraina");
+        assertEquals(driver.findElement(By.id("CellPhone")).getAttribute("value"), "+380 93 887 2305");
+        assertEquals(driver.findElement(By.id("Email")).getAttribute("value"), Email1);
     }
 }

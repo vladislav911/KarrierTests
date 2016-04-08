@@ -28,7 +28,7 @@ public class TestBaseCV {
         //System.setProperty("webdriver.chrome.driver", "D:\\selenium\\chromedriver.exe");
         driver = new FirefoxDriver();
         baseUrl = "http://dev.karrierestart.no";
-        Email1 = "testdk248@mail.ru";
+        Email1 = "testdk258@mail.ru";
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(1285, 985));
     }
@@ -76,29 +76,34 @@ public class TestBaseCV {
         }
     }
 
-    public void ClickOnButtonRegistrationStep2() {
-        driver.findElement(By.xpath("//button[@onclick=\"$('#registration_form').submit();\"]")).click();
+    public void scrollPageUp () {
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.head.scrollHeight)");
     }
 
-    public void ClickOnButtonRegistrationStep3() {
-        driver.findElement(By.xpath("//button[@onclick=\"$('#registration_form').submit();\"]")).click();
+    public void closeReklam() throws Exception {
+        driver.findElement(By.xpath("//*[@id='staticad']/div/div[1]")).click();
     }
 
-    public void ClickOnButtonRegistrationStep4() {
-        driver.findElement(By.xpath("//*[@id='registration_form']/div/div[2]/div[1]/div/div[5]/div/button")).click();
+    public void waitForElementPresent(By by) throws InterruptedException {
+        for (int second = 0;; second++) {
+            if (second >= 60) fail("timeout");
+            try { if (isElementPresent(by)) break; } catch (Exception e) {}
+            Thread.sleep(100);
+        }
+
     }
 
-    public void ClickOnButtonRegistrationStep5() {
-        driver.findElement(By.xpath("//*[@id='registration_form']/div/div[2]/div[1]/div/div[4]/div/button")).click();
+    public void waitForTitle(String by) throws InterruptedException {
+        for (int second = 0; ; second++) {
+            if (second >= 30) fail("timeout");
+            try {
+                if (by.equals(driver.getTitle())) break;
+            } catch (Exception e) {
+            }
+            Thread.sleep(1500);
+        }
     }
 
-    public void ClickOnButtonRegistrationStep6() {
-        driver.findElement(By.xpath("//*[@id='registration_cnt']/ul/div[5]/a")).click();
-    }
-
-    public void ClickOnButtonRegistrationStep7() {
-        driver.findElement(By.xpath("//*[@id='registration_cnt']/div/div[5]/a")).click();
-    }
     public void LoggIn() throws Exception {
         // Open BaseUrl
         driver.get(baseUrl);
@@ -110,5 +115,16 @@ public class TestBaseCV {
         driver.findElement(By.id("LoginPassword")).sendKeys("test");
         driver.findElement(By.className("login-btn")).click();
         Thread.sleep(4000);
+    }
+
+                                // METHODS FOR REGISTRATION
+    public void clickOnButtonRegistrationStep2() {
+        driver.findElement(By.xpath("//button[@onclick=\"$('#registration_form').submit();\"]")).click();
+    }
+    public void clickOnButtonRegistrationStep3() {
+        driver.findElement(By.xpath("//button[@onclick=\"$('#registration_form').submit();\"]")).click();
+    }
+    public void clickOnButtonRegistrationStep4() {
+        driver.findElement(By.xpath("//*[@id='registration_form']/div/div[2]/div[1]/div/div[5]/div/button")).click();
     }
 }

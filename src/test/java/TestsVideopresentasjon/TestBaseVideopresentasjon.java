@@ -2,6 +2,7 @@ package TestsVideopresentasjon;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import org.testng.Assert;
 
@@ -95,6 +96,7 @@ public class TestBaseVideopresentasjon {
             Thread.sleep(1500);
         }
     }
+
 
     public void waitForTitle(String by) throws InterruptedException {
         for (int second = 0; ; second++) {

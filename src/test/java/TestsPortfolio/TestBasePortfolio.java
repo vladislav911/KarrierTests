@@ -1,7 +1,8 @@
-package TestsVideopresentasjon;
+package TestsPortfolio;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import org.testng.Assert;
@@ -11,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.fail;
 
-public class TestBaseVideopresentasjon {
+public class TestBasePortfolio {
 
     static protected WebDriver driver;
     static protected String baseUrl;
@@ -131,13 +132,34 @@ public class TestBaseVideopresentasjon {
         waitForElementPresent(By.xpath("//*[@id='main-story']/a"));
     }
 
-    public void goToPageVideopresentasjon() throws Exception {
+    public void goToPagePortfolio() throws Exception {
         goToPageProfil();
-        driver.findElement(By.linkText("Videopresentasjon")).click();
-        waitForElementPresent(By.xpath("//*[@id='video-tips-block']"));
+        driver.findElement(By.xpath("(//a[contains(text(),'Portefølje')])[2]")).click();
+        waitForElementPresent(By.xpath("//*[@id=\"project-add\"]"));
+    }
+
+    public void clickButtonAddProsjekt() throws Exception {
+        driver.findElement(By.xpath("//a[@id='project-add']/i")).click();
+        waitForElementPresent(By.id("Name"));
+        Thread.sleep(1000);
+    }
+
+    public void backFromProsjektToPortfolio() throws Exception {
+        driver.findElement(By.linkText("Lukk og forhåndsvis")).click();
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Tilbake til prosjekter")));
+        driver.findElement(By.linkText("Tilbake til prosjekter")).click();
+        WebDriverWait wait2 = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("project-add")));
+        Thread.sleep(1000);
+    }
+
+    public void clickButtonLagre() {
+        driver.findElement(By.xpath("//div[@id='projectEdit_cnt']/div/div[3]/div/button")).click();
     }
 
 
 }
+
 
 

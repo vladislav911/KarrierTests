@@ -2,6 +2,7 @@ package TestsPortfolio;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -36,8 +37,6 @@ public class AddFirstProsjekt extends TestBasePortfolio {
 
     @Test(priority = 3)
     public void AddProsjekt() throws Exception {
-        loggIn();
-        closeReklam();
         goToPagePortfolio();
         clickButtonAddProsjekt();
         driver.findElement(By.id("Name")).sendKeys("Test Prosjekt №1");
@@ -135,6 +134,48 @@ public class AddFirstProsjekt extends TestBasePortfolio {
         WebDriverWait wait14 = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[8]/div/div/div/div/div/a/img")));
         Thread.sleep(1000);
+
+        // Add Omslagsbilde
+        Thread.sleep(1000);
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='project-view']/div[1]/div")));
+        driver.findElement(By.linkText("Endre bilde")).click();
+        WebDriverWait wait15 = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='projectEditDlg']")));
+        // Add file
+        WebElement bildeInput = driver.findElement(By.xpath("//*[@id='project-cover-upload']/div/div[2]/input"));
+        bildeInput.sendKeys("file://C:/Users\\Vlad\\Desktop\\картинки\\sova.jpg");
+        WebDriverWait wait16 = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='project-cover-upload']/div/ul/li")));
+        Thread.sleep(1000);
+        // Click button Lagre
+        driver.findElement(By.xpath("//*[@id='projectEdit_cnt']/div[1]/div[3]/div/button[1]")).click();
+        Thread.sleep(1000);
+
+        // Add Ferdigheter
+        Thread.sleep(1000);
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='project-view']/div[1]/div")));
+        driver.findElement(By.id("skillname")).sendKeys("Portrettfoto");
+        WebDriverWait wait17 = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//body/ul/li/a/span")));
+        driver.findElement(By.id("skillname")).sendKeys(Keys.DOWN);
+        driver.findElement(By.id("skillname")).sendKeys(Keys.ENTER);
+        WebDriverWait wait18 = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='skill-list']/ul/li")));
+    }
+
+    @Test(priority = 4)
+    public void AssertCorrectDataSave() throws Exception {
+        goToPagePortfolio();
+        driver.findElement(By.xpath("//*[@id='portfolio-views']/div[2]/div/a[3]/i")).click();
+        WebDriverWait wait19 = new WebDriverWait(driver, 30);
+        wait19.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='project-view']/div[1]/div")));
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-view']/div[3]/div[2]/h1")).getText(), "Test Prosjekt №1");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-view']/div[3]/div[4]")).getText(), "It's test description111");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[2]/div[2]/h3")).getText(), "Test overskrift 1111");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[4]/div[2]/div")).getText(), "Test tekxt 1111");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[6]/div[2]/div/p")).getText(), "Test description bild 1111");
+        Assert.assertEquals(driver.findElement(By.xpath("//div/div[2]/span")).getText(), "3333.mp4");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='skill-list']/ul/li")).getText(), "Portrettfoto");
     }
 }
 

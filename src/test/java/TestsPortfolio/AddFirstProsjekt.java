@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 public class AddFirstProsjekt extends TestBasePortfolio {
 
-    @Test(priority = 1)
+   /* @Test(priority = 1)
     public void addAndCancel() throws Exception {
         loggIn();
         closeReklam();
@@ -33,10 +33,12 @@ public class AddFirstProsjekt extends TestBasePortfolio {
         clickButtonLagre();
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id("Name-error"),"Prosjektnavn påkrevd."));
-    }
+    }*/
 
     @Test(priority = 3)
     public void AddProsjekt() throws Exception {
+        loggIn();
+        closeReklam();
         goToPagePortfolio();
         clickButtonAddProsjekt();
         driver.findElement(By.id("Name")).sendKeys("Test Prosjekt №1");
@@ -165,10 +167,7 @@ public class AddFirstProsjekt extends TestBasePortfolio {
 
     @Test(priority = 4)
     public void AssertCorrectDataSave() throws Exception {
-        goToPagePortfolio();
-        driver.findElement(By.xpath("//*[@id='portfolio-views']/div[2]/div/a[3]/i")).click();
-        WebDriverWait wait19 = new WebDriverWait(driver, 30);
-        wait19.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='project-view']/div[1]/div")));
+        goToPagePortfolioProject();
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-view']/div[3]/div[2]/h1")).getText(), "Test Prosjekt №1");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-view']/div[3]/div[4]")).getText(), "It's test description111");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[2]/div[2]/h3")).getText(), "Test overskrift 1111");
@@ -176,6 +175,35 @@ public class AddFirstProsjekt extends TestBasePortfolio {
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[6]/div[2]/div/p")).getText(), "Test description bild 1111");
         Assert.assertEquals(driver.findElement(By.xpath("//div/div[2]/span")).getText(), "3333.mp4");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='skill-list']/ul/li")).getText(), "Portrettfoto");
+    }
+
+    @Test(priority = 5)
+    public void EditData() throws Exception {
+        // Edit Project name
+        driver.findElement(By.xpath("//div[@id='project-view']/div[3]/div[2]/div/a/i")).click();
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='Name']")));
+        Thread.sleep(500);
+        driver.findElement(By.id("Name")).clear();
+        Thread.sleep(500);
+        driver.findElement(By.id("Name")).sendKeys("№1 Test Prosjekt");
+        Thread.sleep(500);
+        driver.findElement(By.xpath("//*[@id='projectEdit_cnt']/div[1]/div[3]/div/button[1]")).click();
+        WebDriverWait wait2 = new WebDriverWait(driver, 30);
+        wait2.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//div[@id='project-view']/div[3]/div[2]/h1"),"№1 Test Prosjekt"));
+
+        // Edit Project name
+        driver.findElement(By.xpath("//*[@id='project-view']/div[3]/div[3]/div[2]/a/i")).click();
+        WebDriverWait wait3 = new WebDriverWait(driver, 10);
+        wait3.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='Description']")));
+        Thread.sleep(500);
+        driver.findElement(By.id("Description")).clear();
+        Thread.sleep(500);
+        driver.findElement(By.id("Description")).sendKeys("111 - It's test description");
+        Thread.sleep(500);
+        driver.findElement(By.xpath("//*[@id='projectEdit_cnt']/div[1]/div[3]/div/button[1]")).click();
+        WebDriverWait wait4 = new WebDriverWait(driver, 30);
+        wait2.until(ExpectedConditions.textToBePresentInElementLocated(By.id("project-desciption"),"111 - It's test description"));
     }
 }
 

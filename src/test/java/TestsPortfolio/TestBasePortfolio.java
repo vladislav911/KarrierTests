@@ -135,7 +135,15 @@ public class TestBasePortfolio {
     public void goToPagePortfolio() throws Exception {
         goToPageProfil();
         driver.findElement(By.xpath("(//a[contains(text(),'Portefølje')])[2]")).click();
-        waitForElementPresent(By.xpath("//*[@id=\"project-add\"]"));
+        waitForElementPresent(By.xpath("//*[@id='project-add']/i"));
+    }
+
+    public void goToPagePortfolioProject() throws Exception {
+        goToPageProfil();
+        driver.findElement(By.xpath("(//a[contains(text(),'Portefølje')])[2]")).click();
+        WebDriverWait wait19 = new WebDriverWait(driver, 30);
+        wait19.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='project-view']/div[1]/div")));
+        Thread.sleep(1000);
     }
 
     public void clickButtonAddProsjekt() throws Exception {

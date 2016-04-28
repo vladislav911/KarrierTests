@@ -95,7 +95,7 @@ public class AddFirstProsjekt extends TestBasePortfolio {
         driver.findElement(By.id("ImageFileDescription")).sendKeys("Test description bild 1111");
         // Add file
         WebElement fileInput = driver.findElement(By.xpath("//*[@id=\"project-img-upload\"]/div/div[2]/input"));
-        fileInput.sendKeys("file://C:/Users\\Vlad\\Desktop\\картинки\\345.jpg");
+        fileInput.sendKeys("file://C:/Users\\Vlad\\Desktop\\картинки\\1.jpg");
         WebDriverWait wait9 = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='rotateLeft']")));
         Thread.sleep(1000);
@@ -144,7 +144,7 @@ public class AddFirstProsjekt extends TestBasePortfolio {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='projectEditDlg']")));
         // Add file
         WebElement bildeInput = driver.findElement(By.xpath("//*[@id='project-cover-upload']/div/div[2]/input"));
-        bildeInput.sendKeys("file://C:/Users\\Vlad\\Desktop\\картинки\\sova.jpg");
+        bildeInput.sendKeys("file://C:/Users\\Vlad\\Desktop\\картинки\\2.jpg");
         WebDriverWait wait16 = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='project-cover-upload']/div/ul/li")));
         Thread.sleep(1000);
@@ -349,7 +349,7 @@ public class AddFirstProsjekt extends TestBasePortfolio {
         wait5.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='ImageFileDescription']")));
         driver.findElement(By.id("ImageFileDescription")).sendKeys("Test description bild 3333");
         WebElement fileInput = driver.findElement(By.xpath("//*[@id=\"project-img-upload\"]/div/div[2]/input"));
-        fileInput.sendKeys("file://C:/Users\\Vlad\\Desktop\\картинки\\abc.jpg");
+        fileInput.sendKeys("file://C:/Users\\Vlad\\Desktop\\картинки\\3.jpg");
         WebDriverWait wait6 = new WebDriverWait(driver, 30);
         wait6.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='rotateLeft']")));
         Thread.sleep(1000);
@@ -440,6 +440,62 @@ public class AddFirstProsjekt extends TestBasePortfolio {
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[14]/div[2]/div/p")).getText(), "2222 Test description bild");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[12]/div/h2")).getText(), "Video");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[16]/div/h2")).getText(), "Video");
+    }
+
+    @Test(priority = 11)
+    public void DeleteElements() throws Exception {
+        // Delete 2222 Test overskrift Element
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='project-content']/div[4]/div[1]")));
+        driver.findElement(By.xpath("//*[@id='project-content']/div[6]/div[1]/div[3]/a/i")).click();
+        WebDriverWait wait1 = new WebDriverWait(driver, 10);
+        wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='cbDelete_cnt']/div[1]")));
+        driver.findElement(By.xpath("//*[@id='cbDelete_cnt']/div[1]/div[3]/div/button[1]")).click();
+        Thread.sleep(1000);
+        WebDriverWait wait2 = new WebDriverWait(driver, 10);
+        wait2.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='project-content']/div[6]/div[2]/h3")));
+
+        // Delete 2222 Test tekxt
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='project-content']/div[4]/div[1]")));
+        driver.findElement(By.xpath("//*[@id='project-content']/div[6]/div[1]/div[3]/a/i")).click();
+        WebDriverWait wait3 = new WebDriverWait(driver, 10);
+        wait3.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='cbDelete_cnt']/div[1]")));
+        driver.findElement(By.xpath("//*[@id='cbDelete_cnt']/div[1]/div[3]/div/button[1]")).click();
+        Thread.sleep(1000);
+        WebDriverWait wait4 = new WebDriverWait(driver, 10);
+        wait4.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id='project-content']/div[6]/div[2]/div"), "Test description bild 3333"));
+
+        // Delete Test description bild 3333
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='project-content']/div[4]/div[1]")));
+        driver.findElement(By.xpath("//*[@id='project-content']/div[6]/div[1]/div[3]/a/i")).click();
+        WebDriverWait wait5 = new WebDriverWait(driver, 10);
+        wait5.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='cbDelete_cnt']/div[1]")));
+        driver.findElement(By.xpath("//*[@id='cbDelete_cnt']/div[1]/div[3]/div/button[1]")).click();
+        Thread.sleep(1000);
+        WebDriverWait wait6 = new WebDriverWait(driver, 10);
+        wait6.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='project-content']/div[6]/div[2]/div/p")));
+
+        // Delete Delete
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='project-content']/div[8]/div[2]/div/p")));
+        driver.findElement(By.xpath("//*[@id='project-content']/div[10]/div[1]/div[3]/a/i")).click();
+        WebDriverWait wait7 = new WebDriverWait(driver, 10);
+        wait7.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='cbDelete_cnt']/div[1]")));
+        driver.findElement(By.xpath("//*[@id='cbDelete_cnt']/div[1]/div[3]/div/button[1]")).click();
+        Thread.sleep(1000);
+        WebDriverWait wait8 = new WebDriverWait(driver, 10);
+        wait8.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(".//*[@id='project-content']/div[10]/div[1]")));
+    }
+
+    @Test(priority = 12)
+    public void AssertDeleteElements() throws Exception {
+        goToPagePortfolioProject();
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-view']/div[3]/div[2]/h1")).getText(), "№2 Test Prosjekt");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-view']/div[3]/div[4]")).getText(), "222 - It's test description");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[2]/div[2]/div")).getText(), "3333 Test tekxt");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[4]/div[2]/h3")).getText(), "3333 Test overskrift");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[6]/div/h2")).getText(), "Video");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[8]/div/h2")).getText(), "Bilde");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-view']/div[3]/div[7]/h2")).getText(), "Bildegalleri");
+
     }
 }
 

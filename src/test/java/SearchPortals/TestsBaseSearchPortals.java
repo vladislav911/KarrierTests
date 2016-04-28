@@ -20,7 +20,7 @@ public class TestsBaseSearchPortals {
 
     @BeforeTest
     public void setUp() throws Exception {
-        //System.setProperty("webdriver.opera.driver", "D:\\selenium\\operadriver.exe");
+        //System.setProperty("webdriver.chrome.driver", "D:\\selenium\\chromedriver.exe");
         driver = new FirefoxDriver();
         baseUrl = "http://dev.karrierestart.no";
         // DONT NEED CHANGE EMAIl

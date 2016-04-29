@@ -95,7 +95,7 @@ public class AddFirstProsjekt extends TestBasePortfolio {
         driver.findElement(By.id("ImageFileDescription")).sendKeys("Test description bild 1111");
         // Add file
         WebElement fileInput = driver.findElement(By.xpath("//*[@id=\"project-img-upload\"]/div/div[2]/input"));
-        fileInput.sendKeys("file://C:/Users\\Vlad\\Desktop\\картинки\\1.jpg");
+        fileInput.sendKeys(Picture2);
         WebDriverWait wait9 = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='rotateLeft']")));
         Thread.sleep(1000);
@@ -144,7 +144,7 @@ public class AddFirstProsjekt extends TestBasePortfolio {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='projectEditDlg']")));
         // Add file
         WebElement bildeInput = driver.findElement(By.xpath("//*[@id='project-cover-upload']/div/div[2]/input"));
-        bildeInput.sendKeys("file://C:/Users\\Vlad\\Desktop\\картинки\\2.jpg");
+        bildeInput.sendKeys(Picture1);
         WebDriverWait wait16 = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='project-cover-upload']/div/ul/li")));
         Thread.sleep(1000);
@@ -349,7 +349,7 @@ public class AddFirstProsjekt extends TestBasePortfolio {
         wait5.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='ImageFileDescription']")));
         driver.findElement(By.id("ImageFileDescription")).sendKeys("Test description bild 3333");
         WebElement fileInput = driver.findElement(By.xpath("//*[@id=\"project-img-upload\"]/div/div[2]/input"));
-        fileInput.sendKeys("file://C:/Users\\Vlad\\Desktop\\картинки\\3.jpg");
+        fileInput.sendKeys(Picture3);
         WebDriverWait wait6 = new WebDriverWait(driver, 30);
         wait6.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='rotateLeft']")));
         Thread.sleep(1000);
@@ -401,24 +401,24 @@ public class AddFirstProsjekt extends TestBasePortfolio {
     public void MoveElements() throws Exception {
         // First move
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='project-content']/div[4]/div[2]/div/p")));
-        Thread.sleep(500);
+        Thread.sleep(3000);
         WebElement draggable = driver.findElement(By.xpath("//*[@id='project-content']/div[6]/div[1]/div[2]/a/i"));
         Actions builder = new Actions(driver);
-        builder.dragAndDropBy(draggable, 0, -1140).build().perform();
+        builder.dragAndDropBy(draggable, 0, -1100).build().perform();
         Thread.sleep(3000);
         // Second move
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='project-content']/div[6]/div[2]/div/p")));
         Thread.sleep(500);
         WebElement draggable2 = driver.findElement(By.xpath("//*[@id='project-content']/div[8]/div[1]/div[2]/a/i"));
         Actions builder2 = new Actions(driver);
-        builder2.dragAndDropBy(draggable2, 0, -1140).build().perform();
+        builder2.dragAndDropBy(draggable2, 0, -1100).build().perform();
         Thread.sleep(3000);
         // Third move
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='project-content']/div[4]/div[1]")));
         Thread.sleep(500);
         WebElement draggable3 = driver.findElement(By.xpath("//*[@id='project-content']/div[6]/div[1]/div[2]/a/i"));
         Actions builder3 = new Actions(driver);
-        builder3.dragAndDropBy(draggable3, 0, +1700).build().perform();
+        builder3.dragAndDropBy(draggable3, 0, +1560).build().perform();
         Thread.sleep(3000);
         // Fourth move
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='project-content']/div[4]/div[1]")));
@@ -436,9 +436,9 @@ public class AddFirstProsjekt extends TestBasePortfolio {
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[4]/div[2]/h3")).getText(), "3333 Test overskrift");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[6]/div[2]/h3")).getText(), "2222 Test overskrift");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[8]/div[2]/div")).getText(), "2222 Test tekxt");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[10]/div[2]/div/p")).getText(), "Test description bild 3333");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[14]/div[2]/div/p")).getText(), "2222 Test description bild");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[12]/div/h2")).getText(), "Video");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[10]/div[2]/div/p")).getText(), "2222 Test description bild");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[12]/div[2]/div/p")).getText(), "Test description bild 3333");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[14]/div/h2")).getText(), "Video");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[16]/div/h2")).getText(), "Video");
     }
 
@@ -462,9 +462,9 @@ public class AddFirstProsjekt extends TestBasePortfolio {
         driver.findElement(By.xpath("//*[@id='cbDelete_cnt']/div[1]/div[3]/div/button[1]")).click();
         Thread.sleep(1000);
         WebDriverWait wait4 = new WebDriverWait(driver, 10);
-        wait4.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id='project-content']/div[6]/div[2]/div"), "Test description bild 3333"));
+        wait4.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id='project-content']/div[6]/div[2]/div"), "2222 Test description bild"));
 
-        // Delete Test description bild 3333
+        // Delete Test description bild 2222
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='project-content']/div[4]/div[1]")));
         driver.findElement(By.xpath("//*[@id='project-content']/div[6]/div[1]/div[3]/a/i")).click();
         WebDriverWait wait5 = new WebDriverWait(driver, 10);
@@ -472,11 +472,11 @@ public class AddFirstProsjekt extends TestBasePortfolio {
         driver.findElement(By.xpath("//*[@id='cbDelete_cnt']/div[1]/div[3]/div/button[1]")).click();
         Thread.sleep(1000);
         WebDriverWait wait6 = new WebDriverWait(driver, 10);
-        wait6.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='project-content']/div[6]/div[2]/div/p")));
+        wait6.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id='project-content']/div[6]/div[2]/div/p"), "Test description bild 3333"));
 
         // Delete Delete
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='project-content']/div[8]/div[2]/div/p")));
-        driver.findElement(By.xpath("//*[@id='project-content']/div[10]/div[1]/div[3]/a/i")).click();
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='project-content']/div[6]/div[2]/div")));
+        driver.findElement(By.xpath("//*[@id='project-content']/div[8]/div[1]/div[3]/a/i")).click();
         WebDriverWait wait7 = new WebDriverWait(driver, 10);
         wait7.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='cbDelete_cnt']/div[1]")));
         driver.findElement(By.xpath("//*[@id='cbDelete_cnt']/div[1]/div[3]/div/button[1]")).click();
@@ -492,10 +492,9 @@ public class AddFirstProsjekt extends TestBasePortfolio {
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-view']/div[3]/div[4]")).getText(), "222 - It's test description");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[2]/div[2]/div")).getText(), "3333 Test tekxt");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[4]/div[2]/h3")).getText(), "3333 Test overskrift");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[6]/div/h2")).getText(), "Video");
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[8]/div/h2")).getText(), "Bilde");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[6]/div/h2")).getText(), "Bilde");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[8]/div/h2")).getText(), "Video");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-view']/div[3]/div[7]/h2")).getText(), "Bildegalleri");
-
     }
 }
 

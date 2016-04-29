@@ -17,6 +17,9 @@ public class TestBasePortfolio {
     static protected WebDriver driver;
     static protected String baseUrl;
     static protected String Email;
+    static protected String Picture1;
+    static protected String Picture2;
+    static protected String Picture3;
     protected StringBuffer verificationErrors = new StringBuffer();
     private boolean acceptNextAlert = true;
 
@@ -27,6 +30,9 @@ public class TestBasePortfolio {
         driver = new FirefoxDriver();
         baseUrl = "http://dev.karrierestart.no";
         Email = "testdy28@mail.ru";
+        Picture1 = "file://C:/Users\\Vlad\\Desktop\\картинки\\1.jpg";
+        Picture2 = "file://C:/Users\\Vlad\\Desktop\\картинки\\2.jpg";
+        Picture3 = "file://C:/Users\\Vlad\\Desktop\\картинки\\3.jpg";
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(1285, 985));
     }

@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class AddFirstProsjekt extends TestBasePortfolio {
+public class AActionsWithProject extends TestBasePortfolio {
 
     @Test(priority = 1)
     public void addAndCancel() throws Exception {
@@ -30,6 +30,8 @@ public class AddFirstProsjekt extends TestBasePortfolio {
     @Test(priority = 2)
     public void tryToAddProsjektWithOutName() throws Exception {
         goToPagePortfolio();
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='CandidateProfileHeader']/div/div[2]/div[2]")));
+        Thread.sleep(500);
         clickButtonAddProsjekt();
         clickButtonLagre();
         WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -39,6 +41,9 @@ public class AddFirstProsjekt extends TestBasePortfolio {
     @Test(priority = 3)
     public void AddProsjekt() throws Exception {
         goToPagePortfolio();
+        refreshPage();
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='CandidateProfileHeader']/div/div[2]/div[2]")));
+        Thread.sleep(500);
         clickButtonAddProsjekt();
         driver.findElement(By.id("Name")).sendKeys("Test Prosjekt №1");
         clickButtonLagre();
@@ -166,7 +171,7 @@ public class AddFirstProsjekt extends TestBasePortfolio {
 
     @Test(priority = 4)
     public void AssertCorrectDataSave() throws Exception {
-        goToPagePortfolioProject();
+        goToPagePortfolio();
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-view']/div[3]/div[2]/h1")).getText(), "Test Prosjekt №1");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-view']/div[3]/div[4]")).getText(), "It's test description111");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[2]/div[2]/h3")).getText(), "Test overskrift 1111");
@@ -289,7 +294,7 @@ public class AddFirstProsjekt extends TestBasePortfolio {
 
     @Test(priority = 6)
     public void AssertCorrectDataChanges() throws Exception {
-        goToPagePortfolioProject();
+        goToPagePortfolio();
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-view']/div[3]/div[2]/h1")).getText(), "№2 Test Prosjekt");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-view']/div[3]/div[4]")).getText(), "222 - It's test description");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[2]/div[2]/h3")).getText(), "2222 Test overskrift");
@@ -380,7 +385,7 @@ public class AddFirstProsjekt extends TestBasePortfolio {
 
     @Test(priority = 8)
     public void AssertCorrectDataAdd() throws Exception {
-        goToPagePortfolioProject();
+        goToPagePortfolio();
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-view']/div[3]/div[2]/h1")).getText(), "№2 Test Prosjekt");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-view']/div[3]/div[4]")).getText(), "222 - It's test description");
         Assert.assertEquals(driver.findElement(By.xpath("//div[5]/ul/li")).getText(), "Internasjonal Business");
@@ -431,7 +436,7 @@ public class AddFirstProsjekt extends TestBasePortfolio {
 
     @Test(priority = 10)
     public void AssertMoveElements() throws Exception {
-        goToPagePortfolioProject();
+        goToPagePortfolio();
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[2]/div[2]/div")).getText(), "3333 Test tekxt");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[4]/div[2]/h3")).getText(), "3333 Test overskrift");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[6]/div[2]/h3")).getText(), "2222 Test overskrift");
@@ -487,7 +492,7 @@ public class AddFirstProsjekt extends TestBasePortfolio {
 
     @Test(priority = 12)
     public void AssertDeleteElements() throws Exception {
-        goToPagePortfolioProject();
+        goToPagePortfolio();
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-view']/div[3]/div[2]/h1")).getText(), "№2 Test Prosjekt");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-view']/div[3]/div[4]")).getText(), "222 - It's test description");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='project-content']/div[2]/div[2]/div")).getText(), "3333 Test tekxt");

@@ -139,9 +139,12 @@ public class TestBasePortfolio {
     }
 
     public void goToPagePortfolio() throws Exception {
-        goToPageProfil();
-        driver.findElement(By.xpath("(//a[contains(text(),'Portefølje')])[2]")).click();
-        waitForElementPresent(By.xpath("//*[@id='project-add']/i"));
+        //goToPageProfil();
+        //driver.findElement(By.xpath("(//a[contains(text(),'Portefølje')])[2]")).click();
+        //waitForElementPresent(By.xpath("//*[@id='project-add']/i"));
+        driver.get(baseUrl + "/karriereprofil?id=105371#p-portfolio");
+        WebDriverWait wait2 = new WebDriverWait(driver, 30);
+        wait2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='project-add']/i")));
     }
 
     public void goToPagePortfolioProject() throws Exception {
@@ -159,9 +162,11 @@ public class TestBasePortfolio {
     }
 
     public void backFromProsjektToPortfolio() throws Exception {
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='CandidateProfileHeader']/div/div[2]/div[2]")));
         driver.findElement(By.linkText("Lukk og forhåndsvis")).click();
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Tilbake til prosjekter")));
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id='CandidateProfileHeader']/div/div[2]/div[2]")));
         driver.findElement(By.linkText("Tilbake til prosjekter")).click();
         WebDriverWait wait2 = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("project-add")));
